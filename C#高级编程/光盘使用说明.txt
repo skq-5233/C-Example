@@ -1,0 +1,17 @@
+为便于读者学习和参考，本书附赠光盘提供了全书的源代码和第48~57章的内容。
+
+第48~57章的内容包括：
+
+·  使用GDI+绘图
+·  VSTO 
+·  MAF 
+·  Enterprise Services 
+·  目录服务 
+·  Enterprise Services 
+·  C#、Visual Basic、C++/CLI和F# 
+·  .NET Remoting 
+·  Web服务和ASP.NET 
+·  LINQ to SQL 
+·  WPF 3.0 
+
+

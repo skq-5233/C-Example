@@ -1,0 +1,921 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0069)http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn"><style type="text/css" id="28267143672"></style><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/ca-pub-4210569241504288.js"></script>
+
+<title>轮廓的查找、表达、绘制、特性及匹配(How to Use Contour? Find, Component, Construct, Features &amp; Match) - Wuya - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/bundle-SimpleBlue.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/xrwang/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/xrwang/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/xrwang/wlwmanifest.xml">
+<script async="" src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/analytics.js"></script><script type="text/javascript" src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/encoder.js"></script><script src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'xrwang', cb_enable_mathjax=false;</script>
+<script src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+		
+<!--done-->
+<div class="title"><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/xrwang/">无涯（C、.net、图像处理、算法）</a></div>
+<div class="subtitle">欢迎光临淘宝店<b><a href="http://bbmhjy.taobao.com/" target="_blank">贝贝de梦幻家园</a></b>，经营张家界土特产：<a href="http://bbmhjy.taobao.com/?search=y&scid=341776248&scname=3a6y6A%3D%3D&checkedRange=true&queryType=cat" target="_blank">莓茶</a>、<a href="http://bbmhjy.taobao.com/?search=y&scid=341778426&scname=tsXW2bLo&checkedRange=true&queryType=cat" target="_blank">杜仲茶</a>、<a href="http://bbmhjy.taobao.com/?search=y&scid=341778427&scname=uPC32w%3D%3D&checkedRange=true&queryType=cat" target="_blank">葛根粉</a>、<a href="http://bbmhjy.taobao.com/?search=y&scid=341778428&scname=3qe32w%3D%3D&checkedRange=true&queryType=cat" target="_blank">蕨粉</a>、<a href="http://bbmhjy.taobao.com/?search=y&scid=341778431&scname=wLG9tw%3D%3D&checkedRange=true&queryType=cat" target="_blank">爆椒</a>、<a href="http://bbmhjy.taobao.com/?search=y&scid=348970080&scname=0dK2%2Bsm9vvo%3D&checkedRange=true&queryType=cat" target="_blank">山菌</a>、<a href="http://bbmhjy.taobao.com/?search=y&scid=348970081&scname=wLDOttKwzrY%3D&checkedRange=true&queryType=cat" target="_blank">野味</a>、<a href="http://bbmhjy.taobao.com/?search=y&scid=348970082&scname=zNjJq9Chs9Q%3D&checkedRange=true&queryType=cat" target="_blank">小吃</a>...</div>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li id="nav_sitehome"><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li id="nav_myhome"><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/xrwang/">首页</a></li>
+<li id="nav_q"><a class="menu" href="http://q.cnblogs.com/">博问</a></li>
+<li id="nav_ing"><a class="menu" href="http://home.cnblogs.com/ing/">闪存</a></li>
+<li id="nav_newpost"><a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="http://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li id="nav_contact"><a id="MyLinks1_ContactLink" class="menu" rel="nofollow" href="http://msg.cnblogs.com/send/Wuya">联系</a></li>
+<li id="nav_rss"><a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/xrwang/rss">订阅</a>
+<!--<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/xrwang/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li id="nav_admin"><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://i.cnblogs.com/">管理</a></li>
+</ul>
+
+		<div class="blogStats">
+			
+			
+<!--done-->
+随笔-40&nbsp;
+文章-0&nbsp;
+评论-817&nbsp;
+
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园.html">轮廓的查找、表达、绘制、特性及匹配(How to Use Contour? Find, Component, Construct, Features &amp; Match)</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p>作者：王先荣</p>
+<p><strong>前言</strong><br>&nbsp;&nbsp;&nbsp; 轮廓是构成任何一个形状的边界或外形线。前面讲了如何根据色彩及色彩的分布（直方图对比和模板匹配）来进行匹配，现在我们来看看如何利用物体的轮廓。包括以下内容：轮廓的查找、表达方式、组织方式、绘制、特性、匹配。</p>
+<p>&nbsp;<strong>查找轮廓</strong><br>&nbsp;&nbsp;&nbsp; 首先我们面对的问题是如何在图像中找到轮廓，OpenCv(EmguCv)为我们做了很多工作，我们的任务只是调用现成的函数而已。Image&lt;TColor,TDepth&gt;类的FindContours方法可以很方便的查找轮廓，不过在查找之前，我们需要将彩色图像转换成灰度图像，然后再将灰度图像转换成二值图像。代码如下所示：</p>
+<div onclick="cnblogs_code_show(&#39;bec6a7d1-34eb-4354-89f4-8b7e483f4ed6&#39;)" class="cnblogs_code"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/ContractedBlock.gif" id="code_img_closed_bec6a7d1-34eb-4354-89f4-8b7e483f4ed6" class="code_img_closed" style="display: none;"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/ExpandedBlockStart.gif" onclick="cnblogs_code_hide(&#39;bec6a7d1-34eb-4354-89f4-8b7e483f4ed6&#39;,event)" style="" id="code_img_opened_bec6a7d1-34eb-4354-89f4-8b7e483f4ed6" class="code_img_opened"><span class="cnblogs_code_collapse" style="display: none;">查找轮廓</span>
+<div id="cnblogs_code_open_bec6a7d1-34eb-4354-89f4-8b7e483f4ed6" class="cnblogs_code_hide" style="display: block;">
+<pre><div><!--<br /><br />Code highlighting produced by Actipro CodeHighlighter (freeware)<br />http://www.CodeHighlighter.com/<br /><br />--><span style="color: #000000;">Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Bgr, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> imageSource </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Bgr, </span><span style="color: #0000ff;">byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">(sourceImageFileName);       </span><span style="color: #008000;">//</span><span style="color: #008000;">获取源图像</span><span style="color: #008000;"><br></span><span style="color: #000000;">Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Gray, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> imageGray </span><span style="color: #000000;">=</span><span style="color: #000000;"> imageSource.Convert</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Gray, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">();                </span><span style="color: #008000;">//</span><span style="color: #008000;">将源图像转换成灰度图像</span><span style="color: #008000;"><br></span><span style="color: #0000ff;">int</span><span style="color: #000000;"> thresholdValue </span><span style="color: #000000;">=</span><span style="color: #000000;"> tbThreshold.Value;                                         </span><span style="color: #008000;">//</span><span style="color: #008000;">用于二值化的阀值</span><span style="color: #008000;"><br></span><span style="color: #000000;">Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Gray, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> imageThreshold </span><span style="color: #000000;">=</span><span style="color: #000000;"> imageGray.ThresholdBinary(</span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Gray(thresholdValue), </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Gray(255d)); </span><span style="color: #008000;">//</span><span style="color: #008000;">对灰度图像二值化</span><span style="color: #008000;"><br></span><span style="color: #000000;">Contour</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Point</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> contour</span><span style="color: #000000;">=</span><span style="color: #000000;">imageThreshold.FindContours();</span></div></pre>
+</div>
+</div>
+<p>&nbsp;</p>
+<p><strong>轮廓的表达方式</strong><br>&nbsp;&nbsp;&nbsp; 使用上面的代码可以得到图像的默认轮廓，但是轮廓在电脑中是如何表达的呢？在OpenCv(EmguCv)中提供了两类表达轮廓的方式：顶点的序列、Freeman链码。</p>
+<p><strong>1.顶点的序列<br></strong>&nbsp;&nbsp;&nbsp; 用多个顶点（或各点间的线段）来表达轮廓。假设要表达一个从(0,0)到(2,2)的矩形，<br>（1）如果用点来表示，那么依次存储的可能是：(0,0),(1,0),(2,0),(2,1),(2,2),(1,2),(0,2),(0,1)；<br>（2）如果用点间的线段来表达轮廓，那么依次存储的可能是：(0,0),(2,0),(2,2),(0,2)。<br>以下代码可以用来获取轮廓上的点：</p>
+<div class="cnblogs_code">
+<pre><div><!--<br /><br />Code highlighting produced by Actipro CodeHighlighter (freeware)<br />http://www.CodeHighlighter.com/<br /><br />--><span style="color: #0000ff;">for</span><span style="color: #000000;"> (</span><span style="color: #0000ff;">int</span><span style="color: #000000;"> i </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #800080;">0</span><span style="color: #000000;">; i </span><span style="color: #000000;">&lt;</span><span style="color: #000000;"> contour.Total; i</span><span style="color: #000000;">++</span><span style="color: #000000;">)<br>     sbContour.AppendFormat(</span><span style="color: #800000;">"</span><span style="color: #800000;">{0},</span><span style="color: #800000;">"</span><span style="color: #000000;">, contour[i]);</span></div></pre>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;<strong>2.Freeman链码<br></strong>&nbsp;&nbsp;&nbsp; Freeman链码需要一个起点，以及从起点出发的一系列位移。每个位移有8个方向，从0～7分别指向从正北开始的8个方向。假设要用Freeman链码表达从(0,0)到(2,2)的矩形，可能的表示方法是：起点(0,0),方向链2,2,4,4,6,6,0,0。<br>&nbsp;&nbsp;&nbsp; EmguCv对Freeman链码的支持很少，我们需要做一系列的工作才能在.net中使用Freeman链码：<br><strong>（1）获取Freeman链码</strong></p>
+<div onclick="cnblogs_code_show(&#39;67eb26c3-0c61-4305-b623-e3230b98bcbe&#39;)" class="cnblogs_code"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/ContractedBlock.gif" id="code_img_closed_67eb26c3-0c61-4305-b623-e3230b98bcbe" class="code_img_closed" style="display: none;"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/ExpandedBlockStart.gif" onclick="cnblogs_code_hide(&#39;67eb26c3-0c61-4305-b623-e3230b98bcbe&#39;,event)" style="" id="code_img_opened_67eb26c3-0c61-4305-b623-e3230b98bcbe" class="code_img_opened"><span class="cnblogs_code_collapse" style="display: none;">查找用Freeman链码表示的轮廓</span>
+<div id="cnblogs_code_open_67eb26c3-0c61-4305-b623-e3230b98bcbe" class="cnblogs_code_hide" style="display: block;">
+<pre><div><!--<br /><br />Code highlighting produced by Actipro CodeHighlighter (freeware)<br />http://www.CodeHighlighter.com/<br /><br />--><span style="color: #008000;">//</span><span style="color: #008000;">查找用Freeman链码表示的轮廓</span><span style="color: #008000;"><br></span><span style="color: #000000;">Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Gray,Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> imageTemp</span><span style="color: #000000;">=</span><span style="color: #000000;">imageThreshold.Copy();<br>IntPtr storage </span><span style="color: #000000;">=</span><span style="color: #000000;"> CvInvoke.cvCreateMemStorage(</span><span style="color: #800080;">0</span><span style="color: #000000;">);<br>IntPtr ptrFirstChain </span><span style="color: #000000;">=</span><span style="color: #000000;"> IntPtr.Zero;<br></span><span style="color: #0000ff;">int</span><span style="color: #000000;"> total </span><span style="color: #000000;">=</span><span style="color: #000000;"> CvInvoke.cvFindContours(imageTemp.Ptr, storage, </span><span style="color: #0000ff;">ref</span><span style="color: #000000;"> ptrFirstChain, </span><span style="color: #0000ff;">sizeof</span><span style="color: #000000;">(MCvChain), mode, CHAIN_APPROX_METHOD.CV_CHAIN_CODE, </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Point(</span><span style="color: #800080;">0</span><span style="color: #000000;">, </span><span style="color: #800080;">0</span><span style="color: #000000;">));<br></span></div></pre>
+</div>
+</div>
+<p><br><strong>（2）遍历Freeman链码上的点</strong></p>
+<div onclick="cnblogs_code_show(&#39;160c0a60-877d-4545-9cea-f440c97bc1cf&#39;)" class="cnblogs_code"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/ContractedBlock.gif" id="code_img_closed_160c0a60-877d-4545-9cea-f440c97bc1cf" class="code_img_closed" style="display: none;"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/ExpandedBlockStart.gif" onclick="cnblogs_code_hide(&#39;160c0a60-877d-4545-9cea-f440c97bc1cf&#39;,event)" style="" id="code_img_opened_160c0a60-877d-4545-9cea-f440c97bc1cf" class="code_img_opened"><span class="cnblogs_code_collapse" style="display: none;">读取Freeman链码上的点</span>
+<div id="cnblogs_code_open_160c0a60-877d-4545-9cea-f440c97bc1cf" class="cnblogs_code_hide" style="display: block;"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><div><!--<br /><br />Code highlighting produced by Actipro CodeHighlighter (freeware)<br />http://www.CodeHighlighter.com/<br /><br />--><span style="color: #008000;">//</span><span style="color: #008000;">初始化Freeman链码读取</span><span style="color: #008000;"><br></span><span style="color: #000000;">[DllImport(</span><span style="color: #800000;">"</span><span style="color: #800000;">cv200.dll</span><span style="color: #800000;">"</span><span style="color: #000000;">)]<br></span><span style="color: #0000ff;">public</span><span style="color: #000000;"> </span><span style="color: #0000ff;">static</span><span style="color: #000000;"> </span><span style="color: #0000ff;">extern</span><span style="color: #000000;"> </span><span style="color: #0000ff;">void</span><span style="color: #000000;"> cvStartReadChainPoints(IntPtr ptrChain,IntPtr ptrReader);<br></span><span style="color: #008000;">//</span><span style="color: #008000;">读取Freeman链码的点</span><span style="color: #008000;"><br></span><span style="color: #000000;">[DllImport(</span><span style="color: #800000;">"</span><span style="color: #800000;">cv200.dll</span><span style="color: #800000;">"</span><span style="color: #000000;">)]<br></span><span style="color: #0000ff;">public</span><span style="color: #000000;"> </span><span style="color: #0000ff;">static</span><span style="color: #000000;"> </span><span style="color: #0000ff;">extern</span><span style="color: #000000;"> Point cvReadChainPoint(IntPtr ptrReader);<br>[System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, CharSet </span><span style="color: #000000;">=</span><span style="color: #000000;"> System.Runtime.InteropServices.CharSet.Ansi)]<br></span><span style="color: #008000;">//</span><span style="color: #008000;">定义链码读取结构</span><span style="color: #008000;"><br></span><span style="color: #0000ff;">public</span><span style="color: #000000;"> </span><span style="color: #0000ff;">struct</span><span style="color: #000000;"> MCvChainPtReader<br>{<br>    </span><span style="color: #008000;">//</span><span style="color: #008000;">seqReader</span><span style="color: #008000;"><br></span><span style="color: #000000;">    </span><span style="color: #0000ff;">public</span><span style="color: #000000;"> MCvSeqReader seqReader;<br>    </span><span style="color: #808080;">///</span><span style="color: #008000;"> char</span><span style="color: #808080;"><br></span><span style="color: #000000;">    </span><span style="color: #0000ff;">public</span><span style="color: #000000;"> </span><span style="color: #0000ff;">byte</span><span style="color: #000000;"> code;<br>    </span><span style="color: #808080;">///</span><span style="color: #008000;"> POINT-&gt;tagPOINT</span><span style="color: #808080;"><br></span><span style="color: #000000;">    </span><span style="color: #0000ff;">public</span><span style="color: #000000;"> Point pt;<br>    </span><span style="color: #808080;">///</span><span style="color: #008000;"> char[16]</span><span style="color: #808080;"><br></span><span style="color: #000000;">    [System.Runtime.InteropServices.MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #800080;">16</span><span style="color: #000000;">)]<br>    </span><span style="color: #0000ff;">public</span><span style="color: #000000;"> </span><span style="color: #0000ff;">string</span><span style="color: #000000;"> deltas;<br>}<br><br></span><span style="color: #008000;">//</span><span style="color: #008000;">将链码指针转换成结构</span><span style="color: #008000;"><br></span><span style="color: #000000;">MCvChain chain</span><span style="color: #000000;">=</span><span style="color: #000000;">(MCvChain)Marshal.PtrToStructure(ptrChain,</span><span style="color: #0000ff;">typeof</span><span style="color: #000000;">(MCvChain));<br></span><span style="color: #008000;">//</span><span style="color: #008000;">定义存放链码上点的列表</span><span style="color: #008000;"><br></span><span style="color: #000000;">List</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Point</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> pointList </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> List</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Point</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">(chain.total);<br></span><span style="color: #008000;">//</span><span style="color: #008000;">链码读取结构</span><span style="color: #008000;"><br></span><span style="color: #000000;">MCvChainPtReader chainReader </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> MCvChainPtReader();<br>IntPtr ptrReader </span><span style="color: #000000;">=</span><span style="color: #000000;"> Marshal.AllocHGlobal(</span><span style="color: #0000ff;">sizeof</span><span style="color: #000000;">(MCvSeqReader) </span><span style="color: #000000;">+</span><span style="color: #000000;"> </span><span style="color: #0000ff;">sizeof</span><span style="color: #000000;">(</span><span style="color: #0000ff;">byte</span><span style="color: #000000;">) </span><span style="color: #000000;">+</span><span style="color: #000000;"> </span><span style="color: #0000ff;">sizeof</span><span style="color: #000000;">(Point) </span><span style="color: #000000;">+</span><span style="color: #000000;"> </span><span style="color: #800080;">16</span><span style="color: #000000;"> </span><span style="color: #000000;">*</span><span style="color: #000000;"> </span><span style="color: #0000ff;">sizeof</span><span style="color: #000000;">(</span><span style="color: #0000ff;">byte</span><span style="color: #000000;">));<br>Marshal.StructureToPtr(chainReader, ptrReader, </span><span style="color: #0000ff;">false</span><span style="color: #000000;">);<br></span><span style="color: #008000;">//</span><span style="color: #008000;">开始读取链码</span><span style="color: #008000;"><br></span><span style="color: #000000;">cvStartReadChainPoints(ptrChain, ptrReader);<br></span><span style="color: #0000ff;">int</span><span style="color: #000000;"> i </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #800080;">0</span><span style="color: #000000;">;<br></span><span style="color: #0000ff;">while</span><span style="color: #000000;"> (ptrReader </span><span style="color: #000000;">!=</span><span style="color: #000000;"> IntPtr.Zero </span><span style="color: #000000;">&amp;&amp;</span><span style="color: #000000;"> i </span><span style="color: #000000;">&lt;</span><span style="color: #000000;"> chain.total)<br>{<br>    </span><span style="color: #008000;">//</span><span style="color: #008000;">依次读取链码上的每个点</span><span style="color: #008000;"><br></span><span style="color: #000000;">    Point p </span><span style="color: #000000;">=</span><span style="color: #000000;"> cvReadChainPoint(ptrReader);<br>    </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (ptrReader </span><span style="color: #000000;">==</span><span style="color: #000000;"> IntPtr.Zero)<br>         </span><span style="color: #0000ff;">break</span><span style="color: #000000;">;<br>    </span><span style="color: #0000ff;">else</span><span style="color: #000000;"><br>    {<br>         pointList.Add(p);<br>         sbChain.AppendFormat(</span><span style="color: #800000;">"</span><span style="color: #800000;">{0},</span><span style="color: #800000;">"</span><span style="color: #000000;">, p);<br>         i</span><span style="color: #000000;">++</span><span style="color: #000000;">;<br>    }<br>}<br>imageResult.DrawPolyline(pointList.ToArray(), </span><span style="color: #0000ff;">true</span><span style="color: #000000;">, </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Bgr(lblExternalColor.BackColor), </span><span style="color: #800080;">2</span><span style="color: #000000;">);</span></div></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+</div>
+<p>&nbsp;&nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp; 需要注意的是：cvReadChainPoint函数似乎永远不会满足循环终止的条件，即ptrReader永远不会被置为null，这跟《学习OpenCv》和参考上不一致；我们需要用chain.total来辅助终止循环，读取了所有的点之后就可以罢手了。</p>
+<p><strong>轮廓之间的组织方式</strong><br>&nbsp;&nbsp;&nbsp; 在查找到轮廓之后，不同轮廓是怎么组织的呢？根据不同的选择，它们可能是：（1）列表；（2）双层结构；（3）树型结构。<br>&nbsp;&nbsp;&nbsp; 从纵向上来看，列表只有一层，双层结构有一或者两层，树型结构可能有一层或者多层。<br>&nbsp;&nbsp;&nbsp; 如果要遍历所有的轮廓，可以使用递归的方式，代码如下：</p>
+<div onclick="cnblogs_code_show(&#39;c38c6ef4-4c21-4f19-ad59-aa124abf9fa1&#39;)" class="cnblogs_code"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/ContractedBlock.gif" id="code_img_closed_c38c6ef4-4c21-4f19-ad59-aa124abf9fa1" class="code_img_closed" style="display: none;"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/ExpandedBlockStart.gif" onclick="cnblogs_code_hide(&#39;c38c6ef4-4c21-4f19-ad59-aa124abf9fa1&#39;,event)" style="" id="code_img_opened_c38c6ef4-4c21-4f19-ad59-aa124abf9fa1" class="code_img_opened"><span class="cnblogs_code_collapse" style="display: none;">遍历轮廓</span>
+<div id="cnblogs_code_open_c38c6ef4-4c21-4f19-ad59-aa124abf9fa1" class="cnblogs_code_hide" style="display: block;"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><div><!--<br /><br />Code highlighting produced by Actipro CodeHighlighter (freeware)<br />http://www.CodeHighlighter.com/<br /><br />--><span style="color: #000000;">        </span><span style="color: #008000;">//</span><span style="color: #008000;">遍历轮廓，并生成遍历结果</span><span style="color: #008000;"><br></span><span style="color: #000000;">        </span><span style="color: #0000ff;">private</span><span style="color: #000000;"> </span><span style="color: #0000ff;">void</span><span style="color: #000000;"> TravelContour(Contour</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Point</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> contour,</span><span style="color: #0000ff;">ref</span><span style="color: #000000;"> </span><span style="color: #0000ff;">int</span><span style="color: #000000;"> total,</span><span style="color: #0000ff;">ref</span><span style="color: #000000;"> StringBuilder sbContour)<br>        {<br>            </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (contour </span><span style="color: #000000;">!=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">null</span><span style="color: #000000;">)<br>            {<br>                sbContour.Append(</span><span style="color: #800000;">"</span><span style="color: #800000;">------------------------\r\n</span><span style="color: #800000;">"</span><span style="color: #000000;">);<br>                sbContour.AppendFormat(</span><span style="color: #800000;">"</span><span style="color: #800000;">轮廓{0}，右节点：{1}，下级节点：{2}，外接矩形：（{3}）\r\n</span><span style="color: #800000;">"</span><span style="color: #000000;">, total, contour.HNext </span><span style="color: #000000;">!=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">null</span><span style="color: #000000;">, contour.VNext </span><span style="color: #000000;">!=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">null</span><span style="color: #000000;">, contour.BoundingRectangle);<br>                sbContour.AppendFormat(</span><span style="color: #800000;">"</span><span style="color: #800000;">包含{0}个点（面积：{1}，周长：{2}）：\r\n</span><span style="color: #800000;">"</span><span style="color: #000000;">, contour.Total, contour.Area, contour.Perimeter);<br>                </span><span style="color: #0000ff;">for</span><span style="color: #000000;"> (</span><span style="color: #0000ff;">int</span><span style="color: #000000;"> i </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #800080;">0</span><span style="color: #000000;">; i </span><span style="color: #000000;">&lt;</span><span style="color: #000000;"> contour.Total; i</span><span style="color: #000000;">++</span><span style="color: #000000;">)<br>                    sbContour.AppendFormat(</span><span style="color: #800000;">"</span><span style="color: #800000;">{0},</span><span style="color: #800000;">"</span><span style="color: #000000;">, contour[i]);<br>                sbContour.Append(</span><span style="color: #800000;">"</span><span style="color: #800000;">\r\n</span><span style="color: #800000;">"</span><span style="color: #000000;">);<br>                total</span><span style="color: #000000;">++</span><span style="color: #000000;">;<br>                </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (contour.HNext </span><span style="color: #000000;">!=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">null</span><span style="color: #000000;">)<br>                    TravelContour(contour.HNext, </span><span style="color: #0000ff;">ref</span><span style="color: #000000;"> total, </span><span style="color: #0000ff;">ref</span><span style="color: #000000;"> sbContour);<br>                </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (contour.VNext </span><span style="color: #000000;">!=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">null</span><span style="color: #000000;">)<br>                    TravelContour(contour.VNext, </span><span style="color: #0000ff;">ref</span><span style="color: #000000;"> total, </span><span style="color: #0000ff;">ref</span><span style="color: #000000;"> sbContour);<br>            }<br>        }<br></span></div></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+</div>
+<p>&nbsp;</p>
+<p><strong>轮廓的绘制</strong><br>&nbsp;&nbsp;&nbsp; 轮廓的绘制比较简单，用上面提到的方法取得轮廓的所有点，然后把这些点连接成一个多边形即可。<br>&nbsp;&nbsp;&nbsp; 当然，对于用顶点序列表示的轮廓，用Image&lt;TColor,TDepth&gt;.Draw方法或者cvDrawContours函数可以很方便的绘制出轮廓。我发现，如果将参数max_level设置成2，可以绘制出所有的轮廓。<br>&nbsp;&nbsp;&nbsp; 绘制轮廓的代码如下：</p>
+<div onclick="cnblogs_code_show(&#39;2618001f-35f4-4d1b-89fe-349dff2d8b75&#39;)" class="cnblogs_code"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/ContractedBlock.gif" id="code_img_closed_2618001f-35f4-4d1b-89fe-349dff2d8b75" class="code_img_closed" style="display: none;"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/ExpandedBlockStart.gif" onclick="cnblogs_code_hide(&#39;2618001f-35f4-4d1b-89fe-349dff2d8b75&#39;,event)" style="" id="code_img_opened_2618001f-35f4-4d1b-89fe-349dff2d8b75" class="code_img_opened"><span class="cnblogs_code_collapse" style="display: none;">绘制轮廓</span>
+<div id="cnblogs_code_open_2618001f-35f4-4d1b-89fe-349dff2d8b75" class="cnblogs_code_hide" style="display: block;">
+<pre><div><!--<br /><br />Code highlighting produced by Actipro CodeHighlighter (freeware)<br />http://www.CodeHighlighter.com/<br /><br />--><span style="color: #000000;">Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Bgr, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> imageResult </span><span style="color: #000000;">=</span><span style="color: #000000;"> imageThreshold.Convert</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Bgr, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">();         </span><span style="color: #008000;">//</span><span style="color: #008000;">结果图像</span><span style="color: #008000;"><br></span><span style="color: #0000ff;">int</span><span style="color: #000000;"> maxLevel </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #800080;">0</span><span style="color: #000000;">;                                                           </span><span style="color: #008000;">//</span><span style="color: #008000;">绘制的轮廓深度</span><span style="color: #008000;"><br></span><span style="color: #0000ff;">int</span><span style="color: #000000;">.TryParse(txtMaxLevel.Text, </span><span style="color: #0000ff;">out</span><span style="color: #000000;"> maxLevel);<br>imageResult.Draw(contour, </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Bgr(lblExternalColor.BackColor), </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Bgr(lblHoleColor.BackColor), maxLevel, </span><span style="color: #800080;">2</span><span style="color: #000000;">);<br></span></div></pre>
+</div>
+</div>
+<p><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/2010020917085414.jpg"><br><strong>轮廓的特性<br></strong>&nbsp;&nbsp;&nbsp; 轮廓的特性有很多，下面一一介绍。</p>
+<p><strong>1.轮廓的多边形逼近<br></strong>&nbsp;&nbsp;&nbsp; 轮廓的多边形逼近指的是：使用多边形来近似表示一个轮廓。<br>&nbsp;&nbsp;&nbsp; 多边形逼近的目的是为了减少轮廓的顶点数目。<br>&nbsp;&nbsp;&nbsp; 多边形逼近的结果依然是一个轮廓，只是这个轮廓相对要粗旷一些。<br>&nbsp;&nbsp;&nbsp; 可以使用Contour&lt;Point&gt;.ApproxPoly方法或者cvApproxyPoly函数来对轮廓进行多边形逼近，示例代码如下：</p>
+<div class="cnblogs_code">
+<pre><div><!--<br /><br />Code highlighting produced by Actipro CodeHighlighter (freeware)<br />http://www.CodeHighlighter.com/<br /><br />--><span style="color: #000000;">contour </span><span style="color: #000000;">=</span><span style="color: #000000;"> firstContour.ApproxPoly(</span><span style="color: #0000ff;">double</span><span style="color: #000000;">.Parse(txtApproxParameter.Text), </span><span style="color: #800080;">2</span><span style="color: #000000;">, </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> MemStorage());</span></div></pre>
+</div>
+<p>&nbsp;&nbsp;</p>
+<p><strong>2.轮廓的关键点</strong><br>&nbsp;&nbsp;&nbsp; 轮廓的关键点是：轮廓上包含曲线信息比较多的点。关键点是轮廓顶点的子集。<br>&nbsp;&nbsp;&nbsp; 可以使用cvFindDominantPoints函数来获取轮廓上的关键点，该函数返回的结果一个包含 关键点在轮廓顶点中索引 的序列。再次强调：是索引，不是具体的点。如果要得到关键点的具体坐标，可以用索引到轮廓上去找。<br>&nbsp;&nbsp;&nbsp; 以下代码演示了如何获取轮廓上的关键点：</p>
+<div onclick="cnblogs_code_show(&#39;e2dbf6f8-e380-4410-964b-2365d3caa15b&#39;)" class="cnblogs_code"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/ContractedBlock.gif" id="code_img_closed_e2dbf6f8-e380-4410-964b-2365d3caa15b" class="code_img_closed" style="display: none;"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/ExpandedBlockStart.gif" onclick="cnblogs_code_hide(&#39;e2dbf6f8-e380-4410-964b-2365d3caa15b&#39;,event)" style="" id="code_img_opened_e2dbf6f8-e380-4410-964b-2365d3caa15b" class="code_img_opened"><span class="cnblogs_code_collapse" style="display: none;">轮廓的关键点</span>
+<div id="cnblogs_code_open_e2dbf6f8-e380-4410-964b-2365d3caa15b" class="cnblogs_code_hide" style="display: block;"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><div><!--<br /><br />Code highlighting produced by Actipro CodeHighlighter (freeware)<br />http://www.CodeHighlighter.com/<br /><br />--><span style="color: #000000;">        </span><span style="color: #008000;">//</span><span style="color: #008000;">得到关键点信息</span><span style="color: #008000;"><br></span><span style="color: #000000;">        </span><span style="color: #0000ff;">private</span><span style="color: #000000;"> </span><span style="color: #0000ff;">void</span><span style="color: #000000;"> GetDominantPointsInfo(Contour</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Point</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> contour, </span><span style="color: #0000ff;">ref</span><span style="color: #000000;"> StringBuilder sbContour, </span><span style="color: #0000ff;">ref</span><span style="color: #000000;"> Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Bgr, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> imageResult, </span><span style="color: #0000ff;">double</span><span style="color: #000000;"> parameter1, </span><span style="color: #0000ff;">double</span><span style="color: #000000;"> parameter2, </span><span style="color: #0000ff;">double</span><span style="color: #000000;"> parameter3, </span><span style="color: #0000ff;">double</span><span style="color: #000000;"> parameter4, Bgr dominantPointColor)<br>        {<br>            </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (contour.Total </span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> </span><span style="color: #800080;">2</span><span style="color: #000000;">)<br>            {<br>                MemStorage storage </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> MemStorage();<br>                </span><span style="color: #0000ff;">try</span><span style="color: #000000;"><br>                {<br>                    IntPtr ptrSeq </span><span style="color: #000000;">=</span><span style="color: #000000;"> cvFindDominantPoints(contour.Ptr, storage.Ptr, (</span><span style="color: #0000ff;">int</span><span style="color: #000000;">)CV_DOMINANT.CV_DOMINANT_IPAN, parameter1, parameter2, parameter3, parameter4);<br>                    Seq</span><span style="color: #000000;">&lt;</span><span style="color: #0000ff;">int</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> seq </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Seq</span><span style="color: #000000;">&lt;</span><span style="color: #0000ff;">int</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">(ptrSeq, storage);<br>                    sbContour.AppendFormat(</span><span style="color: #800000;">"</span><span style="color: #800000;">{0}个关键点：\r\n</span><span style="color: #800000;">"</span><span style="color: #000000;">, seq.Total);<br>                    </span><span style="color: #0000ff;">for</span><span style="color: #000000;"> (</span><span style="color: #0000ff;">int</span><span style="color: #000000;"> i </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #800080;">0</span><span style="color: #000000;">; i </span><span style="color: #000000;">&lt;</span><span style="color: #000000;"> seq.Total; i</span><span style="color: #000000;">++</span><span style="color: #000000;">)<br>                    {<br>                        </span><span style="color: #0000ff;">int</span><span style="color: #000000;"> idx </span><span style="color: #000000;">=</span><span style="color: #000000;"> seq[i];           </span><span style="color: #008000;">//</span><span style="color: #008000;">关键点序列中存储的数据 是 关键点在轮廓中所处位置的索引</span><span style="color: #008000;"><br></span><span style="color: #000000;">                        Point p </span><span style="color: #000000;">=</span><span style="color: #000000;"> contour[idx];     </span><span style="color: #008000;">//</span><span style="color: #008000;">得到关键点的坐标</span><span style="color: #008000;"><br></span><span style="color: #000000;">                        sbContour.AppendFormat(</span><span style="color: #800000;">"</span><span style="color: #800000;">{0}({1},{2}),</span><span style="color: #800000;">"</span><span style="color: #000000;">, idx, p.X, p.Y);<br>                        imageResult.Draw(</span><span style="color: #0000ff;">new</span><span style="color: #000000;"> CircleF(</span><span style="color: #0000ff;">new</span><span style="color: #000000;"> PointF(p.X, p.Y), </span><span style="color: #800080;">3</span><span style="color: #000000;">), dominantPointColor, </span><span style="color: #000000;">-</span><span style="color: #800080;">1</span><span style="color: #000000;">);<br>                    }<br>                    sbContour.Append(</span><span style="color: #800000;">"</span><span style="color: #800000;">\r\n</span><span style="color: #800000;">"</span><span style="color: #000000;">);<br>                }<br>                </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (CvException ex)<br>                {<br>                    sbContour.AppendFormat(</span><span style="color: #800000;">"</span><span style="color: #800000;">在获取关键点时发生异常，错误描述：{0}，错误源：{1}，错误堆栈：{2}\r\n错误文件：{3}，函数名：{4}，行：{5}，错误内部描述：{6}\r\n</span><span style="color: #800000;">"</span><span style="color: #000000;">, ex.Message, ex.Source, ex.StackTrace, ex.FileName, ex.FunctionName, ex.Line, ex.ErrorStr);<br>                }<br>                </span><span style="color: #0000ff;">catch</span><span style="color: #000000;"> (Exception e)<br>                {<br>                    sbContour.AppendFormat(</span><span style="color: #800000;">"</span><span style="color: #800000;">在获取关键点时发生异常，错误描述：{0}，错误源：{1}，错误堆栈：{2}\r\n</span><span style="color: #800000;">"</span><span style="color: #000000;">, e.Message, e.Source, e.StackTrace);<br>                }<br>                </span><span style="color: #0000ff;">finally</span><span style="color: #000000;"><br>                {<br>                    storage.Dispose();<br>                }<br>            }<br>        }<br></span></div></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+</div>
+<p><br><strong>3.轮廓的周长和面积</strong><br>&nbsp;&nbsp;&nbsp; 轮廓的周长可以用Contour&lt;Point&gt;.Perimeter属性或者cvArcLength函数来获取。<br>&nbsp;&nbsp;&nbsp; 轮廓的面积可以用Contour&lt;Point&gt;.Area属性或者cvContourArea函数来获取。</p>
+<p><strong>4.轮廓的边界框<br></strong>&nbsp;&nbsp;&nbsp; 有三种常见的边界框：矩形、圆形、椭圆。<br>&nbsp;&nbsp;&nbsp; （1）矩形：在图像处理系统中提供了一种叫Rectangle的矩形，不过它只能表达边垂直或水平的特例；OpenCv中还有一种叫Box的矩形，它跟数学上的矩形一致，只要4个角是直角即可。<br>&nbsp;&nbsp;&nbsp; 如果要获取轮廓的Rectangle，可以使用Contour&lt;Point&gt;.BoundingRectangle属性或者cvBoundingRect函数。<br>&nbsp;&nbsp;&nbsp; 如果要获取轮廓的Box，可以使用Contour&lt;Point&gt;.GetMinAreaRect方法或者cvMinAreaRect2函数。<br>&nbsp;&nbsp;&nbsp; （2）圆形<br>&nbsp;&nbsp;&nbsp; 如果要获取轮廓的圆形边界框，可以使用cvMinEnclosingCircle函数。<br>&nbsp;&nbsp;&nbsp; （3）椭圆<br>&nbsp;&nbsp;&nbsp; 如果要获取轮廓的椭圆边界框，可以使用cvFitEllipse2函数。<br>&nbsp;&nbsp;&nbsp; 下列代码演示了如何获取轮廓的各种边界框：</p>
+<div onclick="cnblogs_code_show(&#39;e97ab52b-7ed1-46ce-9c7c-9162340189a6&#39;)" class="cnblogs_code"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/ContractedBlock.gif" id="code_img_closed_e97ab52b-7ed1-46ce-9c7c-9162340189a6" class="code_img_closed" style="display: none;"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/ExpandedBlockStart.gif" onclick="cnblogs_code_hide(&#39;e97ab52b-7ed1-46ce-9c7c-9162340189a6&#39;,event)" style="" id="code_img_opened_e97ab52b-7ed1-46ce-9c7c-9162340189a6" class="code_img_opened"><span class="cnblogs_code_collapse" style="display: none;">轮廓的边界框</span>
+<div id="cnblogs_code_open_e97ab52b-7ed1-46ce-9c7c-9162340189a6" class="cnblogs_code_hide" style="display: block;"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><div><!--<br /><br />Code highlighting produced by Actipro CodeHighlighter (freeware)<br />http://www.CodeHighlighter.com/<br /><br />--><span style="color: #000000;">        </span><span style="color: #008000;">//</span><span style="color: #008000;">得到边界框信息</span><span style="color: #008000;"><br></span><span style="color: #000000;">        </span><span style="color: #0000ff;">private</span><span style="color: #000000;"> </span><span style="color: #0000ff;">void</span><span style="color: #000000;"> GetEdgeInfo(Contour</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Point</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> contour, </span><span style="color: #0000ff;">string</span><span style="color: #000000;"> edge, </span><span style="color: #0000ff;">ref</span><span style="color: #000000;"> StringBuilder sbContour, </span><span style="color: #0000ff;">ref</span><span style="color: #000000;"> Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Bgr, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> imageResult, Bgr edgeColor)<br>        {<br>            </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (edge </span><span style="color: #000000;">==</span><span style="color: #000000;"> </span><span style="color: #800000;">"</span><span style="color: #800000;">Rect</span><span style="color: #800000;">"</span><span style="color: #000000;">)<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;">矩形</span><span style="color: #008000;"><br></span><span style="color: #000000;">                imageResult.Draw(contour.BoundingRectangle, edgeColor, </span><span style="color: #800080;">2</span><span style="color: #000000;">);<br>            </span><span style="color: #0000ff;">else</span><span style="color: #000000;"> </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (edge </span><span style="color: #000000;">==</span><span style="color: #000000;"> </span><span style="color: #800000;">"</span><span style="color: #800000;">MinAreaRect</span><span style="color: #800000;">"</span><span style="color: #000000;">)<br>            {<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;">最小矩形</span><span style="color: #008000;"><br></span><span style="color: #000000;">                MCvBox2D box </span><span style="color: #000000;">=</span><span style="color: #000000;"> CvInvoke.cvMinAreaRect2(contour.Ptr, IntPtr.Zero);<br>                PointF[] points </span><span style="color: #000000;">=</span><span style="color: #000000;"> box.GetVertices();<br>                Point[] ps </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Point[points.Length];<br>                </span><span style="color: #0000ff;">for</span><span style="color: #000000;"> (</span><span style="color: #0000ff;">int</span><span style="color: #000000;"> i </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #800080;">0</span><span style="color: #000000;">; i </span><span style="color: #000000;">&lt;</span><span style="color: #000000;"> points.Length; i</span><span style="color: #000000;">++</span><span style="color: #000000;">)<br>                    ps[i] </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Point((</span><span style="color: #0000ff;">int</span><span style="color: #000000;">)points[i].X, (</span><span style="color: #0000ff;">int</span><span style="color: #000000;">)points[i].Y);<br>                imageResult.DrawPolyline(ps, </span><span style="color: #0000ff;">true</span><span style="color: #000000;">, edgeColor, </span><span style="color: #800080;">2</span><span style="color: #000000;">);<br>            }<br>            </span><span style="color: #0000ff;">else</span><span style="color: #000000;"> </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (edge </span><span style="color: #000000;">==</span><span style="color: #000000;"> </span><span style="color: #800000;">"</span><span style="color: #800000;">Circle</span><span style="color: #800000;">"</span><span style="color: #000000;">)<br>            {<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;">圆形</span><span style="color: #008000;"><br></span><span style="color: #000000;">                PointF center;<br>                </span><span style="color: #0000ff;">float</span><span style="color: #000000;"> radius;<br>                CvInvoke.cvMinEnclosingCircle(contour.Ptr, </span><span style="color: #0000ff;">out</span><span style="color: #000000;"> center, </span><span style="color: #0000ff;">out</span><span style="color: #000000;"> radius);<br>                imageResult.Draw(</span><span style="color: #0000ff;">new</span><span style="color: #000000;"> CircleF(center, radius), edgeColor, </span><span style="color: #800080;">2</span><span style="color: #000000;">);<br>            }<br>            </span><span style="color: #0000ff;">else</span><span style="color: #000000;"><br>            {<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;">椭圆</span><span style="color: #008000;"><br></span><span style="color: #000000;">                </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (contour.Total </span><span style="color: #000000;">&gt;=</span><span style="color: #000000;"> </span><span style="color: #800080;">6</span><span style="color: #000000;">)<br>                {<br>                    MCvBox2D box </span><span style="color: #000000;">=</span><span style="color: #000000;"> CvInvoke.cvFitEllipse2(contour.Ptr);<br>                    imageResult.Draw(</span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Ellipse(box), edgeColor, </span><span style="color: #800080;">2</span><span style="color: #000000;">);<br>                }<br>                </span><span style="color: #0000ff;">else</span><span style="color: #000000;"><br>                    sbContour.Append(</span><span style="color: #800000;">"</span><span style="color: #800000;">轮廓点数小于6，不能创建外围椭圆。\r\n</span><span style="color: #800000;">"</span><span style="color: #000000;">);<br>            }<br>        }<br></span></div></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+</div>
+<p>&nbsp;&nbsp;</p>
+<p><strong>5.轮廓的矩<br></strong>&nbsp;&nbsp;&nbsp; 我们可以使用Contour&lt;Point&gt;.GetMoments方法或者cvMoments函数方便的得到轮廓的矩集，然后再相应的方法或函数获取各种矩。<br>&nbsp;&nbsp;&nbsp; 特定的矩：MCvMoments.GetSpatialMoment方法、cvGetSpatialMoment函数<br>&nbsp;&nbsp;&nbsp; 中心矩：MCvMoments.GetCentralMoment方法、cvGetCentralMoment函数<br>&nbsp;&nbsp;&nbsp; 归一化中心矩：MCvMoments.GetNormalizedCentralMoment方法、cvGetNormalizedCentralMoment函数<br>&nbsp;&nbsp;&nbsp; Hu矩：MCvMoments.GetHuMoment方法、McvHuMoments.hu1～hu7字段、cvGetHuMoments函数<br>&nbsp;&nbsp;&nbsp; 以下代码演示了如何获取轮廓的矩：</p>
+<div onclick="cnblogs_code_show(&#39;e031db19-ef0a-4b53-a48e-768c4904c4b1&#39;)" class="cnblogs_code"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/ContractedBlock.gif" id="code_img_closed_e031db19-ef0a-4b53-a48e-768c4904c4b1" class="code_img_closed" style="display: none;"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/ExpandedBlockStart.gif" onclick="cnblogs_code_hide(&#39;e031db19-ef0a-4b53-a48e-768c4904c4b1&#39;,event)" style="" id="code_img_opened_e031db19-ef0a-4b53-a48e-768c4904c4b1" class="code_img_opened"><span class="cnblogs_code_collapse" style="display: none;">轮廓的矩</span>
+<div id="cnblogs_code_open_e031db19-ef0a-4b53-a48e-768c4904c4b1" class="cnblogs_code_hide" style="display: block;"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><div><!--<br /><br />Code highlighting produced by Actipro CodeHighlighter (freeware)<br />http://www.CodeHighlighter.com/<br /><br />--><span style="color: #000000;">        </span><span style="color: #008000;">//</span><span style="color: #008000;">得到各种矩的信息</span><span style="color: #008000;"><br></span><span style="color: #000000;">        </span><span style="color: #0000ff;">private</span><span style="color: #000000;"> </span><span style="color: #0000ff;">void</span><span style="color: #000000;"> GetMomentsInfo(Contour</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Point</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> contour, </span><span style="color: #0000ff;">ref</span><span style="color: #000000;"> StringBuilder sbContour)<br>        {<br>            </span><span style="color: #008000;">//</span><span style="color: #008000;">矩</span><span style="color: #008000;"><br></span><span style="color: #000000;">            MCvMoments moments </span><span style="color: #000000;">=</span><span style="color: #000000;"> contour.GetMoments();<br>            </span><span style="color: #008000;">//</span><span style="color: #008000;">遍历各种情况下的矩、中心矩及归一化矩，必须满足条件：xOrder&gt;=0; yOrder&gt;=0; xOrder+yOrder&lt;=3;</span><span style="color: #008000;"><br></span><span style="color: #000000;">            </span><span style="color: #0000ff;">for</span><span style="color: #000000;"> (</span><span style="color: #0000ff;">int</span><span style="color: #000000;"> xOrder </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #800080;">0</span><span style="color: #000000;">; xOrder </span><span style="color: #000000;">&lt;=</span><span style="color: #000000;"> </span><span style="color: #800080;">3</span><span style="color: #000000;">; xOrder</span><span style="color: #000000;">++</span><span style="color: #000000;">)<br>            {<br>                </span><span style="color: #0000ff;">for</span><span style="color: #000000;"> (</span><span style="color: #0000ff;">int</span><span style="color: #000000;"> yOrder </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #800080;">0</span><span style="color: #000000;">; yOrder </span><span style="color: #000000;">&lt;=</span><span style="color: #000000;"> </span><span style="color: #800080;">3</span><span style="color: #000000;">; yOrder</span><span style="color: #000000;">++</span><span style="color: #000000;">)<br>                {<br>                    </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (xOrder </span><span style="color: #000000;">+</span><span style="color: #000000;"> yOrder </span><span style="color: #000000;">&lt;=</span><span style="color: #000000;"> </span><span style="color: #800080;">3</span><span style="color: #000000;">)<br>                    {<br>                        </span><span style="color: #0000ff;">double</span><span style="color: #000000;"> spatialMoment </span><span style="color: #000000;">=</span><span style="color: #000000;"> moments.GetSpatialMoment(xOrder, yOrder);<br>                        </span><span style="color: #0000ff;">double</span><span style="color: #000000;"> centralMoment </span><span style="color: #000000;">=</span><span style="color: #000000;"> moments.GetCentralMoment(xOrder, yOrder);<br>                        </span><span style="color: #0000ff;">double</span><span style="color: #000000;"> normalizedCentralMoment </span><span style="color: #000000;">=</span><span style="color: #000000;"> moments.GetNormalizedCentralMoment(xOrder, yOrder);<br>                        sbContour.AppendFormat(</span><span style="color: #800000;">"</span><span style="color: #800000;">矩（xOrder：{0}，yOrder：{1}），矩：{2:F09}，中心矩：{3:F09}，归一化矩：{4:F09}\r\n</span><span style="color: #800000;">"</span><span style="color: #000000;">, xOrder, yOrder, spatialMoment, centralMoment, normalizedCentralMoment);<br>                    }<br>                }<br>            }<br>            </span><span style="color: #008000;">//</span><span style="color: #008000;">Hu矩</span><span style="color: #008000;"><br></span><span style="color: #000000;">            MCvHuMoments huMonents </span><span style="color: #000000;">=</span><span style="color: #000000;"> moments.GetHuMoment();<br>            sbContour.AppendFormat(</span><span style="color: #800000;">"</span><span style="color: #800000;">Hu矩 h1：{0:F09}，h2：{1:F09}，h3：{2:F09}，h4：{3:F09}，h5：{4:F09}，h6：{5:F09}，h7：{6:F09}\r\n</span><span style="color: #800000;">"</span><span style="color: #000000;">, huMonents.hu1, huMonents.hu2, huMonents.hu3, huMonents.hu4, huMonents.hu5, huMonents.hu6, huMonents.hu7);<br>        }<br></span></div></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+</div>
+<p><br><strong>6.轮廓的轮廓树</strong><br>&nbsp;&nbsp;&nbsp; 轮廓树用来描述某个特定轮廓的内部特征。注意：轮廓树跟轮廓是一一对应的关系；轮廓树不用于描述多个轮廓之间的层次关系。<br>&nbsp;&nbsp;&nbsp; 可以用函数cvCreateContourTree来构造轮廓树。</p>
+<div class="cnblogs_code">
+<pre><div><!--<br /><br />Code highlighting produced by Actipro CodeHighlighter (freeware)<br />http://www.CodeHighlighter.com/<br /><br />--><span style="color: #000000;">IntPtr ptrTree1 </span><span style="color: #000000;">=</span><span style="color: #000000;"> CvInvoke.cvCreateContourTree(contour1.Ptr, </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> MemStorage().Ptr, thresholdOfCreate);</span></div></pre>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;<strong>7.轮廓的凸包和凸缺陷<br></strong>&nbsp;&nbsp;&nbsp; 轮廓的凸包和凸缺陷用于描述物体的外形。凸包和凸缺陷很容易获得，不过我目前不知道它们到底怎么使用。<br>&nbsp;&nbsp;&nbsp; 如果要判断轮廓是否是凸的，可以用Contour&lt;Point&gt;.Convex属性和cvCheckContourConvexity函数。<br>&nbsp;&nbsp;&nbsp; 如果要获取轮廓的凸包，可以用Contour&lt;Point&gt;.GetConvexHull方法或者cvConvexHull2函数，返回的是包含顶点的序列。<br>&nbsp;&nbsp;&nbsp; 如果要获取轮廓的凸缺陷，可以用Contour&lt;Point&gt;.GetConvexityDefacts方法或者cvConvexityDefects函数。<br>&nbsp;&nbsp;&nbsp; 注意：EmguCv将缺陷的单词拼写错了，defect才是缺陷。<br>&nbsp;&nbsp;&nbsp; 以下代码演示了如何获取轮廓的凸包及凸缺陷：</p>
+<div onclick="cnblogs_code_show(&#39;22fe6c73-c167-49b9-85db-8e0432136541&#39;)" class="cnblogs_code"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/ContractedBlock.gif" id="code_img_closed_22fe6c73-c167-49b9-85db-8e0432136541" class="code_img_closed" style="display: none;"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/ExpandedBlockStart.gif" onclick="cnblogs_code_hide(&#39;22fe6c73-c167-49b9-85db-8e0432136541&#39;,event)" style="" id="code_img_opened_22fe6c73-c167-49b9-85db-8e0432136541" class="code_img_opened"><span class="cnblogs_code_collapse" style="display: none;">轮廓的凸包和凸缺陷</span>
+<div id="cnblogs_code_open_22fe6c73-c167-49b9-85db-8e0432136541" class="cnblogs_code_hide" style="display: block;"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><div><!--<br /><br />Code highlighting produced by Actipro CodeHighlighter (freeware)<br />http://www.CodeHighlighter.com/<br /><br />--><span style="color: #000000;">        </span><span style="color: #008000;">//</span><span style="color: #008000;">得到凸包及缺陷信息</span><span style="color: #008000;"><br></span><span style="color: #000000;">        </span><span style="color: #0000ff;">private</span><span style="color: #000000;"> </span><span style="color: #0000ff;">void</span><span style="color: #000000;"> GetConvexInfo(Contour</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Point</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> contour,</span><span style="color: #0000ff;">ref</span><span style="color: #000000;"> StringBuilder sbContour,</span><span style="color: #0000ff;">ref</span><span style="color: #000000;"> Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Bgr,Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> imageResult)<br>        {<br>            </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (</span><span style="color: #000000;">!</span><span style="color: #000000;">contour.Convex)    </span><span style="color: #008000;">//</span><span style="color: #008000;">判断轮廓是否为凸</span><span style="color: #008000;"><br></span><span style="color: #000000;">            {<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;">凸包</span><span style="color: #008000;"><br></span><span style="color: #000000;">                Seq</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Point</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> convexHull </span><span style="color: #000000;">=</span><span style="color: #000000;"> contour.GetConvexHull(ORIENTATION.CV_CLOCKWISE);<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;">缺陷</span><span style="color: #008000;"><br></span><span style="color: #000000;">                Seq</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">MCvConvexityDefect</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> defects </span><span style="color: #000000;">=</span><span style="color: #000000;"> contour.GetConvexityDefacts(</span><span style="color: #0000ff;">new</span><span style="color: #000000;"> MemStorage(), ORIENTATION.CV_CLOCKWISE);<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;">显示信息</span><span style="color: #008000;"><br></span><span style="color: #000000;">                sbContour.AppendFormat(</span><span style="color: #800000;">"</span><span style="color: #800000;">轮廓的凸包有{0}个点，依次为：</span><span style="color: #800000;">"</span><span style="color: #000000;">, convexHull.Total);<br>                Point[] points </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Point[convexHull.Total];<br>                </span><span style="color: #0000ff;">for</span><span style="color: #000000;"> (</span><span style="color: #0000ff;">int</span><span style="color: #000000;"> i </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #800080;">0</span><span style="color: #000000;">; i </span><span style="color: #000000;">&lt;</span><span style="color: #000000;"> convexHull.Total; i</span><span style="color: #000000;">++</span><span style="color: #000000;">)<br>                {<br>                    Point p </span><span style="color: #000000;">=</span><span style="color: #000000;"> convexHull[i];<br>                    points[i] </span><span style="color: #000000;">=</span><span style="color: #000000;"> p;<br>                    sbContour.AppendFormat(</span><span style="color: #800000;">"</span><span style="color: #800000;">{0},</span><span style="color: #800000;">"</span><span style="color: #000000;">, p);<br>                }<br>                sbContour.Append(</span><span style="color: #800000;">"</span><span style="color: #800000;">\r\n</span><span style="color: #800000;">"</span><span style="color: #000000;">);<br>                imageResult.DrawPolyline(points, </span><span style="color: #0000ff;">true</span><span style="color: #000000;">, </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Bgr(lblConvexColor.BackColor), </span><span style="color: #800080;">2</span><span style="color: #000000;">);<br>                MCvConvexityDefect defect;<br>                sbContour.AppendFormat(</span><span style="color: #800000;">"</span><span style="color: #800000;">轮廓有{0}个缺陷，依次为：\r\n</span><span style="color: #800000;">"</span><span style="color: #000000;">, defects.Total);<br>                </span><span style="color: #0000ff;">for</span><span style="color: #000000;"> (</span><span style="color: #0000ff;">int</span><span style="color: #000000;"> i </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #800080;">0</span><span style="color: #000000;">; i </span><span style="color: #000000;">&lt;</span><span style="color: #000000;"> defects.Total; i</span><span style="color: #000000;">++</span><span style="color: #000000;">)<br>                {<br>                    defect </span><span style="color: #000000;">=</span><span style="color: #000000;"> defects[i];<br>                    sbContour.AppendFormat(</span><span style="color: #800000;">"</span><span style="color: #800000;">缺陷：{0}，起点：{1}，终点：{2}，最深的点：{3}，深度：{4}\r\n</span><span style="color: #800000;">"</span><span style="color: #000000;">, i, defect.StartPoint, defect.EndPoint, defect.DepthPoint, defect.Depth);<br>                }<br>            }<br>            </span><span style="color: #0000ff;">else</span><span style="color: #000000;"><br>                sbContour.Append(</span><span style="color: #800000;">"</span><span style="color: #800000;">轮廓是凸的，凸包和轮廓一样。\r\n</span><span style="color: #800000;">"</span><span style="color: #000000;">);<br>        }<br></span></div></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;<strong>8.轮廓的成对几何直方图<br></strong>&nbsp;&nbsp;&nbsp; 成对几何直方图的资料比较少，我是这么理解的。<br>&nbsp;&nbsp;&nbsp; （1）轮廓保存的是一系列的顶点，轮廓是由一系列线段组成的多边形。对于看起来光滑的轮廓（例如圆），只是线段条数比较多，线段长度比较短而已。实际上，电脑中显示的任何曲线都由线段组成。<br>&nbsp;&nbsp;&nbsp; （2）每两条线段之间都有一定的关系，包括它们（或者它们的延长线）之间的夹角，两条线段的夹角范围是：(0,180)。<br>&nbsp;&nbsp;&nbsp; （3）每两条线段上的点之间还有距离关系，包括最短（小）距离、最远（大）距离，以及平均距离。最大距离我用了一个偷懒的计算方法，我把轮廓外界矩形的对角线长度看作了最大距离。<br>&nbsp;&nbsp;&nbsp; （4）成对几何直方图所用的统计数据包括了夹角和距离。<br>&nbsp;&nbsp;&nbsp; 可以用函数cvCalcPGH来计算轮廓的成对几何直方图，示例代码如下：</p>
+<div onclick="cnblogs_code_show(&#39;87ea5dc9-e97d-431d-a48e-bd47629e7235&#39;)" class="cnblogs_code"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/ContractedBlock.gif" id="code_img_closed_87ea5dc9-e97d-431d-a48e-bd47629e7235" class="code_img_closed" style="display: none;"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/ExpandedBlockStart.gif" onclick="cnblogs_code_hide(&#39;87ea5dc9-e97d-431d-a48e-bd47629e7235&#39;,event)" style="" id="code_img_opened_87ea5dc9-e97d-431d-a48e-bd47629e7235" class="code_img_opened"><span class="cnblogs_code_collapse" style="display: none;">轮廓的成对几何直方图</span>
+<div id="cnblogs_code_open_87ea5dc9-e97d-431d-a48e-bd47629e7235" class="cnblogs_code_hide" style="display: block;"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><div><!--<br /><br />Code highlighting produced by Actipro CodeHighlighter (freeware)<br />http://www.CodeHighlighter.com/<br /><br />--><span style="color: #000000;">            </span><span style="color: #008000;">//</span><span style="color: #008000;">生成成对几何直方图</span><span style="color: #008000;"><br></span><span style="color: #000000;">            Rectangle rect1 </span><span style="color: #000000;">=</span><span style="color: #000000;"> contour1.BoundingRectangle;<br>            </span><span style="color: #0000ff;">float</span><span style="color: #000000;"> maxDist1 </span><span style="color: #000000;">=</span><span style="color: #000000;"> (</span><span style="color: #0000ff;">float</span><span style="color: #000000;">)Math.Sqrt(rect1.Width </span><span style="color: #000000;">*</span><span style="color: #000000;"> rect1.Width </span><span style="color: #000000;">+</span><span style="color: #000000;"> rect1.Height </span><span style="color: #000000;">*</span><span style="color: #000000;"> rect1.Height); </span><span style="color: #008000;">//</span><span style="color: #008000;">轮廓的最大距离：这里使用轮廓矩形边界框的对角线长度</span><span style="color: #008000;"><br></span><span style="color: #000000;">            </span><span style="color: #0000ff;">int</span><span style="color: #000000;">[] bins1 </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> </span><span style="color: #0000ff;">int</span><span style="color: #000000;">[] { </span><span style="color: #800080;">60</span><span style="color: #000000;">, </span><span style="color: #800080;">20</span><span style="color: #000000;"> };<br>            RangeF[] ranges1 </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> RangeF[] { </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> RangeF(0f, 180f), </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> RangeF(0f, maxDist1) };     </span><span style="color: #008000;">//</span><span style="color: #008000;">直方图第0维为角度，范围在(0,180)，第2维为轮廓两条边缘线段的距离</span><span style="color: #008000;"><br></span><span style="color: #000000;">            DenseHistogram hist1 </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> DenseHistogram(bins1, ranges1);<br>            CvInvoke.cvCalcPGH(contour1.Ptr, hist1.Ptr);<br></span></div></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+</div>
+<p>&nbsp;<img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/2010020917093724.jpg"></p>
+<p>&nbsp;</p>
+<p><strong>轮廓的匹配</strong><br>&nbsp;&nbsp;&nbsp; 如果要比较两个物体，可供选择的特征很多。如果要判断某个人的性别，可以根据他（她）头发的长短来判断，这很直观，在长发男稀有的年代准确率也很高。也可以根据这个人尿尿的射程来判断，如果射程大于0.50米，则是男性。总之，方法很多，不一而足。<br>&nbsp;&nbsp;&nbsp; 我们在上文中得到了轮廓的这么多特征，它们也可以用于进行匹配。典型的轮廓匹配方法有：Hu矩匹配、轮廓树匹配、成对几何直方图匹配。<br><strong>1.Hu矩匹配</strong><br>&nbsp;&nbsp;&nbsp; 轮廓的Hu矩对包括缩放、旋转和镜像映射在内的变化具有不变性。Contour&lt;Point&gt;.MatchShapes方法和cvMatchShapes函数可以很方便的实现对2个轮廓间的匹配。<br><strong>2.轮廓树匹配</strong><br>&nbsp;&nbsp;&nbsp; 用树的形式比较两个轮廓。cvMatchContourTrees函数实现了轮廓树的对比。<br><strong>3.成对几何直方图匹配<br></strong>&nbsp;&nbsp;&nbsp; 在得到轮廓的成对几何直方图之后，可以使用直方图对比的方法来进行匹配。如果您和我一样忘记了直方图的对比方式，可以看看我写的另一篇文章《颜色直方图的计算、显示、处理、对比及反向投影(How to Use Histogram? Calculate, Show, Process, Compare and BackProject)》。</p>
+<p>&nbsp;&nbsp;&nbsp; 各种轮廓匹配的示例代码如下：</p>
+<div onclick="cnblogs_code_show(&#39;630a3280-607b-46b4-bc0e-62010a58be19&#39;)" class="cnblogs_code"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/ContractedBlock.gif" id="code_img_closed_630a3280-607b-46b4-bc0e-62010a58be19" class="code_img_closed" style="display: none;"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/ExpandedBlockStart.gif" onclick="cnblogs_code_hide(&#39;630a3280-607b-46b4-bc0e-62010a58be19&#39;,event)" style="" id="code_img_opened_630a3280-607b-46b4-bc0e-62010a58be19" class="code_img_opened"><span class="cnblogs_code_collapse" style="display: none;">轮廓的匹配</span>
+<div id="cnblogs_code_open_630a3280-607b-46b4-bc0e-62010a58be19" class="cnblogs_code_hide" style="display: block;"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><div><!--<br /><br />Code highlighting produced by Actipro CodeHighlighter (freeware)<br />http://www.CodeHighlighter.com/<br /><br />--><span style="color: #000000;">        </span><span style="color: #008000;">//</span><span style="color: #008000;">开始匹配</span><span style="color: #008000;"><br></span><span style="color: #000000;">        </span><span style="color: #0000ff;">private</span><span style="color: #000000;"> </span><span style="color: #0000ff;">void</span><span style="color: #000000;"> btnStartMatch_Click(</span><span style="color: #0000ff;">object</span><span style="color: #000000;"> sender, EventArgs e)<br>        {<br>            </span><span style="color: #008000;">//</span><span style="color: #008000;">准备轮廓（这里只比较最外围的轮廓）</span><span style="color: #008000;"><br></span><span style="color: #000000;">            Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Bgr, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> image1 </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Bgr, </span><span style="color: #0000ff;">byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">((Bitmap)pbImage1.Image);<br>            Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Bgr, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> image2 </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Bgr, </span><span style="color: #0000ff;">byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">((Bitmap)pbImage2.Image);<br>            Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Gray, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> imageGray1 </span><span style="color: #000000;">=</span><span style="color: #000000;"> image1.Convert</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Gray, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">();<br>            Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Gray, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> imageGray2 </span><span style="color: #000000;">=</span><span style="color: #000000;"> image2.Convert</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Gray, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">();<br>            Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Gray, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> imageThreshold1 </span><span style="color: #000000;">=</span><span style="color: #000000;"> imageGray1.ThresholdBinaryInv(</span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Gray(128d), </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Gray(255d));<br>            Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Gray, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> imageThreshold2 </span><span style="color: #000000;">=</span><span style="color: #000000;"> imageGray2.ThresholdBinaryInv(</span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Gray(128d), </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Gray(255d));<br>            Contour</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Point</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> contour1 </span><span style="color: #000000;">=</span><span style="color: #000000;"> imageThreshold1.FindContours(CHAIN_APPROX_METHOD.CV_CHAIN_APPROX_SIMPLE, RETR_TYPE.CV_RETR_EXTERNAL);<br>            Contour</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Point</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> contour2 </span><span style="color: #000000;">=</span><span style="color: #000000;"> imageThreshold2.FindContours(CHAIN_APPROX_METHOD.CV_CHAIN_APPROX_SIMPLE, RETR_TYPE.CV_RETR_EXTERNAL);<br>            </span><span style="color: #008000;">/*</span><span style="color: #008000;">if (contour1.Perimeter / 50 &gt; 2 &amp;&amp; contour2.Perimeter / 50 &gt; 2)<br>            {<br>                contour1 = contour1.ApproxPoly(contour1.Perimeter / 50, 2, new MemStorage());    //对轮廓进行多边形逼近（参数设为轮廓周长的1/50）<br>                contour2 = contour2.ApproxPoly(contour2.Perimeter / 50, 2, new MemStorage());<br>            }</span><span style="color: #008000;">*/</span><span style="color: #000000;"><br>            </span><span style="color: #008000;">//</span><span style="color: #008000;">进行匹配</span><span style="color: #008000;"><br></span><span style="color: #000000;">            </span><span style="color: #0000ff;">string</span><span style="color: #000000;"> result </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #800000;">""</span><span style="color: #000000;">;<br>            </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (rbHuMoments.Checked)<br>                result </span><span style="color: #000000;">=</span><span style="color: #000000;"> MatchShapes(contour1, contour2);       </span><span style="color: #008000;">//</span><span style="color: #008000;">Hu矩匹配</span><span style="color: #008000;"><br></span><span style="color: #000000;">            </span><span style="color: #0000ff;">else</span><span style="color: #000000;"> </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (rbContourTree.Checked)<br>                result </span><span style="color: #000000;">=</span><span style="color: #000000;"> MatchContourTrees(contour1, contour2); </span><span style="color: #008000;">//</span><span style="color: #008000;">轮廓树匹配</span><span style="color: #008000;"><br></span><span style="color: #000000;">            </span><span style="color: #0000ff;">else</span><span style="color: #000000;"> </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (rbPGH.Checked)<br>                result </span><span style="color: #000000;">=</span><span style="color: #000000;"> MatchPghHist(contour1, contour2);      </span><span style="color: #008000;">//</span><span style="color: #008000;">成对几何直方图匹配</span><span style="color: #008000;"><br></span><span style="color: #000000;">            txtResult.Text </span><span style="color: #000000;">+=</span><span style="color: #000000;"> result;<br>        }<br><br>        </span><span style="color: #008000;">//</span><span style="color: #008000;">Hu矩匹配</span><span style="color: #008000;"><br></span><span style="color: #000000;">        </span><span style="color: #0000ff;">private</span><span style="color: #000000;"> </span><span style="color: #0000ff;">string</span><span style="color: #000000;"> MatchShapes(Contour</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Point</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> contour1, Contour</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Point</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> contour2)<br>        {<br>            </span><span style="color: #008000;">//</span><span style="color: #008000;">匹配方法</span><span style="color: #008000;"><br></span><span style="color: #000000;">            CONTOURS_MATCH_TYPE matchType </span><span style="color: #000000;">=</span><span style="color: #000000;"> rbHuI1.Checked </span><span style="color: #000000;">?</span><span style="color: #000000;"> CONTOURS_MATCH_TYPE.CV_CONTOUR_MATCH_I1 : (rbHuI2.Checked </span><span style="color: #000000;">?</span><span style="color: #000000;"> CONTOURS_MATCH_TYPE.CV_CONTOURS_MATCH_I2 : CONTOURS_MATCH_TYPE.CV_CONTOURS_MATCH_I3);<br>            Stopwatch sw </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Stopwatch();<br>            sw.Start();<br>            </span><span style="color: #008000;">//</span><span style="color: #008000;">匹配</span><span style="color: #008000;"><br></span><span style="color: #000000;">            </span><span style="color: #0000ff;">double</span><span style="color: #000000;"> matchValue </span><span style="color: #000000;">=</span><span style="color: #000000;"> contour1.MatchShapes(contour2, matchType);<br>            sw.Stop();<br>            </span><span style="color: #0000ff;">double</span><span style="color: #000000;"> time </span><span style="color: #000000;">=</span><span style="color: #000000;"> sw.Elapsed.TotalMilliseconds;<br>            </span><span style="color: #0000ff;">return</span><span style="color: #000000;"> </span><span style="color: #0000ff;">string</span><span style="color: #000000;">.Format(</span><span style="color: #800000;">"</span><span style="color: #800000;">Hu矩匹配（{0:G}），结果：{1:F05}，用时：{2:F05}毫秒\r\n</span><span style="color: #800000;">"</span><span style="color: #000000;">, matchType, matchValue, time);<br>        }<br><br>        </span><span style="color: #008000;">//</span><span style="color: #008000;">轮廓树匹配</span><span style="color: #008000;"><br></span><span style="color: #000000;">        </span><span style="color: #0000ff;">private</span><span style="color: #000000;"> </span><span style="color: #0000ff;">string</span><span style="color: #000000;"> MatchContourTrees(Contour</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Point</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> contour1, Contour</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Point</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> contour2)<br>        {<br>            </span><span style="color: #008000;">//</span><span style="color: #008000;">生成轮廓树</span><span style="color: #008000;"><br></span><span style="color: #000000;">            </span><span style="color: #0000ff;">double</span><span style="color: #000000;"> thresholdOfCreate </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">double</span><span style="color: #000000;">.Parse(txtThresholdOfCreateContourTrees.Text); </span><span style="color: #008000;">//</span><span style="color: #008000;">生成轮廓树的阀值</span><span style="color: #008000;"><br></span><span style="color: #000000;">            IntPtr ptrTree1 </span><span style="color: #000000;">=</span><span style="color: #000000;"> CvInvoke.cvCreateContourTree(contour1.Ptr, </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> MemStorage().Ptr, thresholdOfCreate);<br>            IntPtr ptrTree2 </span><span style="color: #000000;">=</span><span style="color: #000000;"> CvInvoke.cvCreateContourTree(contour2.Ptr, </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> MemStorage().Ptr, thresholdOfCreate);<br>            </span><span style="color: #008000;">//</span><span style="color: #008000;">匹配</span><span style="color: #008000;"><br></span><span style="color: #000000;">            </span><span style="color: #0000ff;">double</span><span style="color: #000000;"> thresholdOfMatch </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">double</span><span style="color: #000000;">.Parse(txtThresholdOfMatchContourTrees.Text);   </span><span style="color: #008000;">//</span><span style="color: #008000;">比较轮廓树的阀值</span><span style="color: #008000;"><br></span><span style="color: #000000;">            Stopwatch sw </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Stopwatch();<br>            sw.Start();<br>            </span><span style="color: #0000ff;">double</span><span style="color: #000000;"> matchValue </span><span style="color: #000000;">=</span><span style="color: #000000;"> CvInvoke.cvMatchContourTrees(ptrTree1, ptrTree2, MATCH_CONTOUR_TREE_METHOD.CONTOUR_TREES_MATCH_I1, thresholdOfMatch);<br>            sw.Stop();<br>            </span><span style="color: #0000ff;">double</span><span style="color: #000000;"> time </span><span style="color: #000000;">=</span><span style="color: #000000;"> sw.Elapsed.TotalMilliseconds;<br>            </span><span style="color: #0000ff;">return</span><span style="color: #000000;"> </span><span style="color: #0000ff;">string</span><span style="color: #000000;">.Format(</span><span style="color: #800000;">"</span><span style="color: #800000;">轮廓树匹配（生成轮廓树的阀值：{0}，比较轮廓树的阀值：{1}），结果：{2:F05}，用时：{3:F05}毫秒\r\n</span><span style="color: #800000;">"</span><span style="color: #000000;">, thresholdOfCreate, thresholdOfMatch, matchValue, time);<br>        }<br><br>        </span><span style="color: #008000;">//</span><span style="color: #008000;">成对几何直方图匹配</span><span style="color: #008000;"><br></span><span style="color: #000000;">        </span><span style="color: #0000ff;">private</span><span style="color: #000000;"> </span><span style="color: #0000ff;">string</span><span style="color: #000000;"> MatchPghHist(Contour</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Point</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> contour1, Contour</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Point</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> contour2)<br>        {<br>            </span><span style="color: #008000;">//</span><span style="color: #008000;">生成成对几何直方图</span><span style="color: #008000;"><br></span><span style="color: #000000;">            Rectangle rect1 </span><span style="color: #000000;">=</span><span style="color: #000000;"> contour1.BoundingRectangle;<br>            </span><span style="color: #0000ff;">float</span><span style="color: #000000;"> maxDist1 </span><span style="color: #000000;">=</span><span style="color: #000000;"> (</span><span style="color: #0000ff;">float</span><span style="color: #000000;">)Math.Sqrt(rect1.Width </span><span style="color: #000000;">*</span><span style="color: #000000;"> rect1.Width </span><span style="color: #000000;">+</span><span style="color: #000000;"> rect1.Height </span><span style="color: #000000;">*</span><span style="color: #000000;"> rect1.Height); </span><span style="color: #008000;">//</span><span style="color: #008000;">轮廓的最大距离：这里使用轮廓矩形边界框的对角线长度</span><span style="color: #008000;"><br></span><span style="color: #000000;">            </span><span style="color: #0000ff;">int</span><span style="color: #000000;">[] bins1 </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> </span><span style="color: #0000ff;">int</span><span style="color: #000000;">[] { </span><span style="color: #800080;">60</span><span style="color: #000000;">, </span><span style="color: #800080;">20</span><span style="color: #000000;"> };<br>            RangeF[] ranges1 </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> RangeF[] { </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> RangeF(0f, 180f), </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> RangeF(0f, maxDist1) };     </span><span style="color: #008000;">//</span><span style="color: #008000;">直方图第0维为角度，范围在(0,180)，第2维为轮廓两条边缘线段的距离</span><span style="color: #008000;"><br></span><span style="color: #000000;">            DenseHistogram hist1 </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> DenseHistogram(bins1, ranges1);<br>            CvInvoke.cvCalcPGH(contour1.Ptr, hist1.Ptr);<br>            Rectangle rect2 </span><span style="color: #000000;">=</span><span style="color: #000000;"> contour2.BoundingRectangle;<br>            </span><span style="color: #0000ff;">float</span><span style="color: #000000;"> maxDist2 </span><span style="color: #000000;">=</span><span style="color: #000000;"> (</span><span style="color: #0000ff;">float</span><span style="color: #000000;">)Math.Sqrt(rect2.Width </span><span style="color: #000000;">*</span><span style="color: #000000;"> rect2.Width </span><span style="color: #000000;">+</span><span style="color: #000000;"> rect2.Height </span><span style="color: #000000;">*</span><span style="color: #000000;"> rect2.Height);<br>            </span><span style="color: #0000ff;">int</span><span style="color: #000000;">[] bins2 </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> </span><span style="color: #0000ff;">int</span><span style="color: #000000;">[] { </span><span style="color: #800080;">60</span><span style="color: #000000;">, </span><span style="color: #800080;">20</span><span style="color: #000000;"> };<br>            RangeF[] ranges2 </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> RangeF[] { </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> RangeF(0f, 180f), </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> RangeF(0f, maxDist2) };<br>            DenseHistogram hist2 </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> DenseHistogram(bins2, ranges2);<br>            CvInvoke.cvCalcPGH(contour2.Ptr, hist2.Ptr);<br>            </span><span style="color: #008000;">//</span><span style="color: #008000;">匹配</span><span style="color: #008000;"><br></span><span style="color: #000000;">            Stopwatch sw </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Stopwatch();<br>            sw.Start();<br>            </span><span style="color: #0000ff;">double</span><span style="color: #000000;"> compareResult;<br>            HISTOGRAM_COMP_METHOD compareMethod </span><span style="color: #000000;">=</span><span style="color: #000000;"> rbHistCorrel.Checked </span><span style="color: #000000;">?</span><span style="color: #000000;"> HISTOGRAM_COMP_METHOD.CV_COMP_CORREL : (rbHistChisqr.Checked </span><span style="color: #000000;">?</span><span style="color: #000000;"> HISTOGRAM_COMP_METHOD.CV_COMP_CHISQR : (rbHistIntersect.Checked </span><span style="color: #000000;">?</span><span style="color: #000000;"> HISTOGRAM_COMP_METHOD.CV_COMP_INTERSECT : HISTOGRAM_COMP_METHOD.CV_COMP_BHATTACHARYYA));<br>            </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (rbHistEmd.Checked)<br>            {<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;">EMD<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;">将直方图转换成矩阵</span><span style="color: #008000;"><br></span><span style="color: #000000;">                Matrix</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Single</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> matrix1 </span><span style="color: #000000;">=</span><span style="color: #000000;"> FormProcessHist.ConvertDenseHistogramToMatrix(hist1);<br>                Matrix</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Single</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> matrix2 </span><span style="color: #000000;">=</span><span style="color: #000000;"> FormProcessHist.ConvertDenseHistogramToMatrix(hist2);<br>                compareResult </span><span style="color: #000000;">=</span><span style="color: #000000;"> CvInvoke.cvCalcEMD2(matrix1.Ptr, matrix2.Ptr, DIST_TYPE.CV_DIST_L2, </span><span style="color: #0000ff;">null</span><span style="color: #000000;">, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero);<br>                matrix1.Dispose();<br>                matrix2.Dispose();<br>            }<br>            </span><span style="color: #0000ff;">else</span><span style="color: #000000;"><br>            {<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;">直方图对比方式</span><span style="color: #008000;"><br></span><span style="color: #000000;">                hist1.Normalize(1d);<br>                hist2.Normalize(1d);<br>                compareResult </span><span style="color: #000000;">=</span><span style="color: #000000;"> CvInvoke.cvCompareHist(hist1.Ptr, hist2.Ptr, compareMethod);<br>            }<br>            sw.Stop();<br>            </span><span style="color: #0000ff;">double</span><span style="color: #000000;"> time </span><span style="color: #000000;">=</span><span style="color: #000000;"> sw.Elapsed.TotalMilliseconds;<br>            </span><span style="color: #0000ff;">return</span><span style="color: #000000;"> </span><span style="color: #0000ff;">string</span><span style="color: #000000;">.Format(</span><span style="color: #800000;">"</span><span style="color: #800000;">成对几何直方图匹配（匹配方式：{0}），结果：{1:F05}，用时：{2:F05}毫秒\r\n</span><span style="color: #800000;">"</span><span style="color: #000000;">, rbHistEmd.Checked </span><span style="color: #000000;">?</span><span style="color: #000000;"> </span><span style="color: #800000;">"</span><span style="color: #800000;">EMD</span><span style="color: #800000;">"</span><span style="color: #000000;"> : compareMethod.ToString(</span><span style="color: #800000;">"</span><span style="color: #800000;">G</span><span style="color: #800000;">"</span><span style="color: #000000;">), compareResult, time);<br>        }<br><br></span></div></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+</div>
+<p>&nbsp;<img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/2010020917101646.jpg"></p>
+<p>&nbsp;<strong>&nbsp;</strong></p>
+<p>&nbsp;&nbsp;&nbsp; 通过以上代码，可以计算出两个轮廓对比的值，但是这些值具体代表什么意义呢？实际上，我目前还不清楚，需要进行大量的试验才行。</p>
+<p>&nbsp;</p>
+<p><strong>感谢您耐心看完本文，希望对您有所帮助。</strong></p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/xrwang/category/231541.html">图像处理</a></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(1666684,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://msg.cnblogs.com/send/Wuya" target="_blank">联系我</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/icon_weibo_24.png" alt=""></a>
+<a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/xrwang/" target="_blank"><img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/u21602.jpg" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/xrwang/">Wuya</a><br>
+<a href="http://home.cnblogs.com/u/xrwang/followees">关注 - 5</a><br>
+<a href="http://home.cnblogs.com/u/xrwang/followers">粉丝 - 386</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow">
+    <a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+    <div class="diggit" onclick="votePost(1666684,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">15</span>
+    </div>
+	<div class="buryit" onclick="votePost(1666684,&#39;Bury&#39;)"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html" title="发布于2010-02-05 17:01">模板匹配(Match Template)</a><br><a href="http://www.cnblogs.com/xrwang/archive/2010/02/13/HowToCaptureCameraVideoViaDotNet.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/xrwang/archive/2010/02/13/HowToCaptureCameraVideoViaDotNet.html" title="发布于2010-02-13 15:20">.net中捕获摄像头视频的方式及对比(How to Capture Camera Video via .Net)</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2010-02-09 17:13</span> <a href="http://www.cnblogs.com/xrwang/">Wuya</a> 阅读(<span id="post_view_count">25668</span>) 评论(<span id="post_comment_count">41</span>)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=1666684" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#" onclick="AddToWz(1666684);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,isLogined=false,cb_blogId=25161,cb_entryId=1666684,cb_blogApp=currentBlogApp,cb_blogUserGuid='716e3d0b-63cf-dd11-9e4d-001cf0cd104b',cb_entryCreatedDate='2010/2/9 17:13:00';loadViewCount(cb_entryId);</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<!--done-->
+<div class="feedback_area_title">评论列表</div>
+<div class="feedbackNoItems"></div>
+	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1763643" class="layer">#1楼</a><a name="1763643" id="comment_anchor_1763643"></a>  <span class="comment_date">2010-02-09 18:32</span> <a id="a_comment_author_1763643" href="http://www.cnblogs.com/skyaspnet/" target="_blank">skyaspnet</a> <a href="http://msg.cnblogs.com/send/skyaspnet" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1763643" class="blog_comment_body">辛苦了，向楼主学习：）</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1763643,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1763643,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_1763643_avatar" style="display:none;">http://pic.cnblogs.com/face/u48814.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1763645" class="layer">#2楼</a><a name="1763645" id="comment_anchor_1763645"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2010-02-09 18:55</span> <a id="a_comment_author_1763645" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1763645" class="blog_comment_body">@skyaspnet<br>谢谢～～</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1763645,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1763645,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_1763645_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1763742" class="layer">#3楼</a><a name="1763742" id="comment_anchor_1763742"></a>  <span class="comment_date">2010-02-10 02:21</span> <a id="a_comment_author_1763742" href="http://www.cnblogs.com/SparkingAlways/" target="_blank">Jarod.Zhang</a> <a href="http://msg.cnblogs.com/send/Jarod.Zhang" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1763742" class="blog_comment_body">支持楼主！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1763742,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1763742,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1763765" class="layer">#4楼</a><a name="1763765" id="comment_anchor_1763765"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2010-02-10 08:25</span> <a id="a_comment_author_1763765" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1763765" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1763742" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,1763742);">@</a>Jarod.Zhang<br>谢谢。<br>你的GeoTiff搞定了吗？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1763765,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1763765,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_1763765_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1765370" class="layer">#5楼</a><a name="1765370" id="comment_anchor_1765370"></a>  <span class="comment_date">2010-02-20 03:58</span> <a id="a_comment_author_1765370" href="http://www.cnblogs.com/SparkingAlways/" target="_blank">Jarod.Zhang</a> <a href="http://msg.cnblogs.com/send/Jarod.Zhang" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1765370" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1763765" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,1763765);">@</a>Wuya<br>谢谢无涯，这些天比较忙，还没有尝试GeoTiff。不过把问题post到EmguCV的论坛，查证得到的答复是：无法正常打开这样的Tiff格式图像是OpenCV的问题：“OpenCV's highgui library currently loads TIFF files using libtiff's TIFFReadRGBAImage() function. However, this function only supports TIFF files using 8-bit sample formats. OpenCV is in principle perfectly able to work with these; the only problem is loading/saving them.”<br>看来需要有人改进这个功能了！<br><br>再次感谢Wuya的帮助!</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1765370,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1765370,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1765373" class="layer">#6楼</a><a name="1765373" id="comment_anchor_1765373"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2010-02-20 07:59</span> <a id="a_comment_author_1765373" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1765373" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1765370" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,1765370);">@</a>Jarod.Zhang<br>但是我用LibTiff这个专门用来处理tiff图像的库，也<b>只能打开</b>那幅图片，而不能获取到内部的数据块。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1765373,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1765373,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_1765373_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1783385" class="layer">#7楼</a><a name="1783385" id="comment_anchor_1783385"></a>  <span class="comment_date">2010-03-20 22:48</span> <a id="a_comment_author_1783385" href="http://www.cnblogs.com/oskycar/" target="_blank">oskycar</a> <a href="http://msg.cnblogs.com/send/oskycar" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1783385" class="blog_comment_body">写的很详细。呵呵</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1783385,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1783385,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1783712" class="layer">#8楼</a><a name="1783712" id="comment_anchor_1783712"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2010-03-21 23:35</span> <a id="a_comment_author_1783712" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1783712" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1783385" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,1783385);">@</a>oskycar<br>谢谢关注。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1783712,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1783712,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_1783712_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1802667" class="layer">#9楼</a><a name="1802667" id="comment_anchor_1802667"></a>  <span class="comment_date">2010-04-15 17:31</span> <a id="a_comment_author_1802667" href="http://www.cnblogs.com/schoolers/" target="_blank">兔兔子</a> <a href="http://msg.cnblogs.com/send/%E5%85%94%E5%85%94%E5%AD%90" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1802667" class="blog_comment_body">支持楼主！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1802667,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1802667,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_1802667_avatar" style="display:none;">http://pic.cnblogs.com/face/u121822.jpg?id=08205343</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1802735" class="layer">#10楼</a><a name="1802735" id="comment_anchor_1802735"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2010-04-15 19:02</span> <a id="a_comment_author_1802735" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1802735" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1802667" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,1802667);">@</a>兔兔子<br>谢谢</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1802735,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1802735,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_1802735_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1820160" class="layer">#11楼</a><a name="1820160" id="comment_anchor_1820160"></a>  <span class="comment_date">2010-05-09 20:57</span> <a id="a_comment_author_1820160" href="http://home.cnblogs.com/u/131918/" target="_blank">paulkaiser</a> <a href="http://msg.cnblogs.com/send/paulkaiser" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1820160" class="blog_comment_body">楼主您好，我照着这个思路试了一下，Hu矩匹配返回的那些值确实很奇怪，相同的图片是0，不同的图片也有一些会返回0，不知道是什么意思，希望楼主指教</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1820160,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1820160,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1820361" class="layer">#12楼</a><a name="1820361" id="comment_anchor_1820361"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2010-05-10 08:29</span> <a id="a_comment_author_1820361" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1820361" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1820160" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,1820160);">@</a>paulkaiser<br>实际上，我只是大致看了参考文档及书籍，然后写了上述的测试代码。<br>并未深入实验，正如文中所说：<br>“通过以上代码，可以计算出两个轮廓对比的值，但是这些值具体代表什么意义呢？实际上，我目前还不清楚，需要进行大量的试验才行。”<br>你用更多的实验试试看咯。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1820361,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1820361,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_1820361_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1820490" class="layer">#13楼</a><a name="1820490" id="comment_anchor_1820490"></a>  <span class="comment_date">2010-05-10 10:00</span> <a id="a_comment_author_1820490" href="http://home.cnblogs.com/u/131918/" target="_blank">paulkaiser</a> <a href="http://msg.cnblogs.com/send/paulkaiser" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1820490" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1820361" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,1820361);">@</a>Wuya<br>谢谢啦</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1820490,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1820490,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1845992" class="layer">#14楼</a><a name="1845992" id="comment_anchor_1845992"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2010-06-11 21:44</span> <a id="a_comment_author_1845992" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1845992" class="blog_comment_body">@maiye<br><fieldset class="comment_quote"><legend>引用</legend>无涯<br>你好，这段时间通过你的博文对我C#中emgu运用十分有帮助。现在我遇到了个问题想向你请教一下：我想对我图像分割出来的某些区域进行平均灰度统计，我通过cvFindContours得到了图像的序列contour;现在想通过cvCvtSeqToArray(IntPtr contour, IntPtr elements, MCvSlice slice)来把序列转化成数组进行平均灰度计算，但现在参数IntPtr elements不知道该怎么定义。感谢！</fieldset><br><br>cvCvtSeqToArray函数的文档说明得不太详细，也没有示例程序，为此我特地看了它的源程序和OpenCv自身对其的调用。<br><br>(1)首先，我们看一段调用示例：<br>//icvCreateContourTree函数中有使用cvCvtSeqToArray的代码，位于cvcontourtree.cpp文件中的第67行；另外还有很多OpenCv函数也使用了cvCvtSeqToArray<br>//精简之后的代码如下，关键是分配目的缓冲区的内存<br>int lpt = contour-&gt;total;<br>CvPoint *pt_p = NULL;<br>pt_p = (CvPoint *) cvAlloc( lpt * sizeof( CvPoint ));<br>cvCvtSeqToArray( contour, (char *) pt_p );<br><br>(2)然后我们再来看看它的源代码：<br>//cvCvtSeqToArray函数的源代码，位于cxdatastructs.cpp文件中的第539行<br>/* Copy all sequence elements into single continuous array: */<br>CV_IMPL void*<br>cvCvtSeqToArray( const CvSeq *seq, void *array, CvSlice slice )<br>{<br>    int elem_size, total;<br>    CvSeqReader reader;<br>    char *dst = (char*)array;<br><br>    if( !seq || !array )<br>        CV_Error( CV_StsNullPtr, "" );<br><br>    elem_size = seq-&gt;elem_size;<br>    total = cvSliceLength( slice, seq )*elem_size;<br><br>    if( total == 0 )<br>        return 0;<br><br>    cvStartReadSeq( seq, &amp;reader, 0 );<br>    cvSetSeqReaderPos( &amp;reader, slice.start_index, 0 );<br><br>    do<br>    {<br>        int count = (int)(reader.block_max - reader.ptr);<br>        if( count &gt; total )<br>            count = total;<br><br>        memcpy( dst, reader.ptr, count );<br>        dst += count;<br>        reader.block = reader.block-&gt;next;<br>        reader.ptr = reader.block-&gt;data;<br>        reader.block_max = reader.ptr + reader.block-&gt;count*elem_size;<br>        total -= count;<br>    }<br>    while( total &gt; 0 );<br><br>    return array;<br>}<br><br>(3)最后我们一起看看它的用法。<br>该函数的原型如下：<br>void* cvCvtSeqToArray(const CvSeq*  seq, void* elements, CvSlice  slice=CV_WHOLE_SEQ)<br>功能：将序列的全部或部分内容复制到连续的内存块中<br>参数：<br>seq——需要被复制的序列<br>elements——保存结果的缓冲区，在复制之前需要为缓冲区分配内存，缓冲区的大小 必须大于等于 需要复制的元素个数及元素大小的乘积<br>slice——指定需要复制的元素范围<br>返回值：返回缓冲区的地址，即返回elements<br><br>希望对您有所帮助。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1845992,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1845992,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_1845992_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1846161" class="layer">#15楼</a><a name="1846161" id="comment_anchor_1846161"></a>  <span class="comment_date">2010-06-12 09:01</span> <a id="a_comment_author_1846161" href="http://home.cnblogs.com/u/139362/" target="_blank">maiye</a> <a href="http://msg.cnblogs.com/send/maiye" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1846161" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1845992" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,1845992);">@</a>Wuya<br>这是在C++中的运用吧，我想请问在C#中是怎么使用cvCvtSeqToArray的。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1846161,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1846161,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1846489" class="layer">#16楼</a><a name="1846489" id="comment_anchor_1846489"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2010-06-12 13:02</span> <a id="a_comment_author_1846489" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1846489" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1846161" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,1846161);">@</a>maiye<br>基本上一样，C#中用unsafe代码和方式去调用就可以了。<br>具体请看Marshal类及unsafe代码相关的内容。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1846489,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1846489,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_1846489_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1851369" class="layer">#17楼</a><a name="1851369" id="comment_anchor_1851369"></a>  <span class="comment_date">2010-06-19 23:33</span> <a id="a_comment_author_1851369" href="http://www.cnblogs.com/seacode/" target="_blank">物联互通</a> <a href="http://msg.cnblogs.com/send/%E7%89%A9%E8%81%94%E4%BA%92%E9%80%9A" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1851369" class="blog_comment_body">你好，能将可执行程序发给我吗。0502lian@163.com<br>谢谢啦！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1851369,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1851369,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_1851369_avatar" style="display:none;">http://pic.cnblogs.com/face/83516/20140219233256.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1851418" class="layer">#18楼</a><a name="1851418" id="comment_anchor_1851418"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2010-06-20 07:22</span> <a id="a_comment_author_1851418" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1851418" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1851369" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,1851369);">@</a>我陪你面朝大海<br>项目中乱七八糟的东西比较多，太大了；<br>况且里面有我未发表论文的代码，不方便给您。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1851418,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1851418,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_1851418_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1851722" class="layer">#19楼</a><a name="1851722" id="comment_anchor_1851722"></a>  <span class="comment_date">2010-06-20 18:33</span> <a id="a_comment_author_1851722" href="http://www.cnblogs.com/seacode/" target="_blank">物联互通</a> <a href="http://msg.cnblogs.com/send/%E7%89%A9%E8%81%94%E4%BA%92%E9%80%9A" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1851722" class="blog_comment_body">呵呵，我不要源程序，我只要EXE可执行程序，谢谢了！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1851722,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1851722,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_1851722_avatar" style="display:none;">http://pic.cnblogs.com/face/83516/20140219233256.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1851823" class="layer">#20楼</a><a name="1851823" id="comment_anchor_1851823"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2010-06-20 21:50</span> <a id="a_comment_author_1851823" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1851823" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1851722" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,1851722);">@</a>我陪你面朝大海<br>好吧。<br>我把可执行程序压缩了一下，放到“<a href="http://files.cnblogs.com/xrwang/ImageProcessLearn.rar" target="_blank">http://files.cnblogs.com/xrwang/ImageProcessLearn.rar</a>”，您可以下载试试看。<br>也许需要相关的一些OpenCV2.1，EmguCv2.1以及AForge.net才能成功运行。<br>代码没有混淆，如果您需要反编译，请不要流传其中的MpcbModel.cs这个文件。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1851823,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1851823,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_1851823_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1983324" class="layer">#21楼</a><a name="1983324" id="comment_anchor_1983324"></a>  <span class="comment_date">2010-12-10 10:01</span> <a id="a_comment_author_1983324" href="http://home.cnblogs.com/u/235137/" target="_blank">cooska</a> <a href="http://msg.cnblogs.com/send/cooska" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1983324" class="blog_comment_body">我是新手，看到这个文章很有帮助，十分感谢<br>不过有两个地方问问，呵呵，希望能解答一下<br>查找轮廓里 MCvChain函数我怎么都找不到，是我引用的问题还是其他什么原因？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1983324,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1983324,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1990088" class="layer">#22楼</a><a name="1990088" id="comment_anchor_1990088"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2010-12-17 10:13</span> <a id="a_comment_author_1990088" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1990088" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1983324" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,1983324);">@</a>cooska<br><fieldset class="comment_quote"><legend><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#1983324" title="查看引用原文">引用</a></legend>cooska：<br>我是新手，看到这个文章很有帮助，十分感谢<br>不过有两个地方问问，呵呵，希望能解答一下<br>查找轮廓里 MCvChain函数我怎么都找不到，是我引用的问题还是其他什么原因？</fieldset><br>没有名叫MCvChain的函数吧，不符合我的命名习惯。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1990088,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1990088,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_1990088_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#2129404" class="layer">#23楼</a><a name="2129404" id="comment_anchor_2129404"></a>  <span class="comment_date">2011-06-19 11:19</span> <a id="a_comment_author_2129404" href="http://home.cnblogs.com/u/309350/" target="_blank">夜鱼听荷</a> <a href="http://msg.cnblogs.com/send/%E5%A4%9C%E9%B1%BC%E5%90%AC%E8%8D%B7" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2129404" class="blog_comment_body">无涯，感谢你一如既往的好文章。现在有个算法，想请教你，望能得到你的指点。<br>问题是这样的：有一个画着五角星的图像模板，然后要处理的是一张缺损的五角星图像，这样的话，我如何通过模板，填补出缺损五角星的轮廓呢？<br>万分感激！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2129404,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2129404,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#2164077" class="layer">#24楼</a><a name="2164077" id="comment_anchor_2164077"></a>  <span class="comment_date">2011-07-29 12:57</span> <a id="a_comment_author_2164077" href="http://home.cnblogs.com/u/319601/" target="_blank">先先~</a> <a href="http://msg.cnblogs.com/send/%E5%85%88%E5%85%88~" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2164077" class="blog_comment_body">楼主给力啊。。。<br><br>可以帮帮我吗？<br><br>指导一下多目标跟踪的实现，使用emguCV<br>我最近在这方面遇到很多困难，<br>要求实时性也比较高。<br>哎</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2164077,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2164077,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#2167018" class="layer">#25楼</a><a name="2167018" id="comment_anchor_2167018"></a>  <span class="comment_date">2011-08-02 17:40</span> <a id="a_comment_author_2167018" href="http://www.cnblogs.com/zhaos/" target="_blank">zhaos</a> <a href="http://msg.cnblogs.com/send/zhaos" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2167018" class="blog_comment_body">你好，关键点那一节的cvFindDominantPoints()函数找不到定义呀，具体是在opencv的哪一块里，需要什么dll，引用哪个namespace，我找了一下午都没找到，，，帮忙解答一下问题，谢谢。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2167018,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2167018,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2167018_avatar" style="display:none;">http://pic.cnblogs.com/face/u225770.jpg?id=20214342</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#2170874" class="layer">#26楼</a><a name="2170874" id="comment_anchor_2170874"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2011-08-08 07:47</span> <a id="a_comment_author_2170874" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2170874" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#2129404" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2129404);">@</a>夜鱼听荷<br>我们好像在阿里旺旺里面已经一起探讨过这个问题了~~</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2170874,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2170874,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2170874_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#2170875" class="layer">#27楼</a><a name="2170875" id="comment_anchor_2170875"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2011-08-08 07:48</span> <a id="a_comment_author_2170875" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2170875" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#2164077" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2164077);">@</a>先先~<br>抱歉，图像这块只是我业余的爱好而已，没话什么精力。<br>多目标跟踪没搞过。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2170875,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2170875,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2170875_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#2170876" class="layer">#28楼</a><a name="2170876" id="comment_anchor_2170876"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2011-08-08 07:49</span> <a id="a_comment_author_2170876" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2170876" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#2167018" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2167018);">@</a>zhaos<br>我觉得有两个办法：<br>1. 查阅OpenCV的帮助wiki。最近的版本改动蛮大的，我还没用过新版本的呢。<br>2. 用Dependency Walker这款工具去一个一个dll的找，反正就那么几个dll文件，一会就找完了。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2170876,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2170876,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2170876_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#2170879" class="layer">#29楼</a><a name="2170879" id="comment_anchor_2170879"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2011-08-08 07:53</span> <a id="a_comment_author_2170879" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2170879" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#2167018" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2167018);">@</a>zhaos<br>@先先~<br>已在另一篇文章中回复。多谢您的关注。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2170879,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2170879,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2170879_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#2195580" class="layer">#30楼</a><a name="2195580" id="comment_anchor_2195580"></a>  <span class="comment_date">2011-09-08 17:04</span> <a id="a_comment_author_2195580" href="http://home.cnblogs.com/u/330904/" target="_blank">无忌他爹</a> <a href="http://msg.cnblogs.com/send/%E6%97%A0%E5%BF%8C%E4%BB%96%E7%88%B9" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2195580" class="blog_comment_body">楼主你好，有个问题想请教一下呢。我想再一张图里面把一块白色的区域取出来。然后保存一个矩形的图像。能不能提供一点思路呢？我现在能想到的就是先利用阀值法，把图像二值化，然后求出轮廓。但是在轮廓这地方卡住了，看了你这篇文章，我还是不知道怎么把所要的轮廓提取出来。希望能帮帮我</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2195580,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2195580,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#2205836" class="layer">#31楼</a><a name="2205836" id="comment_anchor_2205836"></a>  <span class="comment_date">2011-09-23 08:38</span> <a id="a_comment_author_2205836" href="http://home.cnblogs.com/u/333854/" target="_blank">青年才俊</a> <a href="http://msg.cnblogs.com/send/%E9%9D%92%E5%B9%B4%E6%89%8D%E4%BF%8A" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2205836" class="blog_comment_body">真心感谢楼主 这下知道怎么在c#里用了</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2205836,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2205836,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#2209235" class="layer">#32楼</a><a name="2209235" id="comment_anchor_2209235"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2011-09-27 17:01</span> <a id="a_comment_author_2209235" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2209235" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#2205836" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2205836);">@</a>无忌他爹<br>好像在博客园的系统消息中探讨过了。<br><br>@青年才俊<br>^_^</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2209235,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2209235,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2209235_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#2282454" class="layer">#33楼</a><a name="2282454" id="comment_anchor_2282454"></a>  <span class="comment_date">2011-12-29 17:22</span> <a id="a_comment_author_2282454" href="http://home.cnblogs.com/u/189336/" target="_blank">mjdwcn1</a> <a href="http://msg.cnblogs.com/send/mjdwcn1" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2282454" class="blog_comment_body">Image&lt;TColor,TDepth&gt;类的FindContours方法 为什么只能找到最小的矩形？  我有一个图片上面有个3个矩形~~~这个方法每次都是只能找到最小的矩形的坐标~~~不知道怎么回事，请指点一二谢谢</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2282454,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2282454,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#2284585" class="layer">#34楼</a><a name="2284585" id="comment_anchor_2284585"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2012-01-01 09:18</span> <a id="a_comment_author_2284585" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2284585" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#2282454" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2282454);">@</a>mjdwcn1<br>您可能需要指定参数，告诉程序需要查找哪些轮廓。<br>需要使用这个重载形式：<br>public Contour&lt;Point&gt; FindContours(<br>	CHAIN_APPROX_METHOD method,<br>	RETR_TYPE type<br>)<br>其中的type是RETR_TYPE枚举类型，有以下几种选择：<br>CV_RETR_EXTERNAL：只检索最外面的轮廓；<br>CV_RETR_LIST：检索所有的轮廓，并将其放入list中；<br>CV_RETR_CCOMP：检索所有的轮廓，并将他们组织为两层：顶层是各部分的外部边界，第二层是空洞的边界；<br>CV_RETR_TREE：检索所有的轮廓，并重构嵌套轮廓的整个层次。<br><br>详情请看EmguCV的文档，在这里可以下载到。<br><a href="http://sourceforge.net/projects/emgucv/files/" target="_blank">http://sourceforge.net/projects/emgucv/files/</a></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2284585,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2284585,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2284585_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#2286302" class="layer">#35楼</a><a name="2286302" id="comment_anchor_2286302"></a>  <span class="comment_date">2012-01-04 15:46</span> <a id="a_comment_author_2286302" href="http://home.cnblogs.com/u/167516/" target="_blank">mjdwcn</a> <a href="http://msg.cnblogs.com/send/mjdwcn" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2286302" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#2284585" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2284585);">@</a>Wuya<br>非常感谢~~~出现这个错误是因为没有认真阅读您的博客。我已经知道怎么回事了。谢谢</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2286302,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2286302,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#2286487" class="layer">#36楼</a><a name="2286487" id="comment_anchor_2286487"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2012-01-04 19:45</span> <a id="a_comment_author_2286487" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2286487" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#2286302" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2286302);">@</a>mjdwcn<br>^_^</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2286487,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2286487,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2286487_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#2652729" class="layer">#37楼</a><a name="2652729" id="comment_anchor_2652729"></a>  <span class="comment_date">2013-04-09 10:42</span> <a id="a_comment_author_2652729" href="http://www.cnblogs.com/stellarzhong/" target="_blank">自强不息，厚德载物！</a> <a href="http://msg.cnblogs.com/send/%E8%87%AA%E5%BC%BA%E4%B8%8D%E6%81%AF%EF%BC%8C%E5%8E%9A%E5%BE%B7%E8%BD%BD%E7%89%A9%EF%BC%81" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2652729" class="blog_comment_body">支持楼主，我现在在做多目标跟踪这块，希望楼主给点建议啊</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2652729,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2652729,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2652729_avatar" style="display:none;">http://pic.cnblogs.com/face/u127447.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#2656766" class="layer">#38楼</a><a name="2656766" id="comment_anchor_2656766"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2013-04-13 17:53</span> <a id="a_comment_author_2656766" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2656766" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#2652729" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2652729);">@</a>自强不息，厚德载物！<br>没建议，⊙﹏⊙b汗</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2656766,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2656766,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2656766_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#2704677" class="layer">#39楼</a><a name="2704677" id="comment_anchor_2704677"></a>  <span class="comment_date">2013-06-14 11:07</span> <a id="a_comment_author_2704677" href="http://home.cnblogs.com/u/538519/" target="_blank">朱仔</a> <a href="http://msg.cnblogs.com/send/%E6%9C%B1%E4%BB%94" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2704677" class="blog_comment_body">樓主:<br>十分感謝你的文章，樓主不知這個程式可否分享一下。剛接觸EMGU許多東西都不是很懂，key程式時許多執行都有問題。我的email:kplay.kplay@msa.hinet.net~~謝謝</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2704677,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2704677,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#2704713" class="layer">#40楼</a><a name="2704713" id="comment_anchor_2704713"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2013-06-14 11:34</span> <a id="a_comment_author_2704713" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2704713" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#2704677" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2704677);">@</a>朱仔<br>源代码在一篇名为《源代码下载》的文章里下载。<br>地址是：<br><a href="http://www.cnblogs.com/xrwang/archive/2010/12/20/SourceCode.html" target="_blank">http://www.cnblogs.com/xrwang/archive/2010/12/20/SourceCode.html</a></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2704713,&#39;Digg&#39;,this)">支持(1)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2704713,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2704713_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#3306477" class="layer">#41楼</a><a name="3306477" id="comment_anchor_3306477"></a><span id="comment-maxId" style="display:none;">3306477</span><span id="comment-maxDate" style="display:none;">2015/11/14 16:00:49</span>  <span class="comment_date">2015-11-14 16:00</span> <a id="a_comment_author_3306477" href="http://home.cnblogs.com/u/835155/" target="_blank">欧阳彬</a> <a href="http://msg.cnblogs.com/send/%E6%AC%A7%E9%98%B3%E5%BD%AC" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3306477" class="blog_comment_body">楼主 好样的 希望继续跟新 Bolg 让我们这些小菜鸟 学习  谢谢</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3306477,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3306477,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://www.rongcloud.cn/" target="_blank">【推荐】融云即时通讯云－专注为 App 开发者提供IM云服务</a><br><a href="http://www.ucloud.cn/site/active/new_gift.html?utm_source=cost&utm_campaign=bokeyuan1&utm_medium=display&utm_content=3yuecu" target="_blank">【推荐】UCloud开年大礼，充5000返1000；买云主机送CDN，详情点击</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block">     <ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-4210569241504288" data-ad-slot="5457903683" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><iframe width="300" height="250" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins></ins></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/541728/" target="_blank">Oculus全方位协助开发者 共推VR实现双赢</a><br> ·  <a href="http://news.cnblogs.com/n/541727/" target="_blank">高脂肪饮食增加后代患肥胖症风险</a><br> ·  <a href="http://news.cnblogs.com/n/541726/" target="_blank">阿里旅行的信用住升级 开放能力进驻酒店自有App</a><br> ·  <a href="http://news.cnblogs.com/n/541725/" target="_blank">Google涂鸦大赛落下帷幕：“非洲生活”夺冠</a><br> ·  <a href="http://news.cnblogs.com/n/541724/" target="_blank">Reddit网友爆料：路上惊现超级拉风的电动沙发躺椅代步车</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="https://www.jpush.cn/?from=cnblogs01" target="_blank"><img width="468" height="60" src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/24442-20160307140747632-1210035054.jpg" alt="极光推送20160307" title="极光推送20160307"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/541230/" target="_blank">如何运维千台以上游戏云服务器</a><br> ·  <a href="http://kb.cnblogs.com/page/539160/" target="_blank">架构漫谈（一）：什么是架构？</a><br> ·  <a href="http://kb.cnblogs.com/page/540632/" target="_blank">架构的本质</a><br> ·  <a href="http://kb.cnblogs.com/page/538249/" target="_blank">谷歌背后的数学</a><br> ·  <a href="http://kb.cnblogs.com/page/533808/" target="_blank">Medium开发团队谈架构设计</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+$(function () {
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);    
+});
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div>目前在努力经营老婆的淘宝店<a target="_blank" href="http://bbmhjy.taobao.com/"><span style="color: #339966;"></span></a>，欢迎各位光临。<img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/105104147.gif" alt=""><br><a title="贝贝de梦幻家园" target="_blank" href="http://bbmhjy.taobao.com/"><img alt="" src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/网店招牌.png" border="0"></a>特供张家界土特产：</div><p><a title="土家莓茶" target="_blank" href="http://bbmhjy.taobao.com/?search=y&scid=341776248&scname=3a6y6A%3D%3D&checkedRange=true&queryType=cat"><img alt="" src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/分类图-莓茶.png" border="0"></a>&nbsp;</p><p><a title="天然杜仲茶" target="_blank" href="http://bbmhjy.taobao.com/?search=y&scid=341778426&scname=tsXW2bLo&checkedRange=true&queryType=cat"><img alt="" src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/分类图-杜仲茶.png" border="0"></a>&nbsp;</p><p><a title="野生葛根粉" target="_blank" href="http://bbmhjy.taobao.com/?search=y&scid=341778427&scname=uPC32w%3D%3D&checkedRange=true&queryType=cat"><img alt="" src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/分类图-葛根粉.png" border="0"></a>&nbsp;</p><p><a title="纯正蕨粉" target="_blank" href="http://bbmhjy.taobao.com/?search=y&scid=341778428&scname=3qe32w%3D%3D&checkedRange=true&queryType=cat"><img alt="" src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/分类图-蕨粉.png" border="0"></a>&nbsp;</p><p><a title="劲爆辣椒" target="_blank" href="http://bbmhjy.taobao.com/?search=y&scid=341778431&scname=wLG9tw%3D%3D&checkedRange=true&queryType=cat"><img alt="" src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/分类图-辣椒.png" border="0"></a>&nbsp;</p><p><a title="岩耳山菌" target="_blank" href="http://bbmhjy.taobao.com/?search=y&scid=348970080&scname=0dK2%2Bsm9vvo%3D&checkedRange=true&queryType=cat"><img alt="" src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/分类图-岩耳山菌.png" border="0"></a>&nbsp;</p><p><a title="腊味野味" target="_blank" href="http://bbmhjy.taobao.com/?search=y&scid=348970081&scname=wLDOttKwzrY%3D&checkedRange=true&queryType=cat"><img alt="" src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/分类图-腊味野味.png" border="0"></a>&nbsp;</p><p><a title="特色小吃" target="_blank" href="http://bbmhjy.taobao.com/?search=y&scid=348970082&scname=zNjJq9Chs9Q%3D&checkedRange=true&queryType=cat"><img alt="" src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/分类图-特色小吃.png" border="0"></a>&nbsp;</p><p>购物即送<a title="赠品" target="_blank" href="http://bbmhjy.taobao.com/?search=y&scid=350050154&scname=1PnGtw%3D%3D&checkedRange=true&queryType=cat">赠品</a>哦～～ <img src="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/223332943.gif" alt=""></p><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/xrwang/">Wuya</a><br>园龄：<a href="http://home.cnblogs.com/u/xrwang/" title="入园时间：2007-03-16">9年</a><br>粉丝：<a href="http://home.cnblogs.com/u/xrwang/followers/">386</a><br>关注：<a href="http://home.cnblogs.com/u/xrwang/followees/">5</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger(&#39;716e3d0b-63cf-dd11-9e4d-001cf0cd104b&#39;)">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="calendar"><div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2010/01/01&#39;);return false;">&lt;</a></td><td align="center">2010年2月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2010/03/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">31</td><td align="center">1</td><td align="center"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/02.html"><u>2</u></a></td><td align="center">3</td><td align="center"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/04.html"><u>4</u></a></td><td align="center"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05.html"><u>5</u></a></td><td class="CalWeekendDay" align="center">6</td></tr><tr><td class="CalWeekendDay" align="center">7</td><td align="center">8</td><td align="center"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09.html"><u>9</u></a></td><td align="center">10</td><td align="center">11</td><td align="center">12</td><td class="CalWeekendDay" align="center"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/13.html"><u>13</u></a></td></tr><tr><td class="CalWeekendDay" align="center">14</td><td align="center">15</td><td align="center">16</td><td align="center">17</td><td align="center">18</td><td align="center">19</td><td class="CalWeekendDay" align="center">20</td></tr><tr><td class="CalWeekendDay" align="center"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/21.html"><u>21</u></a></td><td align="center">22</td><td align="center">23</td><td align="center">24</td><td align="center">25</td><td align="center">26</td><td class="CalWeekendDay" align="center">27</td></tr><tr><td class="CalWeekendDay" align="center"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/28.html"><u>28</u></a></td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td></tr><tr><td class="CalOtherMonthDay" align="center">7</td><td class="CalOtherMonthDay" align="center">8</td><td class="CalOtherMonthDay" align="center">9</td><td class="CalOtherMonthDay" align="center">10</td><td class="CalOtherMonthDay" align="center">11</td><td class="CalOtherMonthDay" align="center">12</td><td class="CalOtherMonthDay" align="center">13</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script></div>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/xrwang/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/xrwang/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/xrwang/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/xrwang/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/xrwang/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/xrwang/tag/weixin/">weixin</a>(5)</li><li><a href="http://www.cnblogs.com/xrwang/tag/javascript/">javascript</a>(2)</li><li><a href="http://www.cnblogs.com/xrwang/tag/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a>(2)</li><li><a href="http://www.cnblogs.com/xrwang/tag/%E9%A2%9C%E8%89%B2/">颜色</a>(1)</li><li><a href="http://www.cnblogs.com/xrwang/tag/%E6%A0%B7%E5%BC%8F%E8%A1%A8/">样式表</a>(1)</li><li><a href="http://www.cnblogs.com/xrwang/tag/js/">js</a>(1)</li><li><a href="http://www.cnblogs.com/xrwang/tag/RANSAC%20%E9%9A%8F%E6%9C%BA%E6%8A%BD%E6%A0%B7%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95/">RANSAC 随机抽样一致性算法</a>(1)</li><li><a href="http://www.cnblogs.com/xrwang/tag/vbs/">vbs</a>(1)</li><li><a href="http://www.cnblogs.com/xrwang/tag/vs2005/">vs2005</a>(1)</li><li><a href="http://www.cnblogs.com/xrwang/tag/.net%20%E5%9B%BE%E7%89%87%20%E6%AF%94%E8%BE%83/">.net 图片 比较</a>(1)</li><li><a href="http://www.cnblogs.com/xrwang/tag/">更多</a></li>
+</ul>
+</div></div><div id="sidebar_categories">
+<div class="catListPostCategory">
+<h3 class="catListTitle">随笔分类<span style="font-size:11px;font-weight:normal">(34)</span></h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/xrwang/category/286522.html">asp.net网站(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/xrwang/category/575377.html">安卓开发(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/xrwang/category/303742.html">其他(4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/xrwang/category/286829.html">算法(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/xrwang/category/231541.html">图像处理(21)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/xrwang/category/660918.html">微信(5)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catListPostArchive">
+<h3 class="catListTitle">随笔档案<span style="font-size:11px;font-weight:normal">(40)</span></h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/xrwang/archive/2015/03.html">2015年3月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/xrwang/archive/2015/02.html">2015年2月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/xrwang/archive/2014/05.html">2014年5月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/xrwang/archive/2014/02.html">2014年2月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/xrwang/archive/2013/05.html">2013年5月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/xrwang/archive/2012/06.html">2012年6月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/xrwang/archive/2012/04.html">2012年4月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/xrwang/archive/2011/07.html">2011年7月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_8" href="http://www.cnblogs.com/xrwang/archive/2011/06.html">2011年6月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_9" href="http://www.cnblogs.com/xrwang/archive/2011/04.html">2011年4月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_10" href="http://www.cnblogs.com/xrwang/archive/2011/03.html">2011年3月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_11" href="http://www.cnblogs.com/xrwang/archive/2010/12.html">2010年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_12" href="http://www.cnblogs.com/xrwang/archive/2010/11.html">2010年11月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_13" href="http://www.cnblogs.com/xrwang/archive/2010/04.html">2010年4月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_14" href="http://www.cnblogs.com/xrwang/archive/2010/03.html">2010年3月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_15" href="http://www.cnblogs.com/xrwang/archive/2010/02.html">2010年2月 (7)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_16" href="http://www.cnblogs.com/xrwang/archive/2010/01.html">2010年1月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_17" href="http://www.cnblogs.com/xrwang/archive/2008/09.html">2008年9月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_18" href="http://www.cnblogs.com/xrwang/archive/2008/08.html">2008年8月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_19" href="http://www.cnblogs.com/xrwang/archive/2008/07.html">2008年7月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_20" href="http://www.cnblogs.com/xrwang/archive/2008/01.html">2008年1月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_21" href="http://www.cnblogs.com/xrwang/archive/2007/05.html">2007年5月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_22" href="http://www.cnblogs.com/xrwang/archive/2007/03.html">2007年3月 (1)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+	<div id="RecentCommentsBlock"><ul>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/xrwang/p/PublicAccount-TemplateMessage.html#3385056">1. Re:.net微信公众号开发——模板消息</a></li>
+    <li class="recent_comment_body">@随风落梦@luge^_^@可达请自行到oschina的git下载。...</li>
+    <li class="recent_comment_author">--Wuya</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/xrwang/p/PublicAccount-TemplateMessage.html#3383447">2. Re:.net微信公众号开发——模板消息</a></li>
+    <li class="recent_comment_body">你好，可以发我一份源码吗？邮箱：chenludaniel@126.com</li>
+    <li class="recent_comment_author">--随风落梦</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/xrwang/p/PublicAccount-MessageAndEvent.html#3365086">3. Re:.net微信公众号开发——消息与事件</a></li>
+    <li class="recent_comment_body">学习了，感谢共享</li>
+    <li class="recent_comment_author">--luge</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/xrwang/p/PublicAccount-MassMessage.html#3365085">4. Re:.net微信公众号开发——群发消息</a></li>
+    <li class="recent_comment_body">学习了</li>
+    <li class="recent_comment_author">--luge</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/xrwang/p/PublicAccount-TemplateMessage.html#3365084">5. Re:.net微信公众号开发——模板消息</a></li>
+    <li class="recent_comment_body">感谢共享</li>
+    <li class="recent_comment_author">--luge</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/xrwang/p/AndroidStudioImportJarAndSoLibrary.html">1. Android Studio开发入门-引用jar及so文件(55040)</a></li><li><a href="http://www.cnblogs.com/xrwang/archive/2010/03/03/ImageFeatureDetection.html">2. 图像特征检测(Image Feature Detection)(48042)</a></li><li><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html">3. 模板匹配(Match Template)(38436)</a></li><li><a href="http://www.cnblogs.com/xrwang/archive/2010/02/28/ImageSegmentation.html">4. 图像分割(Image Segmentation)(35484)</a></li><li><a href="http://www.cnblogs.com/xrwang/archive/2011/03/09/ransac-1.html">5. 随机抽样一致性算法（RANSAC）(30724)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/xrwang/archive/2010/03/03/ImageFeatureDetection.html">1. 图像特征检测(Image Feature Detection)(108)</a></li><li><a href="http://www.cnblogs.com/xrwang/archive/2010/02/21/ForegroundDetection.html">2. 背景建模与前景检测(Background Generation And Foreground Detection)(60)</a></li><li><a href="http://www.cnblogs.com/xrwang/archive/2010/02/04/HowToUseHistogram.html">3. 颜色直方图的计算、显示、处理、对比及反向投影(How to Use Histogram? Calculate, Show, Process, Compare and BackProject)(58)</a></li><li><a href="http://www.cnblogs.com/xrwang/archive/2010/12/20/SourceCode.html">4. 源代码下载(52)</a></li><li><a href="http://www.cnblogs.com/xrwang/archive/2010/02/13/HowToCaptureCameraVideoViaDotNet.html">5. .net中捕获摄像头视频的方式及对比(How to Capture Camera Video via .Net)(46)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/xrwang/archive/2010/03/03/ImageFeatureDetection.html">1. 图像特征检测(Image Feature Detection)(27)</a></li><li><a href="http://www.cnblogs.com/xrwang/archive/2010/02/21/ForegroundDetection.html">2. 背景建模与前景检测(Background Generation And Foreground Detection)(17)</a></li><li><a href="./轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园_files/轮廓的查找、表达、绘制、特性及匹配(How to Use Contour_ Find, Component, Construct, Features & Match) - Wuya - 博客园.html">3. 轮廓的查找、表达、绘制、特性及匹配(How to Use Contour? Find, Component, Construct, Features &amp; Match)(15)</a></li><li><a href="http://www.cnblogs.com/xrwang/p/PublicAccount-QuickStart.html">4. .net微信公众号开发——快速入门(14)</a></li><li><a href="http://www.cnblogs.com/xrwang/archive/2010/01/26/TheComparisonOfImageProcessingLibraries.html">5. 各种图像处理类库的比较及选择(The Comparison of Image Processing Libraries)(13)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2016 Wuya
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body></html>

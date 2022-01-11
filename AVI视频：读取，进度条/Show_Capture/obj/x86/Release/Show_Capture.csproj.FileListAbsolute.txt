@@ -1,0 +1,15 @@
+E:\李志\C#Test\Show_Capture\Show_Capture\bin\Release\Show_Capture.exe
+E:\李志\C#Test\Show_Capture\Show_Capture\bin\Release\Show_Capture.pdb
+E:\李志\C#Test\Show_Capture\Show_Capture\obj\x86\Release\ResolveAssemblyReference.cache
+E:\李志\C#Test\Show_Capture\Show_Capture\obj\x86\Release\Show_Capture.Form1.resources
+E:\李志\C#Test\Show_Capture\Show_Capture\obj\x86\Release\Show_Capture.Properties.Resources.resources
+E:\李志\C#Test\Show_Capture\Show_Capture\obj\x86\Release\GenerateResource.read.1.tlog
+E:\李志\C#Test\Show_Capture\Show_Capture\obj\x86\Release\GenerateResource.write.1.tlog
+E:\李志\C#Test\Show_Capture\Show_Capture\obj\x86\Release\Show_Capture.exe
+E:\李志\C#Test\Show_Capture\Show_Capture\obj\x86\Release\Show_Capture.pdb
+E:\李志\C#Test\读AVI视频\Show_Capture\obj\x86\Release\Show_Capture.exe
+E:\李志\C#Test\读AVI视频\Show_Capture\obj\x86\Release\Show_Capture.pdb
+E:\李志\C#Test\AVI视频：读取，进度条\Show_Capture\obj\x86\Release\Show_Capture.exe
+E:\李志\C#Test\AVI视频：读取，进度条\Show_Capture\obj\x86\Release\Show_Capture.pdb
+D:\skq\DL\SKQ\C#从入门到项目实践\C#测试\C#Test\AVI视频：读取，进度条\Show_Capture\obj\x86\Release\Show_Capture.exe
+D:\skq\DL\SKQ\C#从入门到项目实践\C#测试\C#Test\AVI视频：读取，进度条\Show_Capture\obj\x86\Release\Show_Capture.pdb

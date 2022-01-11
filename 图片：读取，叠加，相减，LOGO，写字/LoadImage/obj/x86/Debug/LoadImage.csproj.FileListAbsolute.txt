@@ -1,0 +1,39 @@
+E:\李志\C#Test\读图片\LoadImage\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\李志\C#Test\读图片\LoadImage\obj\x86\Debug\LoadImage.Form1.resources
+E:\李志\C#Test\读图片\LoadImage\obj\x86\Debug\LoadImage.Properties.Resources.resources
+E:\李志\C#Test\读图片\LoadImage\obj\x86\Debug\GenerateResource.read.1.tlog
+E:\李志\C#Test\读图片\LoadImage\obj\x86\Debug\GenerateResource.write.1.tlog
+E:\李志\C#Test\读图片\LoadImage\bin\Debug\LoadImage.exe
+E:\李志\C#Test\读图片\LoadImage\bin\Debug\LoadImage.pdb
+E:\李志\C#Test\读图片\LoadImage\bin\Debug\Emgu.CV.dll
+E:\李志\C#Test\读图片\LoadImage\bin\Debug\Emgu.CV.UI.dll
+E:\李志\C#Test\读图片\LoadImage\bin\Debug\Emgu.Util.dll
+E:\李志\C#Test\读图片\LoadImage\obj\x86\Debug\LoadImage.exe
+E:\李志\C#Test\读图片\LoadImage\obj\x86\Debug\LoadImage.pdb
+E:\李志\C#Test\读图片并进行图像基本处理\LoadImage\obj\x86\Debug\LoadImage.exe
+E:\李志\C#Test\读图片并进行图像基本处理\LoadImage\obj\x86\Debug\LoadImage.pdb
+E:\李志\C#Test\图片：读取，叠加，相减，LOGO，写字\LoadImage\obj\x86\Debug\LoadImage.exe
+E:\李志\C#Test\图片：读取，叠加，相减，LOGO，写字\LoadImage\obj\x86\Debug\LoadImage.pdb
+E:\李志\C#Test\图片：读取，叠加，相减，LOGO，写字\LoadImage\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\李志\C#Test\图片：读取，叠加，相减，LOGO，写字\LoadImage\obj\x86\Debug\LoadImage.Form1.resources
+E:\李志\C#Test\图片：读取，叠加，相减，LOGO，写字\LoadImage\obj\x86\Debug\LoadImage.Properties.Resources.resources
+E:\李志\C#Test\图片：读取，叠加，相减，LOGO，写字\LoadImage\obj\x86\Debug\GenerateResource.read.1.tlog
+E:\李志\C#Test\图片：读取，叠加，相减，LOGO，写字\LoadImage\obj\x86\Debug\GenerateResource.write.1.tlog
+E:\李志\C#Test\图片：读取，叠加，相减，LOGO，写字\LoadImage\bin\Debug\LoadImage.exe
+E:\李志\C#Test\图片：读取，叠加，相减，LOGO，写字\LoadImage\bin\Debug\LoadImage.pdb
+E:\李志\C#Test\图片：读取，叠加，相减，LOGO，写字\LoadImage\bin\Debug\Emgu.CV.dll
+E:\李志\C#Test\图片：读取，叠加，相减，LOGO，写字\LoadImage\bin\Debug\Emgu.CV.UI.dll
+E:\李志\C#Test\图片：读取，叠加，相减，LOGO，写字\LoadImage\bin\Debug\Emgu.Util.dll
+D:\skq\DL\孙克强\C#从入门到项目实践\C#测试\C#Test\图片：读取，叠加，相减，LOGO，写字\LoadImage\obj\x86\Debug\LoadImage.exe
+D:\skq\DL\孙克强\C#从入门到项目实践\C#测试\C#Test\图片：读取，叠加，相减，LOGO，写字\LoadImage\obj\x86\Debug\LoadImage.pdb
+D:\DL information\C#从入门到项目实践\C#测试\C#Test\图片：读取，叠加，相减，LOGO，写字\LoadImage\obj\x86\Debug\LoadImage.exe
+D:\DL information\C#从入门到项目实践\C#测试\C#Test\图片：读取，叠加，相减，LOGO，写字\LoadImage\obj\x86\Debug\LoadImage.pdb
+D:\DL information\C#从入门到项目实践\C#测试\C#Test\图片：读取，叠加，相减，LOGO，写字\LoadImage\bin\Debug\LoadImage.exe
+D:\DL information\C#从入门到项目实践\C#测试\C#Test\图片：读取，叠加，相减，LOGO，写字\LoadImage\bin\Debug\LoadImage.pdb
+D:\DL information\C#从入门到项目实践\C#测试\C#Test\图片：读取，叠加，相减，LOGO，写字\LoadImage\bin\Debug\Emgu.CV.dll
+D:\DL information\C#从入门到项目实践\C#测试\C#Test\图片：读取，叠加，相减，LOGO，写字\LoadImage\bin\Debug\Emgu.CV.UI.dll
+D:\DL information\C#从入门到项目实践\C#测试\C#Test\图片：读取，叠加，相减，LOGO，写字\LoadImage\bin\Debug\Emgu.Util.dll
+D:\DL information\C#从入门到项目实践\C#测试\C#Test\图片：读取，叠加，相减，LOGO，写字\LoadImage\obj\x86\Debug\LoadImage.csprojResolveAssemblyReference.cache
+D:\DL information\C#从入门到项目实践\C#测试\C#Test\图片：读取，叠加，相减，LOGO，写字\LoadImage\obj\x86\Debug\LoadImage.Form1.resources
+D:\DL information\C#从入门到项目实践\C#测试\C#Test\图片：读取，叠加，相减，LOGO，写字\LoadImage\obj\x86\Debug\LoadImage.Properties.Resources.resources
+D:\DL information\C#从入门到项目实践\C#测试\C#Test\图片：读取，叠加，相减，LOGO，写字\LoadImage\obj\x86\Debug\LoadImage.csproj.GenerateResource.Cache

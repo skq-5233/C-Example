@@ -1,0 +1,12 @@
+E:\李志\C#Test\图像轮廓：矩，凸包，HU匹配\Image_Transform\bin\Debug\Image_Transform.exe
+E:\李志\C#Test\图像轮廓：矩，凸包，HU匹配\Image_Transform\bin\Debug\Image_Transform.pdb
+E:\李志\C#Test\图像轮廓：矩，凸包，HU匹配\Image_Transform\bin\Debug\Emgu.CV.dll
+E:\李志\C#Test\图像轮廓：矩，凸包，HU匹配\Image_Transform\bin\Debug\Emgu.CV.UI.dll
+E:\李志\C#Test\图像轮廓：矩，凸包，HU匹配\Image_Transform\bin\Debug\Emgu.Util.dll
+E:\李志\C#Test\图像轮廓：矩，凸包，HU匹配\Image_Transform\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\李志\C#Test\图像轮廓：矩，凸包，HU匹配\Image_Transform\obj\x86\Debug\Image_Transform.Form1.resources
+E:\李志\C#Test\图像轮廓：矩，凸包，HU匹配\Image_Transform\obj\x86\Debug\Image_Transform.Properties.Resources.resources
+E:\李志\C#Test\图像轮廓：矩，凸包，HU匹配\Image_Transform\obj\x86\Debug\GenerateResource.read.1.tlog
+E:\李志\C#Test\图像轮廓：矩，凸包，HU匹配\Image_Transform\obj\x86\Debug\GenerateResource.write.1.tlog
+E:\李志\C#Test\图像轮廓：矩，凸包，HU匹配\Image_Transform\obj\x86\Debug\Image_Transform.exe
+E:\李志\C#Test\图像轮廓：矩，凸包，HU匹配\Image_Transform\obj\x86\Debug\Image_Transform.pdb

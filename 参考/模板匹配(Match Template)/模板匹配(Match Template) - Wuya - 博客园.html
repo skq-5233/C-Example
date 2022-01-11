@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>模板匹配(Match Template) - Wuya - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./模板匹配(Match Template) - Wuya - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./模板匹配(Match Template) - Wuya - 博客园_files/bundle-SimpleBlue.css">
+<link id="mobile-style" media="only screen and (max-width: 768px)" type="text/css" rel="stylesheet" href="./模板匹配(Match Template) - Wuya - 博客园_files/bundle-SimpleBlue-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/xrwang/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/xrwang/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/xrwang/wlwmanifest.xml">
+<script type="text/javascript" src="./模板匹配(Match Template) - Wuya - 博客园_files/encoder.js"></script><script src="./模板匹配(Match Template) - Wuya - 博客园_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">var currentBlogApp = 'xrwang', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="./模板匹配(Match Template) - Wuya - 博客园_files/blog-common.js" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+		
+<!--done-->
+<div class="title"><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/xrwang/">无涯（C、.net、图像处理、算法）</a></div>
+<div class="subtitle"></div>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li id="nav_sitehome"><a id="blog_nav_sitehome" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li id="nav_myhome"><a id="blog_nav_myhome" class="menu" href="http://www.cnblogs.com/xrwang/">首页</a></li>
+<li id="nav_newpost"><a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li id="nav_contact"><a id="blog_nav_contact" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/Wuya">联系</a></li>
+<li id="nav_rss"><a id="blog_nav_rss" class="menu" href="http://www.cnblogs.com/xrwang/rss">订阅</a>
+<!--<a id="blog_nav_rss_image" class="aHeaderXML" href="http://www.cnblogs.com/xrwang/rss"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li id="nav_admin"><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+
+		<div class="blogStats">
+			
+			<div id="blog_stats">
+<!--done-->
+随笔-40&nbsp;
+文章-0&nbsp;
+评论-844&nbsp;
+</div>
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="./模板匹配(Match Template) - Wuya - 博客园_files/模板匹配(Match Template) - Wuya - 博客园.html">模板匹配(Match Template)</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p>作者：王先荣</p>
+<p><br><strong>前言<br></strong>&nbsp;&nbsp;&nbsp; 模板匹配是在图像中寻找目标的方法之一。Come On, Boy.我们一起来看看模板匹配到底是怎么回事。</p>
+<p>&nbsp;</p>
+<p><strong>模板匹配的工作方式</strong><br>&nbsp;&nbsp;&nbsp; 模板匹配的工作方式跟直方图的反向投影基本一样，大致过程是这样的：通过在输入图像上滑动图像块对实际的图像块和输入图像进行匹配。<br>&nbsp;&nbsp;&nbsp; 假设我们有一张100x100的输入图像，有一张10x10的模板图像，查找的过程是这样的：<br>&nbsp; （1）从输入图像的左上角(0,0)开始，切割一块(0,0)至(10,10)的临时图像；<br>&nbsp; （2）用临时图像和模板图像进行对比，对比结果记为c；<br>&nbsp; （3）对比结果c，就是结果图像(0,0)处的像素值；<br>&nbsp; （4）切割输入图像从(0,1)至(10,11)的临时图像，对比，并记录到结果图像；<br>&nbsp; （5）重复（1）～（4）步直到输入图像的右下角。<br>&nbsp;&nbsp;&nbsp; 大家可以看到，直方图反向投影对比的是直方图，而模板匹配对比的是图像的像素值；模板匹配比直方图反向投影速度要快一些，但是我个人认为直方图反向投影的鲁棒性会更好。</p>
+<p>&nbsp;</p>
+<p><strong>模板匹配的匹配方式</strong><br>&nbsp;&nbsp;&nbsp; 在OpenCv和EmguCv中支持以下6种对比方式：<br>&nbsp;&nbsp;&nbsp; CV_TM_SQDIFF&nbsp;平方差匹配法：该方法采用平方差来进行匹配；最好的匹配值为0；匹配越差，匹配值越大。<br>&nbsp;&nbsp;&nbsp; CV_TM_CCORR&nbsp;相关匹配法：该方法采用乘法操作；数值越大表明匹配程度越好。<br>&nbsp;&nbsp;&nbsp; CV_TM_CCOEFF&nbsp;相关系数匹配法：1表示完美的匹配；-1表示最差的匹配。<br>&nbsp;&nbsp;&nbsp; CV_TM_SQDIFF_NORMED&nbsp;归一化平方差匹配法<br>&nbsp;&nbsp;&nbsp; CV_TM_CCORR_NORMED&nbsp;归一化相关匹配法<br>&nbsp;&nbsp;&nbsp; CV_TM_CCOEFF_NORMED&nbsp;归一化相关系数匹配法<br>&nbsp;&nbsp;&nbsp; 根据我的测试结果来看，上述几种匹配方式需要的计算时间比较接近（跟《学习OpenCv》书上说的不同），我们可以选择一个能适应场景的匹配方式。</p>
+<p>&nbsp;</p>
+<p><strong>模板匹配的示例代码<br></strong>&nbsp;&nbsp;&nbsp; 下面是模板匹配的C#版本代码：</p>
+<div onclick="cnblogs_code_show(&#39;fe8b2676-dcf8-43b1-b8ef-854da5effbb5&#39;)" class="cnblogs_code"><img src="./模板匹配(Match Template) - Wuya - 博客园_files/ContractedBlock.gif" id="code_img_closed_fe8b2676-dcf8-43b1-b8ef-854da5effbb5" class="code_img_closed" style="display: none;"><img src="./模板匹配(Match Template) - Wuya - 博客园_files/ExpandedBlockStart.gif" onclick="cnblogs_code_hide(&#39;fe8b2676-dcf8-43b1-b8ef-854da5effbb5&#39;,event)" style="" id="code_img_opened_fe8b2676-dcf8-43b1-b8ef-854da5effbb5" class="code_img_opened"><span class="cnblogs_code_collapse" style="display: none;">模板匹配</span>
+<div id="cnblogs_code_open_fe8b2676-dcf8-43b1-b8ef-854da5effbb5" class="cnblogs_code_hide" style="display: block;"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./模板匹配(Match Template) - Wuya - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><div><!--<br /><br />Code highlighting produced by Actipro CodeHighlighter (freeware)<br />http://www.CodeHighlighter.com/<br /><br />--><span style="color: #000000;">        </span><span style="color: #008000;">//</span><span style="color: #008000;">模板匹配</span><span style="color: #008000;"><br></span><span style="color: #000000;">        </span><span style="color: #0000ff;">private</span><span style="color: #000000;"> </span><span style="color: #0000ff;">void</span><span style="color: #000000;"> btnCalc_Click(</span><span style="color: #0000ff;">object</span><span style="color: #000000;"> sender, EventArgs e)<br>        {<br>            </span><span style="color: #008000;">//</span><span style="color: #008000;">输入图像</span><span style="color: #008000;"><br></span><span style="color: #000000;">            Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Bgr, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> imageInput </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Bgr, </span><span style="color: #0000ff;">byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">((Bitmap)pbInput.Image);<br>            </span><span style="color: #008000;">//</span><span style="color: #008000;">模板图像</span><span style="color: #008000;"><br></span><span style="color: #000000;">            Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Bgr, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> imageTemplate </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Bgr, </span><span style="color: #0000ff;">byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">((Bitmap)pbTemplate.Image);<br>            </span><span style="color: #008000;">//</span><span style="color: #008000;">缩放因子，更小的图像可以提高处理速度</span><span style="color: #008000;"><br></span><span style="color: #000000;">            </span><span style="color: #0000ff;">double</span><span style="color: #000000;"> scale </span><span style="color: #000000;">=</span><span style="color: #000000;"> 1d;<br>            </span><span style="color: #0000ff;">double</span><span style="color: #000000;">.TryParse(txtScale.Text, </span><span style="color: #0000ff;">out</span><span style="color: #000000;"> scale);<br>            </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (scale </span><span style="color: #000000;">!=</span><span style="color: #000000;"> 1d)<br>            {<br>                imageInput </span><span style="color: #000000;">=</span><span style="color: #000000;"> imageInput.Resize(scale, INTER.CV_INTER_LINEAR);<br>                imageTemplate </span><span style="color: #000000;">=</span><span style="color: #000000;"> imageTemplate.Resize(scale, INTER.CV_INTER_LINEAR);<br>            }<br>            </span><span style="color: #008000;">//</span><span style="color: #008000;">色彩空间</span><span style="color: #008000;"><br></span><span style="color: #000000;">            </span><span style="color: #0000ff;">string</span><span style="color: #000000;"> colorSpace </span><span style="color: #000000;">=</span><span style="color: #000000;"> (</span><span style="color: #0000ff;">string</span><span style="color: #000000;">)cmbColorSpace.SelectedItem;<br>            IImage imageInput2, imageTemplate2;<br>            </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (colorSpace </span><span style="color: #000000;">==</span><span style="color: #000000;"> </span><span style="color: #800000;">"</span><span style="color: #800000;">Gray</span><span style="color: #800000;">"</span><span style="color: #000000;">)<br>            {<br>                imageInput2 </span><span style="color: #000000;">=</span><span style="color: #000000;"> imageInput.Convert</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Gray, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">();<br>                imageTemplate2 </span><span style="color: #000000;">=</span><span style="color: #000000;"> imageTemplate.Convert</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Gray, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">();<br>            }<br>            </span><span style="color: #0000ff;">else</span><span style="color: #000000;"> </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (colorSpace </span><span style="color: #000000;">==</span><span style="color: #000000;"> </span><span style="color: #800000;">"</span><span style="color: #800000;">HSV</span><span style="color: #800000;">"</span><span style="color: #000000;">)<br>            {<br>                imageInput2 </span><span style="color: #000000;">=</span><span style="color: #000000;"> imageInput.Convert</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Hsv, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">();<br>                imageTemplate2 </span><span style="color: #000000;">=</span><span style="color: #000000;"> imageTemplate.Convert</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Hsv, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">();<br>            }<br>            </span><span style="color: #0000ff;">else</span><span style="color: #000000;"><br>            {<br>                imageInput2 </span><span style="color: #000000;">=</span><span style="color: #000000;"> imageInput.Copy();<br>                imageTemplate2 </span><span style="color: #000000;">=</span><span style="color: #000000;"> imageTemplate.Copy();<br>            }<br>            </span><span style="color: #008000;">//</span><span style="color: #008000;">匹配方式数组</span><span style="color: #008000;"><br></span><span style="color: #000000;">            TM_TYPE[] tmTypes </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> TM_TYPE[] { TM_TYPE.CV_TM_SQDIFF, TM_TYPE.CV_TM_SQDIFF_NORMED, TM_TYPE.CV_TM_CCORR, TM_TYPE.CV_TM_CCORR_NORMED, TM_TYPE.CV_TM_CCOEFF, TM_TYPE.CV_TM_CCOEFF_NORMED };<br>            </span><span style="color: #008000;">//</span><span style="color: #008000;">输出图像（匹配结果）</span><span style="color: #008000;"><br></span><span style="color: #000000;">            Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Gray, Single</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">[] imageResults </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Gray, </span><span style="color: #0000ff;">float</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">[tmTypes.Length];<br>            </span><span style="color: #008000;">//</span><span style="color: #008000;">依次执行每种匹配，并归一化结果</span><span style="color: #008000;"><br></span><span style="color: #000000;">            </span><span style="color: #0000ff;">int</span><span style="color: #000000;"> i </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #800080;">0</span><span style="color: #000000;">;<br>            </span><span style="color: #0000ff;">double</span><span style="color: #000000;"> totalTime </span><span style="color: #000000;">=</span><span style="color: #000000;"> 0d;  </span><span style="color: #008000;">//</span><span style="color: #008000;">总共用时</span><span style="color: #008000;"><br></span><span style="color: #000000;">            </span><span style="color: #0000ff;">double</span><span style="color: #000000;"> time;            </span><span style="color: #008000;">//</span><span style="color: #008000;">每种匹配的用时</span><span style="color: #008000;"><br></span><span style="color: #000000;">            Stopwatch sw </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Stopwatch();<br>            txtResult.Text </span><span style="color: #000000;">+=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">string</span><span style="color: #000000;">.Format(</span><span style="color: #800000;">"</span><span style="color: #800000;">开始执行匹配（色彩空间：{0}，缩放因子：{1}）\r\n</span><span style="color: #800000;">"</span><span style="color: #000000;">, colorSpace, scale);<br>            </span><span style="color: #0000ff;">foreach</span><span style="color: #000000;"> (TM_TYPE tmType </span><span style="color: #0000ff;">in</span><span style="color: #000000;"> tmTypes)<br>            {<br>                sw.Start();<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;">模板匹配（注意：因为接口IImage中没有名为MatchTemplate的定义，所以需要进行强制转换）<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;">Image&lt;Gray, Single&gt; imageResult = imageInput2.MatchTemplate(imageTemplate2, tmType);</span><span style="color: #008000;"><br></span><span style="color: #000000;">                Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Gray, Single</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> imageResult;<br>                </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (colorSpace </span><span style="color: #000000;">==</span><span style="color: #000000;"> </span><span style="color: #800000;">"</span><span style="color: #800000;">Gray</span><span style="color: #800000;">"</span><span style="color: #000000;">)<br>                    imageResult </span><span style="color: #000000;">=</span><span style="color: #000000;"> ((Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Gray, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">)imageInput2).MatchTemplate((Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Gray, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">)imageTemplate2, tmType);<br>                </span><span style="color: #0000ff;">else</span><span style="color: #000000;"> </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (colorSpace </span><span style="color: #000000;">==</span><span style="color: #000000;"> </span><span style="color: #800000;">"</span><span style="color: #800000;">HSV</span><span style="color: #800000;">"</span><span style="color: #000000;">)<br>                    imageResult </span><span style="color: #000000;">=</span><span style="color: #000000;"> ((Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Hsv, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">)imageInput2).MatchTemplate((Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Hsv, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">)imageTemplate2, tmType);<br>                </span><span style="color: #0000ff;">else</span><span style="color: #000000;"><br>                    imageResult </span><span style="color: #000000;">=</span><span style="color: #000000;"> ((Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Bgr, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">)imageInput2).MatchTemplate((Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Bgr, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">)imageTemplate2, tmType);<br>                sw.Stop();<br>                time </span><span style="color: #000000;">=</span><span style="color: #000000;"> sw.Elapsed.TotalMilliseconds;<br>                totalTime </span><span style="color: #000000;">+=</span><span style="color: #000000;"> time;<br>                sw.Reset();<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;">归一化结果</span><span style="color: #008000;"><br></span><span style="color: #000000;">                CvInvoke.cvNormalize(imageResult.Ptr, imageResult.Ptr, 1d, 0d, NORM_TYPE.CV_MINMAX, IntPtr.Zero);<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;">找到最匹配的点，以及该点的值</span><span style="color: #008000;"><br></span><span style="color: #000000;">                </span><span style="color: #0000ff;">double</span><span style="color: #000000;"> bestValue;<br>                Point bestPoint;<br>                FindBestMatchPointAndValue(imageResult, tmType, </span><span style="color: #0000ff;">out</span><span style="color: #000000;"> bestValue, </span><span style="color: #0000ff;">out</span><span style="color: #000000;"> bestPoint);<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;">在最匹配的点附近画一个跟模板一样大的矩形</span><span style="color: #008000;"><br></span><span style="color: #000000;">                Rectangle rect </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Rectangle(</span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Point(bestPoint.X </span><span style="color: #000000;">-</span><span style="color: #000000;"> imageTemplate.Size.Width </span><span style="color: #000000;">/</span><span style="color: #000000;"> </span><span style="color: #800080;">2</span><span style="color: #000000;">, bestPoint.Y </span><span style="color: #000000;">-</span><span style="color: #000000;"> imageTemplate.Size.Height </span><span style="color: #000000;">/</span><span style="color: #000000;"> </span><span style="color: #800080;">2</span><span style="color: #000000;">), imageTemplate.Size);<br>                imageResult.Draw(rect, </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Gray(bestValue), </span><span style="color: #800080;">2</span><span style="color: #000000;">);<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;">保存结果图像到数组</span><span style="color: #008000;"><br></span><span style="color: #000000;">                imageResults[i] </span><span style="color: #000000;">=</span><span style="color: #000000;"> imageResult;<br>                i</span><span style="color: #000000;">++</span><span style="color: #000000;">;<br>                </span><span style="color: #008000;">//</span><span style="color: #008000;">显示结果</span><span style="color: #008000;"><br></span><span style="color: #000000;">                txtResult.Text </span><span style="color: #000000;">+=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">string</span><span style="color: #000000;">.Format(</span><span style="color: #800000;">"</span><span style="color: #800000;">匹配方式：{0:G}，用时：{1:F05}毫秒，最匹配的点：({2},{3})，最匹配的值：{4}\r\n</span><span style="color: #800000;">"</span><span style="color: #000000;">, tmType, time, bestPoint.X, bestPoint.Y, bestValue);<br>            }<br>            txtResult.Text </span><span style="color: #000000;">+=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">string</span><span style="color: #000000;">.Format(</span><span style="color: #800000;">"</span><span style="color: #800000;">匹配结束，共用时：{0:F05}毫秒\r\n</span><span style="color: #800000;">"</span><span style="color: #000000;">, totalTime);<br>            </span><span style="color: #008000;">//</span><span style="color: #008000;">显示结果图像</span><span style="color: #008000;"><br></span><span style="color: #000000;">            pbResultSqdiff.Image </span><span style="color: #000000;">=</span><span style="color: #000000;"> ImageConverter.ImageSingleToBitmap</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Gray</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">(imageResults[</span><span style="color: #800080;">0</span><span style="color: #000000;">]);<br>            pbResultSqdiffNormalized.Image </span><span style="color: #000000;">=</span><span style="color: #000000;"> ImageConverter.ImageSingleToBitmap</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Gray</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">(imageResults[</span><span style="color: #800080;">1</span><span style="color: #000000;">]);<br>            pbResultCcorr.Image </span><span style="color: #000000;">=</span><span style="color: #000000;"> ImageConverter.ImageSingleToBitmap</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Gray</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">(imageResults[</span><span style="color: #800080;">2</span><span style="color: #000000;">]);<br>            pbResultCcorrNormalized.Image </span><span style="color: #000000;">=</span><span style="color: #000000;"> ImageConverter.ImageSingleToBitmap</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Gray</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">(imageResults[</span><span style="color: #800080;">3</span><span style="color: #000000;">]);<br>            pbResultCcoeff.Image </span><span style="color: #000000;">=</span><span style="color: #000000;"> ImageConverter.ImageSingleToBitmap</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Gray</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">(imageResults[</span><span style="color: #800080;">4</span><span style="color: #000000;">]);<br>            pbResultCcoeffNormalized.Image </span><span style="color: #000000;">=</span><span style="color: #000000;"> ImageConverter.ImageSingleToBitmap</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Gray</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">(imageResults[</span><span style="color: #800080;">5</span><span style="color: #000000;">]);<br>            </span><span style="color: #008000;">//</span><span style="color: #008000;">释放资源</span><span style="color: #008000;"><br></span><span style="color: #000000;">            imageInput.Dispose();<br>            imageTemplate.Dispose();<br>            imageInput2.Dispose();<br>            imageTemplate2.Dispose();<br>            </span><span style="color: #0000ff;">foreach</span><span style="color: #000000;"> (Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Gray, Single</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> imageResult </span><span style="color: #0000ff;">in</span><span style="color: #000000;"> imageResults)<br>                imageResult.Dispose();<br>        }<br><br>        </span><span style="color: #008000;">//</span><span style="color: #008000;">找到最匹配的点，以及该点的值</span><span style="color: #008000;"><br></span><span style="color: #000000;">        </span><span style="color: #0000ff;">private</span><span style="color: #000000;"> </span><span style="color: #0000ff;">void</span><span style="color: #000000;"> FindBestMatchPointAndValue(Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">Gray, Single</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> image, TM_TYPE tmType, </span><span style="color: #0000ff;">out</span><span style="color: #000000;"> </span><span style="color: #0000ff;">double</span><span style="color: #000000;"> bestValue, </span><span style="color: #0000ff;">out</span><span style="color: #000000;"> Point bestPoint)<br>        {<br>            bestValue </span><span style="color: #000000;">=</span><span style="color: #000000;"> 0d;<br>            bestPoint </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Point(</span><span style="color: #800080;">0</span><span style="color: #000000;">, </span><span style="color: #800080;">0</span><span style="color: #000000;">);<br>            </span><span style="color: #0000ff;">double</span><span style="color: #000000;">[] minValues, maxValues;<br>            Point[] minLocations, maxLocations;<br>            image.MinMax(</span><span style="color: #0000ff;">out</span><span style="color: #000000;"> minValues, </span><span style="color: #0000ff;">out</span><span style="color: #000000;"> maxValues, </span><span style="color: #0000ff;">out</span><span style="color: #000000;"> minLocations, </span><span style="color: #0000ff;">out</span><span style="color: #000000;"> maxLocations);<br>            </span><span style="color: #008000;">//</span><span style="color: #008000;">对于平方差匹配和归一化平方差匹配，最小值表示最好的匹配；其他情况下，最大值表示最好的匹配</span><span style="color: #008000;"><br></span><span style="color: #000000;">            </span><span style="color: #0000ff;">if</span><span style="color: #000000;"> (tmType </span><span style="color: #000000;">==</span><span style="color: #000000;"> TM_TYPE.CV_TM_SQDIFF </span><span style="color: #000000;">||</span><span style="color: #000000;"> tmType </span><span style="color: #000000;">==</span><span style="color: #000000;"> TM_TYPE.CV_TM_SQDIFF_NORMED)<br>            {<br>                bestValue </span><span style="color: #000000;">=</span><span style="color: #000000;"> minValues[</span><span style="color: #800080;">0</span><span style="color: #000000;">];<br>                bestPoint </span><span style="color: #000000;">=</span><span style="color: #000000;"> minLocations[</span><span style="color: #800080;">0</span><span style="color: #000000;">];<br>            }<br>            </span><span style="color: #0000ff;">else</span><span style="color: #000000;"><br>            {<br>                bestValue </span><span style="color: #000000;">=</span><span style="color: #000000;"> maxValues[</span><span style="color: #800080;">0</span><span style="color: #000000;">];<br>                bestPoint </span><span style="color: #000000;">=</span><span style="color: #000000;"> maxLocations[</span><span style="color: #800080;">0</span><span style="color: #000000;">];<br>            }<br>        }<br><br></span></div></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./模板匹配(Match Template) - Wuya - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+</div>
+<p>&nbsp;</p>
+<p><strong>显示结果图像<br></strong>&nbsp;&nbsp;&nbsp; 模板匹配和直方图反向投影生成的结果图像都是32位浮点型单通道图像。如果用C/C++，可以很方便的用OpenCv中的cvShowImage函数来显示；如果用.net，因为EmguCv中将32位浮点图像转换成8位位图的方法有些小问题，我们要自己编写一段转换的代码，然后再显示。</p>
+<div onclick="cnblogs_code_show(&#39;06c5baed-982e-4a47-a0d0-2c1810b6a70b&#39;)" class="cnblogs_code"><img src="./模板匹配(Match Template) - Wuya - 博客园_files/ContractedBlock.gif" id="code_img_closed_06c5baed-982e-4a47-a0d0-2c1810b6a70b" class="code_img_closed" style="display: none;"><img src="./模板匹配(Match Template) - Wuya - 博客园_files/ExpandedBlockStart.gif" onclick="cnblogs_code_hide(&#39;06c5baed-982e-4a47-a0d0-2c1810b6a70b&#39;,event)" style="" id="code_img_opened_06c5baed-982e-4a47-a0d0-2c1810b6a70b" class="code_img_opened"><span class="cnblogs_code_collapse" style="display: none;">将浮点型图像转换成8位byte图像</span>
+<div id="cnblogs_code_open_06c5baed-982e-4a47-a0d0-2c1810b6a70b" class="cnblogs_code_hide" style="display: block;"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./模板匹配(Match Template) - Wuya - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><div><!--<br /><br />Code highlighting produced by Actipro CodeHighlighter (freeware)<br />http://www.CodeHighlighter.com/<br /><br />--><span style="color: #000000;">        </span><span style="color: #808080;">///</span><span style="color: #008000;"> </span><span style="color: #808080;">&lt;summary&gt;</span><span style="color: #008000;"><br>        </span><span style="color: #808080;">///</span><span style="color: #008000;"> 将任意浮点型图像转换成Byte图像；<br>        </span><span style="color: #808080;">///</span><span style="color: #008000;"> 本转换函数对浮点型图像的具体像素值没有要求，自动将值缩放到0～255之间。<br>        </span><span style="color: #808080;">///</span><span style="color: #008000;"> </span><span style="color: #808080;">&lt;/summary&gt;</span><span style="color: #008000;"><br>        </span><span style="color: #808080;">///</span><span style="color: #008000;"> </span><span style="color: #808080;">&lt;typeparam name="TColor"&gt;</span><span style="color: #008000;">图像的色彩空间</span><span style="color: #808080;">&lt;/typeparam&gt;</span><span style="color: #008000;"><br>        </span><span style="color: #808080;">///</span><span style="color: #008000;"> </span><span style="color: #808080;">&lt;param name="source"&gt;</span><span style="color: #008000;">浮点型图像</span><span style="color: #808080;">&lt;/param&gt;</span><span style="color: #008000;"><br>        </span><span style="color: #808080;">///</span><span style="color: #008000;"> </span><span style="color: #808080;">&lt;returns&gt;</span><span style="color: #008000;">返回Byte型图像</span><span style="color: #808080;">&lt;/returns&gt;</span><span style="color: #808080;"><br></span><span style="color: #000000;">        </span><span style="color: #0000ff;">public</span><span style="color: #000000;"> </span><span style="color: #0000ff;">static</span><span style="color: #000000;"> Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">TColor, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> ImageSingleToByte</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">TColor</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">(Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">TColor, Single</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> source)<br>            </span><span style="color: #0000ff;">where</span><span style="color: #000000;"> TColor : </span><span style="color: #0000ff;">struct</span><span style="color: #000000;">, IColor<br>        {<br>            Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">TColor, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> dest </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #0000ff;">new</span><span style="color: #000000;"> Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">TColor, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">(source.Size);<br>            </span><span style="color: #008000;">//</span><span style="color: #008000;">得到源图像的最小和最大值</span><span style="color: #008000;"><br></span><span style="color: #000000;">            </span><span style="color: #0000ff;">double</span><span style="color: #000000;">[] minVal, maxVal;<br>            Point[] minLoc, maxLoc;<br>            source.MinMax(</span><span style="color: #0000ff;">out</span><span style="color: #000000;"> minVal, </span><span style="color: #0000ff;">out</span><span style="color: #000000;"> maxVal, </span><span style="color: #0000ff;">out</span><span style="color: #000000;"> minLoc, </span><span style="color: #0000ff;">out</span><span style="color: #000000;"> maxLoc);<br>            </span><span style="color: #0000ff;">double</span><span style="color: #000000;"> min </span><span style="color: #000000;">=</span><span style="color: #000000;"> minVal[</span><span style="color: #800080;">0</span><span style="color: #000000;">];<br>            </span><span style="color: #0000ff;">double</span><span style="color: #000000;"> max </span><span style="color: #000000;">=</span><span style="color: #000000;"> maxVal[</span><span style="color: #800080;">0</span><span style="color: #000000;">];<br>            </span><span style="color: #0000ff;">for</span><span style="color: #000000;"> (</span><span style="color: #0000ff;">int</span><span style="color: #000000;"> i </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #800080;">1</span><span style="color: #000000;">; i </span><span style="color: #000000;">&lt;</span><span style="color: #000000;"> minVal.Length; i</span><span style="color: #000000;">++</span><span style="color: #000000;">)<br>            {<br>                min </span><span style="color: #000000;">=</span><span style="color: #000000;"> Math.Min(min, minVal[i]);<br>                max </span><span style="color: #000000;">=</span><span style="color: #000000;"> Math.Max(max, maxVal[i]);<br>            }<br>            </span><span style="color: #008000;">//</span><span style="color: #008000;">得到缩放比率和偏移量</span><span style="color: #008000;"><br></span><span style="color: #000000;">            </span><span style="color: #0000ff;">double</span><span style="color: #000000;"> scale </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #800080;">1.0</span><span style="color: #000000;">, shift </span><span style="color: #000000;">=</span><span style="color: #000000;"> </span><span style="color: #800080;">0.0</span><span style="color: #000000;">;<br>            scale </span><span style="color: #000000;">=</span><span style="color: #000000;"> (max </span><span style="color: #000000;">==</span><span style="color: #000000;"> min) </span><span style="color: #000000;">?</span><span style="color: #000000;"> </span><span style="color: #800080;">0.0</span><span style="color: #000000;"> : </span><span style="color: #800080;">255.0</span><span style="color: #000000;"> </span><span style="color: #000000;">/</span><span style="color: #000000;"> (max </span><span style="color: #000000;">-</span><span style="color: #000000;"> min);<br>            shift </span><span style="color: #000000;">=</span><span style="color: #000000;"> (scale </span><span style="color: #000000;">==</span><span style="color: #000000;"> </span><span style="color: #800080;">0</span><span style="color: #000000;">) </span><span style="color: #000000;">?</span><span style="color: #000000;"> min : </span><span style="color: #000000;">-</span><span style="color: #000000;">min </span><span style="color: #000000;">*</span><span style="color: #000000;"> scale;<br>            </span><span style="color: #008000;">//</span><span style="color: #008000;">缩放图像，并浮点图像缩放到256级的灰度</span><span style="color: #008000;"><br></span><span style="color: #000000;">            CvInvoke.cvConvertScaleAbs(source.Ptr, dest.Ptr, scale, shift);<br>            </span><span style="color: #0000ff;">return</span><span style="color: #000000;"> dest;<br>        } <br><br>        </span><span style="color: #808080;">///</span><span style="color: #008000;"> </span><span style="color: #808080;">&lt;summary&gt;</span><span style="color: #008000;"><br>        </span><span style="color: #808080;">///</span><span style="color: #008000;"> 将任意浮点型图像转换成每通道8位的Bitmap；<br>        </span><span style="color: #808080;">///</span><span style="color: #008000;"> 本转换函数对浮点型图像的具体像素值没有要求，自动将值缩放到0～255之间。<br>        </span><span style="color: #808080;">///</span><span style="color: #008000;"> </span><span style="color: #808080;">&lt;/summary&gt;</span><span style="color: #008000;"><br>        </span><span style="color: #808080;">///</span><span style="color: #008000;"> </span><span style="color: #808080;">&lt;typeparam name="TColor"&gt;</span><span style="color: #008000;">图像的色彩空间</span><span style="color: #808080;">&lt;/typeparam&gt;</span><span style="color: #008000;"><br>        </span><span style="color: #808080;">///</span><span style="color: #008000;"> </span><span style="color: #808080;">&lt;param name="source"&gt;</span><span style="color: #008000;">浮点型图像</span><span style="color: #808080;">&lt;/param&gt;</span><span style="color: #008000;"><br>        </span><span style="color: #808080;">///</span><span style="color: #008000;"> </span><span style="color: #808080;">&lt;returns&gt;</span><span style="color: #008000;">返回每通道8位的Bitmap</span><span style="color: #808080;">&lt;/returns&gt;</span><span style="color: #808080;"><br></span><span style="color: #000000;">        </span><span style="color: #0000ff;">public</span><span style="color: #000000;"> </span><span style="color: #0000ff;">static</span><span style="color: #000000;"> Bitmap ImageSingleToBitmap</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">TColor</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">(Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">TColor, Single</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> source)<br>            </span><span style="color: #0000ff;">where</span><span style="color: #000000;"> TColor : </span><span style="color: #0000ff;">struct</span><span style="color: #000000;">, IColor<br>        {<br>            Image</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">TColor, Byte</span><span style="color: #000000;">&gt;</span><span style="color: #000000;"> dest </span><span style="color: #000000;">=</span><span style="color: #000000;"> ImageSingleToByte</span><span style="color: #000000;">&lt;</span><span style="color: #000000;">TColor</span><span style="color: #000000;">&gt;</span><span style="color: #000000;">(source);<br>            Bitmap bitmap </span><span style="color: #000000;">=</span><span style="color: #000000;"> dest.Bitmap;<br>            dest.Dispose();<br>            </span><span style="color: #0000ff;">return</span><span style="color: #000000;"> bitmap;<br>        }<br><br></span></div></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./模板匹配(Match Template) - Wuya - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="./模板匹配(Match Template) - Wuya - 博客园_files/2010020516591090.jpg"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 左上是输入图像，左中是模板图像，右边是各种匹配方式的结果（相关匹配的结果明显不正确）</p>
+<p>&nbsp;</p>
+<p><strong>模板匹配和直方图反向投影的效率<br></strong>&nbsp;&nbsp;&nbsp; 总的来说，模板匹配和直方图反向投影的效率都不高。在我的机器上，在1136*852大小的输入图像上匹配104*132的大小的模板图像（都是单通道灰度图像），大约需要700毫秒；而直方图反向投影大约需要75000毫秒（1.25分钟）。看来还需要继续学习，寻找更好的处理方法。<br>&nbsp;&nbsp;&nbsp; 另一方面，通过搜索OpenCv的源代码，发现OpenCv基本上没有使用并行计算。如果学习完之后，还有时间和热情，我准备尝试优化下OpenCv的并行计算；如果.net 4.0正式版推出了，也可以选择在这一方面做点优化。</p>
+<p>&nbsp;</p>
+<p><strong>感谢您耐心看完本文，希望对您有所帮助。</strong></p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/xrwang/category/231541.html" target="_blank">图像处理</a></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(1664539,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow(&#39;716e3d0b-63cf-dd11-9e4d-001cf0cd104b&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./模板匹配(Match Template) - Wuya - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./模板匹配(Match Template) - Wuya - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/xrwang/" target="_blank"><img src="./模板匹配(Match Template) - Wuya - 博客园_files/u21602.jpg" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/xrwang/">Wuya</a><br>
+            <a href="http://home.cnblogs.com/u/xrwang/followees">关注 - 5</a><br>
+            <a href="http://home.cnblogs.com/u/xrwang/followers">粉丝 - 442</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;716e3d0b-63cf-dd11-9e4d-001cf0cd104b&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(1664539,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">8</span>
+    </div>
+    <div class="buryit" onclick="votePost(1664539,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/04/HowToUseHistogram.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/xrwang/archive/2010/02/04/HowToUseHistogram.html" title="发布于2010-02-04 23:02">颜色直方图的计算、显示、处理、对比及反向投影(How to Use Histogram? Calculate, Show, Process, Compare and BackProject)</a><br><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html" title="发布于2010-02-09 17:13">轮廓的查找、表达、绘制、特性及匹配(How to Use Contour? Find, Component, Construct, Features &amp; Match)</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2010-02-05 17:01</span> <a href="http://www.cnblogs.com/xrwang/">Wuya</a> 阅读(<span id="post_view_count">48394</span>) 评论(<span id="post_comment_count">45</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=1664539" rel="nofollow">编辑</a> <a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#" onclick="AddToWz(1664539);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=25161,cb_entryId=1664539,cb_blogApp=currentBlogApp,cb_blogUserGuid='716e3d0b-63cf-dd11-9e4d-001cf0cd104b',cb_entryCreatedDate='2010/2/5 17:01:00';loadViewCount(cb_entryId);</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<!--done-->
+<div class="feedback_area_title">评论列表</div>
+<div class="feedbackNoItems"></div>
+	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#1762131" class="layer">#1楼</a><a name="1762131" id="comment_anchor_1762131"></a>  <span class="comment_date">2010-02-07 08:45</span> <a id="a_comment_author_1762131" href="http://www.cnblogs.com/SparkingAlways/" target="_blank">Jarod.Zhang</a> <a href="http://msg.cnblogs.com/send/Jarod.Zhang" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1762131" class="blog_comment_body">刚开始使用EmguCV，遇到一个读图像的问题，向你请教：<br>我使用Image&lt;Gray, Sinlge&gt;(filename)构造函数读取一副tif图像，图像的像素值是单精度，大约0.0 - 30.0范围，在用上述方法读取后，对象中的像素值被自动拉伸到 [0, 255] 范围。<br>在看了你的博客文章后，用CvInvoke调用OpenCV中的原始函数CvLoadImage方法，发现读取后指针值为0，（我试着再读取一副jpg图像，这次显示正确读取图像）可是OpenCV的主页上说支持读取tiff文件，为什么指针为空？不解。<br>在此向博主请教这一问题！谢谢<br>我的tiff图像下载地址<br><a href="http://files.cnblogs.com/SparkingAlways/tiff.rar" target="_blank">http://files.cnblogs.com/SparkingAlways/tiff.rar</a></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1762131,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1762131,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#1762133" class="layer">#2楼</a><a name="1762133" id="comment_anchor_1762133"></a>  <span class="comment_date">2010-02-07 08:47</span> <a id="a_comment_author_1762133" href="http://www.cnblogs.com/SparkingAlways/" target="_blank">Jarod.Zhang</a> <a href="http://msg.cnblogs.com/send/Jarod.Zhang" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1762133" class="blog_comment_body">我的目的是读取图像时，保留原像素的原始值。望不吝赐教</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1762133,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1762133,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#1762213" class="layer">#3楼</a><a name="1762213" id="comment_anchor_1762213"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2010-02-07 13:00</span> <a id="a_comment_author_1762213" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1762213" class="blog_comment_body">@Jarod.Zhang<br>hi，你好。据我所知，OpenCv支持的单精度图像有点小要求，那就是值的区间在[0,1]之间；您可以尝试用上文提供的转换算法稍加修改将您的图像转换到[0,1]区间。<br><br>另外，我也试试看能否处理您的图片，如果能处理，我会给您发消息或者写在评论里面。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1762213,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1762213,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_1762213_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#1762220" class="layer">#4楼</a><a name="1762220" id="comment_anchor_1762220"></a>  <span class="comment_date">2010-02-07 13:08</span> <a id="a_comment_author_1762220" href="http://www.cnblogs.com/SparkingAlways/" target="_blank">Jarod.Zhang</a> <a href="http://msg.cnblogs.com/send/Jarod.Zhang" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1762220" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#1762213" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,1762213);">@</a>
+Wuya<br>hi，谢谢您的帮助！另外，你的关于EmguCV文章写得真不错，希望能经常看到您的更新！太少能看到像您写的这样原创的，高质量的介绍EmguCV的文章了！~\(≧▽≦)/~</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1762220,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1762220,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#1762302" class="layer">#5楼</a><a name="1762302" id="comment_anchor_1762302"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2010-02-07 16:35</span> <a id="a_comment_author_1762302" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1762302" class="blog_comment_body">@Jarod.Zhan<br>基本上没有办法打开您提供的那个TIFF文件，我试了以下方法：ACDSEE、画图、GDI+中的Image类、OpenCv中的cvLoadImage函数、EmguCv中的Image&lt;TColor,TDepth&gt;类。<br><br>唯一可以打开该文件的方法是：LibTiff函数库，但是无法获取图像的高度等基本参数。从wikipedia上的信息来看，也许您的那个TIFF文件是独有的格式，别人如果不知道编码是无法读取的。<br>推荐一个专门对付TIFF文件的函数库——LibTiff，网站是：<a href="http://www.libtiff.org/" target="_blank">http://www.libtiff.org/</a><br><br>另外，推荐去看看该格式的介绍：<a href="http://zh.wikipedia.org/wiki/LibTIFF" target="_blank">http://zh.wikipedia.org/wiki/LibTIFF</a><br><br>使用LibTiff访问Tiff文件的大致流程如下（C#代码）：<br>using LibTIFF_NET;<br>//打开TIFF文件<br>            IntPtr ptrTiff=LibTIFF.Open("tiff.tif", "r");<br>            if (ptrTiff != IntPtr.Zero)<br>            {<br>                //取得该TIFF文件的一些参数<br>                UInt32 imageLength; //行数<br>                IntPtr ptrBuff;<br>                UInt32 row;<br>                double length;<br>                LibTIFF.GetField(ptrTiff, (int)TIFFTags.TIFFTAG_IMAGELENGTH, out length);   //得到行数<br>                imageLength = (UInt32)length;<br>                int lineSize = LibTIFF.ScanlineSize(ptrTiff);                               //得到每行数据的大小<br>                ptrBuff = LibTIFF._malloc(lineSize);                                        //分配内存（用来存放每行数据）<br>                byte[] data = new byte[lineSize];                                           //用来存储每行数据的字节数组<br>                for (row = 0; row &lt; imageLength; row++)                                     //依次读取每行数据，并将数据复制到字节数组中<br>                {<br>                    LibTIFF.ReadScanline(ptrTiff, ptrBuff, row);<br>                    Marshal.Copy(ptrBuff, data, 0, lineSize);<br>                    //使用数据......<br>                }<br>                LibTIFF._free(ptrBuff);                                                     //释放内存<br>                LibTIFF.Close(ptrTiff);                                                     //关闭TIFF文件<br>            }<br>            else<br>                MessageBox.Show("open failed");<br><br>IBM的网站上有两篇介绍LibTiff的文章很不错，名为《用 libtiff 进行图形编程》，地址是：<a href="http://www.ibm.com/developerworks/cn/linux/guitoolkit/libtiff/part1/index.html" target="_blank">http://www.ibm.com/developerworks/cn/linux/guitoolkit/libtiff/part1/index.html</a></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1762302,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1762302,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_1762302_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#1762473" class="layer">#6楼</a><a name="1762473" id="comment_anchor_1762473"></a>  <span class="comment_date">2010-02-08 00:36</span> <a id="a_comment_author_1762473" href="http://www.cnblogs.com/SparkingAlways/" target="_blank">Jarod.Zhang</a> <a href="http://msg.cnblogs.com/send/Jarod.Zhang" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1762473" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#1762302" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,1762302);">@</a>
+Wuya<br>谢谢Wuya，忘了提到这个图像是用ArcGIS导出的格式，应该是GeoTiff格式。我继续尝试一下其他的读图像的库，找到一个这样的：<br><a href="http://trac.osgeo.org/geotiff/" target="_blank">http://trac.osgeo.org/geotiff/</a></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1762473,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1762473,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#1762601" class="layer">#7楼</a><a name="1762601" id="comment_anchor_1762601"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2010-02-08 10:12</span> <a id="a_comment_author_1762601" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1762601" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#1762473" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,1762473);">@</a>
+Jarod.Zhang<br>加油，我继续旅途～～</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1762601,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1762601,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_1762601_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#1829297" class="layer">#8楼</a><a name="1829297" id="comment_anchor_1829297"></a>  <span class="comment_date">2010-05-20 22:13</span> <a id="a_comment_author_1829297" href="http://home.cnblogs.com/u/134596/" target="_blank">zpsy</a> <a href="http://msg.cnblogs.com/send/zpsy" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1829297" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#1762601" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,1762601);">@</a>
+Wuya<br><br>您好，感谢您每篇很热真的文章。我真希望您用的是opencv，哈哈。<br>加油！<br></div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1829297,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1829297,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#1925239" class="layer">#9楼</a><a name="1925239" id="comment_anchor_1925239"></a>  <span class="comment_date">2010-09-27 14:26</span> <a id="a_comment_author_1925239" href="http://www.cnblogs.com/jasondun/" target="_blank">绵白糖</a> <a href="http://msg.cnblogs.com/send/%E7%BB%B5%E7%99%BD%E7%B3%96" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1925239" class="blog_comment_body">博主你好,我看了你的这个模版匹配后, 用在 桌面屏幕的检测上, 当出现模版图像的时候,确实找到的位置非常准确,但是 桌面没有 图像的时候 返回的任然是一个坐标。<br>因此我想请问下，如何判定当前桌面屏幕没有 这个模版图像呢？ 谢谢不胜感激。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1925239,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1925239,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_1925239_avatar" style="display:none;">http://pic.cnblogs.com/face/u48544.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#1925244" class="layer">#10楼</a><a name="1925244" id="comment_anchor_1925244"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2010-09-27 14:38</span> <a id="a_comment_author_1925244" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1925244" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#1925239" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,1925239);">@</a>
+绵白糖<br>您可以设置一个阀值，当模板匹配的结果大于或者小于该阀值时，认为没有需要搜索的物体。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1925244,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1925244,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_1925244_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#1925301" class="layer">#11楼</a><a name="1925301" id="comment_anchor_1925301"></a>  <span class="comment_date">2010-09-27 16:01</span> <a id="a_comment_author_1925301" href="http://www.cnblogs.com/jasondun/" target="_blank">绵白糖</a> <a href="http://msg.cnblogs.com/send/%E7%BB%B5%E7%99%BD%E7%B3%96" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1925301" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#1925244" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,1925244);">@</a>
+Wuya<br>谢谢博主如此及时的回答，万分感谢。 这个阀值如何设定呢？ 因为模版图像出现的位置并不固定。 </div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1925301,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1925301,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_1925301_avatar" style="display:none;">http://pic.cnblogs.com/face/u48544.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#1925309" class="layer">#12楼</a><a name="1925309" id="comment_anchor_1925309"></a>  <span class="comment_date">2010-09-27 16:05</span> <a id="a_comment_author_1925309" href="http://www.cnblogs.com/jasondun/" target="_blank">绵白糖</a> <a href="http://msg.cnblogs.com/send/%E7%BB%B5%E7%99%BD%E7%B3%96" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1925309" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#1925244" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,1925244);">@</a>
+Wuya<br>谢谢博主，刚才一下楞了 现在知道了 直接用返回的值进行判断即可，对这个值设定一个阀值</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1925309,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1925309,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_1925309_avatar" style="display:none;">http://pic.cnblogs.com/face/u48544.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2166800" class="layer">#13楼</a><a name="2166800" id="comment_anchor_2166800"></a>  <span class="comment_date">2011-08-02 13:59</span> <a id="a_comment_author_2166800" href="http://home.cnblogs.com/u/320596/" target="_blank">tonxon</a> <a href="http://msg.cnblogs.com/send/tonxon" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2166800" class="blog_comment_body">cvMatchTemplate得到的结果像素级的，请教楼主：如果让您进行亚像素级别的匹配，您大概需要哪几个步骤？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2166800,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2166800,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2170877" class="layer">#14楼</a><a name="2170877" id="comment_anchor_2170877"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2011-08-08 07:52</span> <a id="a_comment_author_2170877" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2170877" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#1925309" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,1925309);">@</a>
+绵白糖<br>^_^</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2170877,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2170877,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2170877_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2170878" class="layer">#15楼</a><a name="2170878" id="comment_anchor_2170878"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2011-08-08 07:52</span> <a id="a_comment_author_2170878" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2170878" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2166800" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2166800);">@</a>
+tonxon<br>不知道  -_-</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2170878,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2170878,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2170878_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2171216" class="layer">#16楼</a><a name="2171216" id="comment_anchor_2171216"></a>  <span class="comment_date">2011-08-08 12:18</span> <a id="a_comment_author_2171216" href="http://home.cnblogs.com/u/320596/" target="_blank">tonxon</a> <a href="http://msg.cnblogs.com/send/tonxon" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2171216" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2170878" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2170878);">@</a>
+Wuya<br>谢谢</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2171216,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2171216,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2201573" class="layer">#17楼</a><a name="2201573" id="comment_anchor_2201573"></a>  <span class="comment_date">2011-09-17 18:22</span> <a id="a_comment_author_2201573" href="http://home.cnblogs.com/u/333194/" target="_blank">tzh</a> <a href="http://msg.cnblogs.com/send/tzh" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2201573" class="blog_comment_body">博主：<br>    您好！<br>    我是刚刚接触到图像，因为看了你这个模板匹配的程序，所以学者照写你的程序想实现一下，但是我现在生成执行文件的时候，出现了这样一个错误：<br>D:\我的文档\Visual Studio 2008\Projects\MODALFIT\MODALFIT\Form1.cs(104,36): 错误 CS0029: 无法将类型“System.Drawing.Bitmap”隐式转换为“Emgu.CV.IImage”<br>D:\我的文档\Visual Studio 2008\Projects\MODALFIT\MODALFIT\Form1.cs(32,67): 错误 CS0030: 无法将类型“Emgu.CV.IImage”转换为“System.Drawing.Bitmap”<br>一直找不到是什么原因?有时间的话麻烦博主帮我看一下是哪方面的问题？程序我是仿照你的模板匹配上面的代码写的。<br>引用是一下部分<br>using System.ComponentModel;<br>using System.Data;<br>using System.Drawing;<br>using System.Linq;<br>using System.Text;<br>using System.Windows.Forms;<br>using System.Diagnostics;<br>using System.Runtime.InteropServices;<br>using Emgu.CV;<br>using Emgu.CV.CvEnum;<br>using Emgu.CV.Structure;<br>using Emgu.CV.UI;<br><br>我用的是VS2008-C#,Emgu2.2,因为刚刚接触到C#和图像处理，还有很多不懂得地方，请多关照！如果麻烦的地方，请多多谅解！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2201573,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2201573,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2266309" class="layer">#18楼</a><a name="2266309" id="comment_anchor_2266309"></a>  <span class="comment_date">2011-12-09 17:07</span> <a id="a_comment_author_2266309" href="http://home.cnblogs.com/u/353302/" target="_blank">xiapan</a> <a href="http://msg.cnblogs.com/send/xiapan" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2266309" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2201573" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2201573);">@</a>
+tzh<br>你这问题解决了么？能不能告诉我一下啊？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2266309,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2266309,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2379777" class="layer">#19楼</a><a name="2379777" id="comment_anchor_2379777"></a>  <span class="comment_date">2012-05-18 10:41</span> <a id="a_comment_author_2379777" href="http://home.cnblogs.com/u/410222/" target="_blank">zhdy</a> <a href="http://msg.cnblogs.com/send/zhdy" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2379777" class="blog_comment_body">来晚了，才接触这方面的知识；感谢楼主的资料。<br>另外，有个问题想问一下：我想在一幅图像中找出多个与模板相同的块并分割出来，如何实现？这个模板匹配好像只能找到一个最佳的相似块</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2379777,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2379777,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2380653" class="layer">#20楼</a><a name="2380653" id="comment_anchor_2380653"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2012-05-19 21:41</span> <a id="a_comment_author_2380653" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2380653" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2379777" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2379777);">@</a>
+zhdy<br>您可以换个思路：<br>假设满足一定的条件就认为是相似块，这样不就有多个相似块了嘛。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2380653,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2380653,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2380653_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2389382" class="layer">#21楼</a><a name="2389382" id="comment_anchor_2389382"></a>  <span class="comment_date">2012-05-30 17:36</span> <a id="a_comment_author_2389382" href="http://home.cnblogs.com/u/414179/" target="_blank">Old_Me_Mory</a> <a href="http://msg.cnblogs.com/send/Old_Me_Mory" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2389382" class="blog_comment_body">博主您好！<br>我在做模板匹配的时候需要使用的模板有一部分是透明的，也就是说只对另一部分做匹配可以么，就像引入掩码的概念一样，貌似openCV没有这样的接口吧？<br>博主您知道该怎么处理么？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2389382,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2389382,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2389697" class="layer">#22楼</a><a name="2389697" id="comment_anchor_2389697"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2012-05-31 07:56</span> <a id="a_comment_author_2389697" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2389697" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2389382" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2389382);">@</a>
+Old_Me_Mory<br>实话说，不知道怎么弄，现在也没时间思考并实践这个问题。<br>您可以自己动手试试呢。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2389697,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2389697,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2389697_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2390553" class="layer">#23楼</a><a name="2390553" id="comment_anchor_2390553"></a>  <span class="comment_date">2012-05-31 18:42</span> <a id="a_comment_author_2390553" href="http://home.cnblogs.com/u/414179/" target="_blank">Old_Me_Mory</a> <a href="http://msg.cnblogs.com/send/Old_Me_Mory" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2390553" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2389697" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2389697);">@</a>
+Wuya<br>呃，我自己手打了一个有掩码的模板匹配。。但是效率真心不好。。<br>写openCV的大神们太强了。。<br>谢谢您~</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2390553,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2390553,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2431189" class="layer">#24楼</a><a name="2431189" id="comment_anchor_2431189"></a>  <span class="comment_date">2012-07-20 11:23</span> <a id="a_comment_author_2431189" href="http://home.cnblogs.com/u/429500/" target="_blank">与龙共舞</a> <a href="http://msg.cnblogs.com/send/%E4%B8%8E%E9%BE%99%E5%85%B1%E8%88%9E" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2431189" class="blog_comment_body">博主，您好：<br>打开程序显示错误错误“System.Drawing.ImageConverter”并不包含“ImageSingleToBitmap”的定义	，不知道为什么，是Drawing.ImageConverter中没有ImageSingleToBitmap这个方法么？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2431189,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2431189,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2485268" class="layer">#25楼</a><a name="2485268" id="comment_anchor_2485268"></a>  <span class="comment_date">2012-09-29 15:13</span> <a id="a_comment_author_2485268" href="http://www.cnblogs.com/bingkuailianxiaoziying/" target="_blank">冰块脸小紫英</a> <a href="http://msg.cnblogs.com/send/%E5%86%B0%E5%9D%97%E8%84%B8%E5%B0%8F%E7%B4%AB%E8%8B%B1" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2485268" class="blog_comment_body">博主你好，我一直很迷茫模板匹配的尺度指的是什么？看到您博客中提到：缩放因子，更小的图像可以提高处理速度，好像觉得明白了些。。，就是这个作用吗？还有没有其它作用？能不能帮忙推荐个模板匹配的详细资料呢？谢谢~</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2485268,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2485268,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2485268_avatar" style="display:none;">http://pic.cnblogs.com/face/u406806.gif?id=09113026</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2677745" class="layer">#26楼</a><a name="2677745" id="comment_anchor_2677745"></a>  <span class="comment_date">2013-05-10 16:31</span> <a id="a_comment_author_2677745" href="http://home.cnblogs.com/u/513968/" target="_blank">aiqinhai</a> <a href="http://msg.cnblogs.com/send/aiqinhai" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2677745" class="blog_comment_body">您好，问个问题，Emgu中如何将IntPtr转化成矩阵（Matrix）形式呢<br>?</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2677745,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2677745,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2678302" class="layer">#27楼</a><a name="2678302" id="comment_anchor_2678302"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2013-05-11 17:59</span> <a id="a_comment_author_2678302" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2678302" class="blog_comment_body">将指向矩阵的指针转化成C#中的托管矩阵？<br>请参看.net类库中的Marshal类文档，位于：<br><a href="http://msdn.microsoft.com/zh-CN/library/system.runtime.interopservices.marshal" target="_blank">http://msdn.microsoft.com/zh-CN/library/system.runtime.interopservices.marshal</a>(v=vs.110).aspx</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2678302,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2678302,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2678302_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2693438" class="layer">#28楼</a><a name="2693438" id="comment_anchor_2693438"></a>  <span class="comment_date">2013-05-30 10:47</span> <a id="a_comment_author_2693438" href="http://www.cnblogs.com/wellsoho/" target="_blank">coder狼</a> <a href="http://msg.cnblogs.com/send/coder%E7%8B%BC" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2693438" class="blog_comment_body">刚接触图像识别，这水好深啊。羡慕这样的高手！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2693438,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2693438,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2693438_avatar" style="display:none;">http://pic.cnblogs.com/face/u76223.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2704726" class="layer">#29楼</a><a name="2704726" id="comment_anchor_2704726"></a>  <span class="comment_date">2013-06-14 11:48</span> <a id="a_comment_author_2704726" href="http://www.cnblogs.com/The-Big-Blue/" target="_blank">gxiaob</a> <a href="http://msg.cnblogs.com/send/gxiaob" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2704726" class="blog_comment_body">谢谢博主，总结的这么详细，请教一下问题，在模版匹配之后，匹配的效果好坏如何判断，这里该如何设置阈值呢？需要遵循什么样的原则？在CV_TM_CCOEFF _NORMED这种模式下面，其匹配结果是越大越好，那么给它设定一个什么样的阈值，从而给出判断结果呢，目前本人正准备用这个，但是阈值一直不知如何却设定，还请指导一下，谢谢！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2704726,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2704726,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2704730" class="layer">#30楼</a><a name="2704730" id="comment_anchor_2704730"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2013-06-14 11:51</span> <a id="a_comment_author_2704730" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2704730" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2693438" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2693438);">@</a>
+coder狼<br>汗，我是菜鸟一只，乐于分享而已。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2704730,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2704730,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2704730_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2704731" class="layer">#31楼</a><a name="2704731" id="comment_anchor_2704731"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2013-06-14 11:52</span> <a id="a_comment_author_2704731" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2704731" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2704726" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2704726);">@</a>
+gxiaob<br>阀值请通过试验不断尝试。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2704731,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2704731,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_2704731_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2704739" class="layer">#32楼</a><a name="2704739" id="comment_anchor_2704739"></a>  <span class="comment_date">2013-06-14 11:58</span> <a id="a_comment_author_2704739" href="http://www.cnblogs.com/The-Big-Blue/" target="_blank">gxiaob</a> <a href="http://msg.cnblogs.com/send/gxiaob" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2704739" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2704731" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2704731);">@</a>
+Wuya<br>谢谢！您回复的真快，呵呵！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2704739,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2704739,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2704741" class="layer">#33楼</a><a name="2704741" id="comment_anchor_2704741"></a>  <span class="comment_date">2013-06-14 11:59</span> <a id="a_comment_author_2704741" href="http://www.cnblogs.com/The-Big-Blue/" target="_blank">gxiaob</a> <a href="http://msg.cnblogs.com/send/gxiaob" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2704741" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2704731" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2704731);">@</a>
+Wuya<br>这里介绍的都是些模版匹配算法，目前有没有其他较好的匹配算法呢？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2704741,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2704741,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2880132" class="layer">#34楼</a><a name="2880132" id="comment_anchor_2880132"></a>  <span class="comment_date">2014-02-21 15:48</span> <a id="a_comment_author_2880132" href="http://www.cnblogs.com/gx520/" target="_blank">弹琴小虎</a> <a href="http://msg.cnblogs.com/send/%E5%BC%B9%E7%90%B4%E5%B0%8F%E8%99%8E" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2880132" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2380653" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2380653);">@</a>
+Wuya<br>LZ能否详细描述一下方法？在哪里设置阀值？是多次循环归一化还是直接循环遍历归一化后的结果图像啊？刚接触，望LZ解惑</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2880132,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2880132,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2974425" class="layer">#35楼</a><a name="2974425" id="comment_anchor_2974425"></a>  <span class="comment_date">2014-06-30 16:25</span> <a id="a_comment_author_2974425" href="http://www.cnblogs.com/sitonmoon/" target="_blank">化境编程</a> <a href="http://msg.cnblogs.com/send/%E5%8C%96%E5%A2%83%E7%BC%96%E7%A8%8B" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2974425" class="blog_comment_body">这种模板匹配根本没有实用价值 实际中你会拿一模一样的一部分去和模板匹配？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2974425,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2974425,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#3306013" class="layer">#36楼</a><a name="3306013" id="comment_anchor_3306013"></a>  <span class="comment_date">2015-11-13 16:11</span> <a id="a_comment_author_3306013" href="http://home.cnblogs.com/u/836987/" target="_blank">等待没有幸福</a> <a href="http://msg.cnblogs.com/send/%E7%AD%89%E5%BE%85%E6%B2%A1%E6%9C%89%E5%B9%B8%E7%A6%8F" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3306013" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2974425" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2974425);">@</a>
+化境编程<br>请问您是怎么处理模板的尺寸不一的问题呢？有什么思路吗？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3306013,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3306013,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#3306016" class="layer">#37楼</a><a name="3306016" id="comment_anchor_3306016"></a>  <span class="comment_date">2015-11-13 16:12</span> <a id="a_comment_author_3306016" href="http://home.cnblogs.com/u/836987/" target="_blank">等待没有幸福</a> <a href="http://msg.cnblogs.com/send/%E7%AD%89%E5%BE%85%E6%B2%A1%E6%9C%89%E5%B9%B8%E7%A6%8F" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3306016" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2704730" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2704730);">@</a>
+Wuya<br>请问您是怎么处理模板的尺寸不一的问题呢？有什么思路吗？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3306016,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3306016,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#3306017" class="layer">#38楼</a><a name="3306017" id="comment_anchor_3306017"></a>  <span class="comment_date">2015-11-13 16:12</span> <a id="a_comment_author_3306017" href="http://home.cnblogs.com/u/836987/" target="_blank">等待没有幸福</a> <a href="http://msg.cnblogs.com/send/%E7%AD%89%E5%BE%85%E6%B2%A1%E6%9C%89%E5%B9%B8%E7%A6%8F" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3306017" class="blog_comment_body">请问您是怎么处理模板的尺寸不一的问题呢？有什么思路吗？</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3306017,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3306017,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#3357018" class="layer">#39楼</a><a name="3357018" id="comment_anchor_3357018"></a>  <span class="comment_date">2016-01-30 20:09</span> <a id="a_comment_author_3357018" href="http://www.cnblogs.com/BookSir/" target="_blank">Genius Zhang</a> <a href="http://msg.cnblogs.com/send/Genius%20Zhang" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3357018" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2974425" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,2974425);">@</a>
+化境编程<br><fieldset class="comment_quote"><legend><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#2974425" title="查看引用原文">引用</a></legend>这种模板匹配根本没有实用价值 实际中你会拿一模一样的一部分去和模板匹配？</fieldset><br>那是你还没遇到这种场景，我现在就需要这样子</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3357018,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3357018,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3357018_avatar" style="display:none;">http://pic.cnblogs.com/face/u20019.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#3520317" class="layer">#40楼</a><a name="3520317" id="comment_anchor_3520317"></a>  <span class="comment_date">2016-09-27 11:15</span> <a id="a_comment_author_3520317" href="http://www.cnblogs.com/letben/" target="_blank">木鸟飞</a> <a href="http://msg.cnblogs.com/send/%E6%9C%A8%E9%B8%9F%E9%A3%9E" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3520317" class="blog_comment_body">楼主最近还在这个博客空间么！？~可以发一份源码和运行示例图片嘛~~~，想要跑起来看看效果。之前是做 sift全景图像拼接的，对于这块儿不是特别熟悉，想看看这个效果，以及拼接的时长。拜托您了lf15102293275@tju.edu.cn</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3520317,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3520317,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3520317_avatar" style="display:none;">http://pic.cnblogs.com/face/756783/20150516134213.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#3520381" class="layer">#41楼</a><a name="3520381" id="comment_anchor_3520381"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2016-09-27 12:03</span> <a id="a_comment_author_3520381" href="http://www.cnblogs.com/xrwang/" target="_blank">Wuya</a> <a href="http://msg.cnblogs.com/send/Wuya" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3520381" class="blog_comment_body"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#3520317" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3520317);">@</a>
+木鸟飞<br>请看《源代码下载》这篇文章。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3520381,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3520381,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3520381_avatar" style="display:none;">http://pic.cnblogs.com/face/u21602.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#3520412" class="layer">#42楼</a><a name="3520412" id="comment_anchor_3520412"></a>  <span class="comment_date">2016-09-27 13:19</span> <a id="a_comment_author_3520412" href="http://www.cnblogs.com/letben/" target="_blank">木鸟飞</a> <a href="http://msg.cnblogs.com/send/%E6%9C%A8%E9%B8%9F%E9%A3%9E" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3520412" class="blog_comment_body">谢谢~~~</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3520412,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3520412,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3520412_avatar" style="display:none;">http://pic.cnblogs.com/face/756783/20150516134213.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#3520419" class="layer">#43楼</a><a name="3520419" id="comment_anchor_3520419"></a>  <span class="comment_date">2016-09-27 13:27</span> <a id="a_comment_author_3520419" href="http://www.cnblogs.com/letben/" target="_blank">木鸟飞</a> <a href="http://msg.cnblogs.com/send/%E6%9C%A8%E9%B8%9F%E9%A3%9E" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3520419" class="blog_comment_body">两个链接都点不进去啊~~~喂~~~囧</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3520419,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3520419,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3520419_avatar" style="display:none;">http://pic.cnblogs.com/face/756783/20150516134213.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#3537243" class="layer">#44楼</a><a name="3537243" id="comment_anchor_3537243"></a>  <span class="comment_date">2016-10-20 21:30</span> <a id="a_comment_author_3537243" href="http://home.cnblogs.com/u/1046756/" target="_blank">zyjnippon</a> <a href="http://msg.cnblogs.com/send/zyjnippon" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3537243" class="blog_comment_body">楼主你好，<br>我在用这个模板匹配遇到一个问题，那就是模板的要和对应的图像在尺寸上基本相同，尺寸相距太大（内容相同，比如用resize）会出现错误识别，但是这个算法是通过计算最值确定匹配点的，所以无论对错都一定会匹配到某一点上去，有没有什么方法能够识别匹配是否正确呢？ 我观察了取出的最值，无论匹配是否正确似乎并没有什么可循的规律</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3537243,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3537243,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#3578719" class="layer">#45楼</a><a name="3578719" id="comment_anchor_3578719"></a><span id="comment-maxId" style="display:none;">3578719</span><span id="comment-maxDate" style="display:none;">2016/12/12 17:01:48</span>  <span class="comment_date">2016-12-12 17:01</span> <a id="a_comment_author_3578719" href="http://home.cnblogs.com/u/1079386/" target="_blank">zhudada</a> <a href="http://msg.cnblogs.com/send/zhudada" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3578719" class="blog_comment_body">博主请问你有这个的源代码吗？有的话，麻烦发一下到我的邮箱1159147833@qq.com，谢谢！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3578719,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3578719,&#39;Bury&#39;,this)">反对(0)</a></div>
+			</div>
+		</div>
+	<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#" onclick="return RefreshPage();">刷新页面</a><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://arcapp.anruichina.com/arctrac/trac?tid=smb_azure_1212_CNBlog" target="_blank">【福利】微软Azure给博客园的你专属双重好礼</a><br><a href="http://rongcloud.cn/reports/journal2" target="_blank">【推荐】融云发布 App 社交化白皮书 IM 提升活跃超 8 倍</a><br><a href="http://bbs.h3bpm.com/index.php?m=app&app=product_download&a=reg" target="_blank">【推荐】BPM免费下载</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"><a href="http://www.gcpowertools.com.cn/products/componentone.htm?utm_source=cnblogs&utm_medium=blogpage&utm_term=bottom&utm_content=C1&utm_campaign=community" target="_blank"><img width="300" height="250" src="./模板匹配(Match Template) - Wuya - 博客园_files/24442-20161031104644908-57254170.png" alt=""></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/559923/" target="_blank">陈皓：技术人员的发展之路</a><br> ·  <a href="http://news.cnblogs.com/n/559922/" target="_blank">阿里CEO张勇：每个企业都要走向数据公司，才能走向新零售</a><br> ·  <a href="http://news.cnblogs.com/n/559921/" target="_blank">机器人的未来：2017~2020年的10个预测</a><br> ·  <a href="http://news.cnblogs.com/n/559920/" target="_blank">阿里大文娱未来三年的投入规划超过500亿：我们不是来玩的</a><br> ·  <a href="http://news.cnblogs.com/n/559919/" target="_blank">网易员工偷看后台数据牟利 判有期徒刑2年</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="http://bbs.h3bpm.com/index.php?m=app&app=product_download&a=reg" target="_blank"><img width="468" height="60" src="./模板匹配(Match Template) - Wuya - 博客园_files/35695-20161213142353073-1602158633.jpg" alt=""></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/556770/" target="_blank">写给未来的程序媛</a><br> ·  <a href="http://kb.cnblogs.com/page/558087/" target="_blank">高质量的工程代码为什么难写</a><br> ·  <a href="http://kb.cnblogs.com/page/555750/" target="_blank">循序渐进地代码重构</a><br> ·  <a href="http://kb.cnblogs.com/page/554496/" target="_blank">技术的正宗与野路子</a><br> ·  <a href="http://kb.cnblogs.com/page/553682/" target="_blank">陈皓：什么是工程师文化？</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/xrwang/">Wuya</a><br>园龄：<a href="http://home.cnblogs.com/u/xrwang/" title="入园时间：2007-03-16">9年9个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/xrwang/followers/">442</a><br>关注：<a href="http://home.cnblogs.com/u/xrwang/followees/">5</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow(&#39;716e3d0b-63cf-dd11-9e4d-001cf0cd104b&#39;)">+加关注</a></div></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="calendar"><div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2010/01/01&#39;);return false;">&lt;</a></td><td align="center">2010年2月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2010/03/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">31</td><td align="center">1</td><td align="center"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/02.html"><u>2</u></a></td><td align="center">3</td><td align="center"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/04.html"><u>4</u></a></td><td align="center"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05.html"><u>5</u></a></td><td class="CalWeekendDay" align="center">6</td></tr><tr><td class="CalWeekendDay" align="center">7</td><td align="center">8</td><td align="center"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09.html"><u>9</u></a></td><td align="center">10</td><td align="center">11</td><td align="center">12</td><td class="CalWeekendDay" align="center"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/13.html"><u>13</u></a></td></tr><tr><td class="CalWeekendDay" align="center">14</td><td align="center">15</td><td align="center">16</td><td align="center">17</td><td align="center">18</td><td align="center">19</td><td class="CalWeekendDay" align="center">20</td></tr><tr><td class="CalWeekendDay" align="center"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/21.html"><u>21</u></a></td><td align="center">22</td><td align="center">23</td><td align="center">24</td><td align="center">25</td><td align="center">26</td><td class="CalWeekendDay" align="center">27</td></tr><tr><td class="CalWeekendDay" align="center"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/28.html"><u>28</u></a></td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td></tr><tr><td class="CalOtherMonthDay" align="center">7</td><td class="CalOtherMonthDay" align="center">8</td><td class="CalOtherMonthDay" align="center">9</td><td class="CalOtherMonthDay" align="center">10</td><td class="CalOtherMonthDay" align="center">11</td><td class="CalOtherMonthDay" align="center">12</td><td class="CalOtherMonthDay" align="center">13</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script></div>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/xrwang/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/xrwang/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/xrwang/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/xrwang/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/xrwang/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_toptags" class="sidebar-block">
+<div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/xrwang/tag/weixin/">weixin</a>(5)</li><li><a href="http://www.cnblogs.com/xrwang/tag/javascript/">javascript</a>(2)</li><li><a href="http://www.cnblogs.com/xrwang/tag/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a>(2)</li><li><a href="http://www.cnblogs.com/xrwang/tag/%E9%A2%9C%E8%89%B2/">颜色</a>(1)</li><li><a href="http://www.cnblogs.com/xrwang/tag/%E6%A0%B7%E5%BC%8F%E8%A1%A8/">样式表</a>(1)</li><li><a href="http://www.cnblogs.com/xrwang/tag/js/">js</a>(1)</li><li><a href="http://www.cnblogs.com/xrwang/tag/RANSAC%20%E9%9A%8F%E6%9C%BA%E6%8A%BD%E6%A0%B7%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95/">RANSAC 随机抽样一致性算法</a>(1)</li><li><a href="http://www.cnblogs.com/xrwang/tag/vbs/">vbs</a>(1)</li><li><a href="http://www.cnblogs.com/xrwang/tag/vs2005/">vs2005</a>(1)</li><li><a href="http://www.cnblogs.com/xrwang/tag/.net%20%E5%9B%BE%E7%89%87%20%E6%AF%94%E8%BE%83/">.net 图片 比较</a>(1)</li><li><a href="http://www.cnblogs.com/xrwang/tag/">更多</a></li>
+</ul>
+</div></div><div id="sidebar_categories">
+<div class="catListPostCategory">
+<h3 class="catListTitle">随笔分类<span style="font-size:11px;font-weight:normal">(34)</span></h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/xrwang/category/286522.html">asp.net网站(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/xrwang/category/575377.html">安卓开发(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/xrwang/category/303742.html">其他(4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/xrwang/category/286829.html">算法(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/xrwang/category/231541.html">图像处理(21)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/xrwang/category/660918.html">微信(5)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catListPostArchive">
+<h3 class="catListTitle">随笔档案<span style="font-size:11px;font-weight:normal">(40)</span></h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/xrwang/archive/2015/03.html">2015年3月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/xrwang/archive/2015/02.html">2015年2月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/xrwang/archive/2014/05.html">2014年5月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/xrwang/archive/2014/02.html">2014年2月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/xrwang/archive/2013/05.html">2013年5月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/xrwang/archive/2012/06.html">2012年6月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/xrwang/archive/2012/04.html">2012年4月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/xrwang/archive/2011/07.html">2011年7月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_8" href="http://www.cnblogs.com/xrwang/archive/2011/06.html">2011年6月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_9" href="http://www.cnblogs.com/xrwang/archive/2011/04.html">2011年4月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_10" href="http://www.cnblogs.com/xrwang/archive/2011/03.html">2011年3月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_11" href="http://www.cnblogs.com/xrwang/archive/2010/12.html">2010年12月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_12" href="http://www.cnblogs.com/xrwang/archive/2010/11.html">2010年11月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_13" href="http://www.cnblogs.com/xrwang/archive/2010/04.html">2010年4月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_14" href="http://www.cnblogs.com/xrwang/archive/2010/03.html">2010年3月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_15" href="http://www.cnblogs.com/xrwang/archive/2010/02.html">2010年2月 (7)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_16" href="http://www.cnblogs.com/xrwang/archive/2010/01.html">2010年1月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_17" href="http://www.cnblogs.com/xrwang/archive/2008/09.html">2008年9月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_18" href="http://www.cnblogs.com/xrwang/archive/2008/08.html">2008年8月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_19" href="http://www.cnblogs.com/xrwang/archive/2008/07.html">2008年7月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_20" href="http://www.cnblogs.com/xrwang/archive/2008/01.html">2008年1月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_21" href="http://www.cnblogs.com/xrwang/archive/2007/05.html">2007年5月 (1)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_22" href="http://www.cnblogs.com/xrwang/archive/2007/03.html">2007年3月 (1)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xrwang/p/PublicAccount-BasicInterface.html#3582548">1. Re:.net微信公众号开发——基础接口</a></li>
+        <li class="recent_comment_body">mark</li>
+        <li class="recent_comment_author">--yesorno</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#3578719">2. Re:模板匹配(Match Template)</a></li>
+        <li class="recent_comment_body">博主请问你有这个的源代码吗？有的话，麻烦发一下到我的邮箱1159147833@qq.com，谢谢！</li>
+        <li class="recent_comment_author">--zhudada</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xrwang/archive/2010/03/27/BackgroundGenerationAndForegroundDetectionPhase2.html#3567376">3. Re:背景建模与前景检测之二(Background Generation And Foreground Detection Phase 2)</a></li>
+        <li class="recent_comment_body">请问下这个算法实现的源代码有吗？可不可以分享一下？</li>
+        <li class="recent_comment_author">--不懂就问的好孩子</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xrwang/p/PublicAccount-QuickStart.html#3541890">4. Re:.net微信公众号开发——快速入门</a></li>
+        <li class="recent_comment_body">有没有人遇到，开启服务器安全狗后回话验证中级模式后，消息返回不了的问题的？<br></li>
+        <li class="recent_comment_author">--dfjjfxyl</li>
+        <li class="recent_comment_title"><a href="http://www.cnblogs.com/xrwang/archive/2010/02/05/MatchTemplate.html#3537243">5. Re:模板匹配(Match Template)</a></li>
+        <li class="recent_comment_body">楼主你好，我在用这个模板匹配遇到一个问题，那就是模板的要和对应的图像在尺寸上基本相同，尺寸相距太大（内容相同，比如用resize）会出现错误识别，但是这个算法是通过计算最值确定匹配点的，所以无论对错都......</li>
+        <li class="recent_comment_author">--zyjnippon</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/xrwang/p/AndroidStudioImportJarAndSoLibrary.html">1. Android Studio开发入门-引用jar及so文件(90460)</a></li><li><a href="http://www.cnblogs.com/xrwang/archive/2010/03/03/ImageFeatureDetection.html">2. 图像特征检测(Image Feature Detection)(52997)</a></li><li><a href="./模板匹配(Match Template) - Wuya - 博客园_files/模板匹配(Match Template) - Wuya - 博客园.html">3. 模板匹配(Match Template)(48394)</a></li><li><a href="http://www.cnblogs.com/xrwang/archive/2010/02/28/ImageSegmentation.html">4. 图像分割(Image Segmentation)(45511)</a></li><li><a href="http://www.cnblogs.com/xrwang/archive/2011/03/09/ransac-1.html">5. 随机抽样一致性算法（RANSAC）(39284)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/xrwang/archive/2010/03/03/ImageFeatureDetection.html">1. 图像特征检测(Image Feature Detection)(108)</a></li><li><a href="http://www.cnblogs.com/xrwang/archive/2010/02/21/ForegroundDetection.html">2. 背景建模与前景检测(Background Generation And Foreground Detection)(60)</a></li><li><a href="http://www.cnblogs.com/xrwang/archive/2010/02/04/HowToUseHistogram.html">3. 颜色直方图的计算、显示、处理、对比及反向投影(How to Use Histogram? Calculate, Show, Process, Compare and BackProject)(58)</a></li><li><a href="http://www.cnblogs.com/xrwang/archive/2010/12/20/SourceCode.html">4. 源代码下载(53)</a></li><li><a href="http://www.cnblogs.com/xrwang/archive/2010/04/27/GrabCut.html">5. OpenCV(EmguCV)2.1新特性介绍之图像分割GrabCut(GrabCut Of OpenCV 2.1)(51)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/xrwang/archive/2010/03/03/ImageFeatureDetection.html">1. 图像特征检测(Image Feature Detection)(29)</a></li><li><a href="http://www.cnblogs.com/xrwang/archive/2010/02/21/ForegroundDetection.html">2. 背景建模与前景检测(Background Generation And Foreground Detection)(19)</a></li><li><a href="http://www.cnblogs.com/xrwang/archive/2010/02/09/HowToUseContour.html">3. 轮廓的查找、表达、绘制、特性及匹配(How to Use Contour? Find, Component, Construct, Features &amp; Match)(15)</a></li><li><a href="http://www.cnblogs.com/xrwang/archive/2010/01/26/TheComparisonOfImageProcessingLibraries.html">4. 各种图像处理类库的比较及选择(The Comparison of Image Processing Libraries)(15)</a></li><li><a href="http://www.cnblogs.com/xrwang/p/PublicAccount-QuickStart.html">5. .net微信公众号开发——快速入门(14)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2016 Wuya
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body></html>

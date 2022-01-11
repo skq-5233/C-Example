@@ -1,0 +1,10 @@
+document.write('<link type="text/css" rel="stylesheet" href="http://www.it165.net/statics/js/syntaxhighlighter/styles/shCore.css"/>');
+document.write('<link type="text/css" rel="stylesheet" href="http://www.it165.net/statics/js/syntaxhighlighter/styles/shThemeDefault.css"/>');
+document.write('<link type="text/css" rel="stylesheet" href="http://www.it165.net/statics/it165/css/bootstrap.min.css"/>');
+document.write('<link type="text/css" rel="stylesheet" href="http://www.it165.net/statics/it165/css/bootstrap-theme.min.css"/>');
+document.write('<link type="text/css" rel="stylesheet" href="http://www.it165.net/statics/it165/css/app.css"/>');
+document.write('<script src="http://www.it165.net/statics/it165/js/jquery.min.js" type="text/javascript"></script>');
+document.write('<script src="http://www.it165.net/statics/it165/js/bootstrap.min.js" type="text/javascript"></script>');
+document.write('<script type="text/javascript" src="http://www.it165.net/statics/js/syntaxhighlighter.js"></script>');
+document.write('<script type="text/javascript" src="http://www.it165.net/statics/js/jquery.sgallery.js"></script>');
+document.write('<script type="text/javascript" src="http://cbjs.baidu.com/js/m.js"></script>');

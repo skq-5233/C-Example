@@ -1,0 +1,9 @@
+E:\李志\C#Test\Image_Manage\Image_Manage\bin\Debug\Image_Manage.exe
+E:\李志\C#Test\Image_Manage\Image_Manage\bin\Debug\Image_Manage.pdb
+E:\李志\C#Test\Image_Manage\Image_Manage\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\李志\C#Test\Image_Manage\Image_Manage\obj\x86\Debug\Image_Manage.Form1.resources
+E:\李志\C#Test\Image_Manage\Image_Manage\obj\x86\Debug\Image_Manage.Properties.Resources.resources
+E:\李志\C#Test\Image_Manage\Image_Manage\obj\x86\Debug\GenerateResource.read.1.tlog
+E:\李志\C#Test\Image_Manage\Image_Manage\obj\x86\Debug\GenerateResource.write.1.tlog
+E:\李志\C#Test\Image_Manage\Image_Manage\obj\x86\Debug\Image_Manage.exe
+E:\李志\C#Test\Image_Manage\Image_Manage\obj\x86\Debug\Image_Manage.pdb

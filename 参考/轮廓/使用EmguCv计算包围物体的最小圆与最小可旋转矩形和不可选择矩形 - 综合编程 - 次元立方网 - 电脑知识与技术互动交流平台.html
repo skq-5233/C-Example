@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)http://www.it165.net/pro/html/201508/52777.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=GBK"><script type="text/javascript" charset="utf-8" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/changyan.js"></script>
+	<title>使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台</title>
+	<meta name="keywords" content="矩形,物体">
+	<meta name="description" content="这篇博客需要用的上篇博客用的轮廓寻找的数据链接所使用的函数为BoundingRectangle、MinEnclosingCircle、MinAreaRect。这三者所使用的参数并不一样，BoundingRectangle函数的参数为检测到的直接数据。其他两个均">
+	
+	<link rel="stylesheet" href="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/it165_pro_4.0.Css" type="text/css">
+	<script type="text/javascript" async="" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/ecom"></script><script type="text/javascript" async="" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/ecom(1)"></script><script type="text/javascript" async="" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/ecom(2)"></script><script type="text/javascript" async="" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/ecom(3)"></script><script src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/it165_pro.js" type="text/javascript"></script><link type="text/css" rel="stylesheet" href="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/shCore.css"><link type="text/css" rel="stylesheet" href="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/shThemeDefault.css"><script src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/jquery.min.js" type="text/javascript"></script><script src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/tabs6.0.js" type="text/javascript"></script><script type="text/javascript" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/syntaxhighlighter.js"></script><script type="text/javascript" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/shCore.js"></script><script type="text/javascript" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/shBrushBash.js"></script><script type="text/javascript" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/shBrushCpp.js"></script><script type="text/javascript" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/shBrushCSharp.js"></script><script type="text/javascript" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/shBrushCss.js"></script><script type="text/javascript" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/shBrushDelphi.js"></script><script type="text/javascript" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/shBrushDiff.js"></script><script type="text/javascript" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/shBrushGroovy.js"></script><script type="text/javascript" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/shBrushJava.js"></script><script type="text/javascript" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/shBrushJScript.js"></script><script type="text/javascript" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/shBrushPhp.js"></script><script type="text/javascript" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/shBrushPlain.js"></script><script type="text/javascript" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/shBrushPython.js"></script><script type="text/javascript" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/shBrushRuby.js"></script><script type="text/javascript" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/shBrushScala.js"></script><script type="text/javascript" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/shBrushSql.js"></script><script type="text/javascript" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/shBrushVb.js"></script><script type="text/javascript" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/shBrushXml.js"></script><script type="text/javascript" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/jquery.sgallery.js"></script><script type="text/javascript" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/jq.Slide.js"></script>
+	<script type="text/javascript">SyntaxHighlighter.all();</script>
+	<script type="text/javascript" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/m.js"></script>
+<script src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/bsStatic.js" type="text/javascript" charset="utf-8"></script><script src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/fingerprint2.min.js" type="text/javascript" charset="utf-8"></script><script src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/bs-engine.js" type="text/javascript" charset="utf-8"></script><script type="text/javascript" charset="UTF-8" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/version-v3.js"></script><script type="text/javascript" charset="UTF-8" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/cookie"></script><script type="text/javascript" charset="UTF-8" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/adapter.min.js"></script><script type="text/javascript" charset="UTF-8" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/cyrljYvoL"></script><script type="text/javascript" charset="UTF-8" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/version.js"></script><script type="text/javascript" charset="UTF-8" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/cookie(1)"></script><script type="text/javascript" charset="UTF-8" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/cyrljYvoL(1)"></script><script type="text/javascript" charset="UTF-8" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/event"></script><script type="text/javascript" charset="UTF-8" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/event(1)"></script><script type="text/javascript" charset="UTF-8" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/app-build-iframe.js"></script></head>
+
+<body><div id="BAIDU_DUP_fp_wrapper" style="position: absolute; left: -1px; bottom: -1px; z-index: 0; width: 0px; height: 0px; overflow: hidden; visibility: hidden; display: none;"><iframe id="BAIDU_DUP_fp_iframe" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/o.html" style="width: 0px; height: 0px; visibility: hidden; display: none;"></iframe></div>
+<div class="TopBox">
+	<div class="TopBox_Box">
+		<div class="ALinkBox">
+			<a href="http://www.it165.net/">次元立方网</a>
+			<a href="http://www.it165.net/news/">IT资讯</a>
+			<a href="http://www.it165.net/pro/">编程</a>
+			<a href="http://www.it165.net/database/">数据库</a>
+			<a href="http://www.it165.net/safe/">安全</a>
+			<a href="http://www.it165.net/design/">设计</a>
+			<a href="http://www.it165.net/design/">网页</a>
+			<a href="http://www.it165.net/os/">系统</a>
+			<a href="http://www.it165.net/admin/">服务器</a>
+			<a href="http://www.it165.net/network/">组网</a>
+			<a href="http://www.it165.net/embed/">嵌入式</a>
+			<a href="http://www.it165.net/edu/">基础</a>
+			<a href="http://www.it165.net/qq/">QQ</a>
+		</div>
+		<div class="ALoginBox">
+			
+		</div>
+	</div>
+	<div class="ulBox">
+	</div>
+</div>
+<div class="Body">
+<div class="TBox">
+						<div class="box_LSS">
+				<div class="LogoBox"><a href="http://www.it165.net/pro/"><img alt="" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/Pro_Logo.gif" width="217" height="51"></a></div>
+				<div class="RSS"><a href="http://www.it165.net/index.php?m=content&c=rss&rssid=678"><img alt="" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/rss.png" width="12" height="12">RSS</a></div>
+				<div style="padding:15px 0px 0px 0px;height:60px;float:right;width:640px"><script type="text/javascript">BAIDU_CLB_fillSlot("1173173");</script><div id="BAIDU_SSP__wrapper_1173173_0"></div><script charset="utf-8" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/wcam"></script><script type="text/javascript">
+    /*640*60*/
+    var cpro_id = "u2477974";
+</script>
+<script src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/c.js" type="text/javascript"></script><div id="BAIDU_UNION__wrapper_u2477974_0"><iframe id="iframeu2477974_0" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/ecom(5).html" width="640" height="60" align="center,center" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" style="border:0; vertical-align:bottom;margin:0;" allowtransparency="true"></iframe></div></div>
+			</div>
+			<div class="Cate_Navigation">
+				<h3><a class="index" href="http://www.it165.net/pro/">编程大巴</a></h3>
+				<h3><a href="http://www.it165.net/pro/pnews/">开发资讯</a></h3>
+				<h3><a href="http://www.it165.net/pro/new.html">开发文档</a></h3>
+				<h3><a href="http://www.it165.net/pro/posid.html">文档推荐</a></h3>
+				<h3><a href="http://www.it165.net/Pro/shouce/">在线手册</a></h3>
+			</div>
+	</div><div class="BodyV">
+		<div class="RBoxV">
+			<div class="RLineNO"></div>
+			<div style="width:300px;height:260px"><div class="advs300"><script type="text/javascript">BAIDU_CLB_fillSlot("1173151");</script><div id="BAIDU_SSP__wrapper_1173151_0"></div><script charset="utf-8" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/wcam(1)"></script><script type="text/javascript">
+    /*300*250*/
+    var cpro_id = "u2477961";
+</script>
+<script src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/c.js" type="text/javascript"></script><div id="BAIDU_UNION__wrapper_u2477961_0"><iframe id="iframeu2477961_0" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/ecom.html" width="300" height="250" align="center,center" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" style="border:0; vertical-align:bottom;margin:0;" allowtransparency="true"></iframe></div></div></div>
+						<div class="hotbox">
+																<ul class="hotPP">
+					<li class="titLink"><h3><a target="_blank" title="Autolayout使用详细介绍" href="http://www.it165.net/pro/html/201501/31217.html">Autolayout使用详细介绍</a></h3></li>
+					<li class="APic"><a target="_blank" title="Autolayout使用详细介绍" href="http://www.it165.net/pro/html/201501/31217.html"><img alt="Autolayout使用详细介绍" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/thumb_111_70_20150105220345231.png" width="111" height="70"></a></li>
+					<li class="Desc">关于Autolayout的初步介绍说道Autolayout，我也是在i... <a target="_blank" title="Autolayout使用详细介绍" href="http://www.it165.net/pro/html/201501/31217.html">详细</a></li>
+				</ul>
+				<ul class="HList">
+																	<li><a target="_blank" title="VS2013 新建MVC5项目" href="http://www.it165.net/pro/html/201404/12822.html">VS2013 新建MVC5项目</a></li>
+																	<li><a target="_blank" title="WebStorm设置左侧菜单栏背景和字体设置" href="http://www.it165.net/pro/html/201508/52176.html">WebStorm设置左侧菜单栏背景和字体设置</a></li>
+																	<li><a target="_blank" title="dubbo学习过程 使用经验分享及实现理简单介绍" href="http://www.it165.net/pro/html/201502/33683.html">dubbo学习过程 使用经验分享及实现理简单介绍</a></li>
+																	<li><a target="_blank" title="内存分析工具MAT的使用" href="http://www.it165.net/pro/html/201402/9399.html">内存分析工具MAT的使用</a></li>
+																</ul>
+			</div>
+						<div class="Newsbox">
+				<ul class="RstabTitle">
+					<li id="hits2" class="checked" onmousemove="Tab(&#39;hits&#39;,2,2,&#39;check&#39;,&#39;checked&#39;)"><h3>今日排行</h3></li>
+					<li id="hits1" class="check" onmousemove="Tab(&#39;hits&#39;,1,2,&#39;check&#39;,&#39;checked&#39;)"><h3>周排行</h3></li>
+					<li id="hits0" class="check" onmousemove="Tab(&#39;hits&#39;,0,2,&#39;check&#39;,&#39;checked&#39;)"><h3>月排行</h3></li>
+				</ul>
+				<ul class="PNList" id="hits22">
+															<li><a target="_blank" title="MapReduce源码分析之MapTask分析" href="http://www.it165.net/pro/html/201407/17505.html">MapReduce源码分析之MapTask分析</a></li>
+										<li><a target="_blank" title="PetaPoco使用小记(后续会继续补充)" href="http://www.it165.net/pro/html/201404/11512.html">PetaPoco使用小记(后续会继续补充)</a></li>
+										<li><a target="_blank" title="Spark架构与作业执行流程简介" href="http://www.it165.net/pro/html/201404/11952.html">Spark架构与作业执行流程简介</a></li>
+										<li><a target="_blank" title="Eclipse中用git解决冲突  避免每次重新拉代码" href="http://www.it165.net/pro/html/201503/36625.html">Eclipse中用git解决冲突  避免每次重...</a></li>
+										<li><a target="_blank" title="通过Unit Test Generator快速为项目加入单元测试程序代码" href="http://www.it165.net/pro/html/201310/7591.html">通过Unit Test Generator快速为项目加...</a></li>
+										<li><a target="_blank" title="Autolayout使用详细介绍" href="http://www.it165.net/pro/html/201501/31217.html">Autolayout使用详细介绍</a></li>
+										<li><a target="_blank" title="谈谈Angular关于$watch $apply以及$digest的工作理" href="http://www.it165.net/pro/html/201503/37171.html">谈谈Angular关于$watch $apply以及$di...</a></li>
+										<li><a target="_blank" title="NGUI使用教程(1)安装NGUI插件" href="http://www.it165.net/pro/html/201407/17214.html">NGUI使用教程(1)安装NGUI插件</a></li>
+										<li><a target="_blank" title="mahout分类学习和遇到的问题总结" href="http://www.it165.net/pro/html/201407/18038.html">mahout分类学习和遇到的问题总结</a></li>
+										<li><a target="_blank" title="Tachyon源码结构分析（二）" href="http://www.it165.net/pro/html/201503/36281.html">Tachyon源码结构分析（二）</a></li>
+														</ul>
+				<ul class="PNList" id="hits11" style="display:none">
+															<li><a target="_blank" title="Autolayout使用详细介绍" href="http://www.it165.net/pro/html/201501/31217.html">Autolayout使用详细介绍</a></li>
+										<li><a target="_blank" title="VS2013 新建MVC5项目" href="http://www.it165.net/pro/html/201404/12822.html">VS2013 新建MVC5项目</a></li>
+										<li><a target="_blank" title="WebStorm设置左侧菜单栏背景和字体设置" href="http://www.it165.net/pro/html/201508/52176.html">WebStorm设置左侧菜单栏背景和字体设置</a></li>
+										<li><a target="_blank" title="用Redis打造URL缩短服务" href="http://www.it165.net/pro/html/201409/22279.html">用Redis打造URL缩短服务</a></li>
+										<li><a target="_blank" title="Telerik UI Controls图表控件" href="http://www.it165.net/pro/html/201312/8440.html">Telerik UI Controls图表控件</a></li>
+										<li><a target="_blank" title="dubbo学习过程 使用经验分享及实现理简单介绍" href="http://www.it165.net/pro/html/201502/33683.html">dubbo学习过程 使用经验分享及实现理简...</a></li>
+										<li><a target="_blank" title="Eclipse中用git解决冲突  避免每次重新拉代码" href="http://www.it165.net/pro/html/201503/36625.html">Eclipse中用git解决冲突  避免每次重...</a></li>
+										<li><a target="_blank" title="探究contentOffset和contentInset并解决上拉加载更多tableview抖动问题" href="http://www.it165.net/pro/html/201504/37524.html">探究contentOffset和contentInset并解决...</a></li>
+										<li><a target="_blank" title="在Hadoop监控页面如何查看Hive的完整SQL" href="http://www.it165.net/pro/html/201410/23944.html">在Hadoop监控页面如何查看Hive的完整SQL</a></li>
+										<li><a target="_blank" title="使用JsPlumb绘制拓扑图的通用方法" href="http://www.it165.net/pro/html/201311/7616.html">使用JsPlumb绘制拓扑图的通用方法</a></li>
+														</ul>
+				<ul class="PNList" id="hits00" style="display:none">
+															<li><a target="_blank" title="Flex4.6事件监听机制的测试和总结" href="http://www.it165.net/pro/html/201309/7055.html">Flex4.6事件监听机制的测试和总结</a></li>
+										<li><a target="_blank" title="ABAP中SHIFT用法" href="http://www.it165.net/pro/html/201407/18695.html">ABAP中SHIFT用法</a></li>
+										<li><a target="_blank" title="在Matlab中给figure周围加文字标签" href="http://www.it165.net/pro/html/201309/7217.html">在Matlab中给figure周围加文字标签</a></li>
+										<li><a target="_blank" title="结合百度云平台和微信公众平台进行开发" href="http://www.it165.net/pro/html/201312/8463.html">结合百度云平台和微信公众平台进行开发</a></li>
+										<li><a target="_blank" title="浅谈hadoop中mapreduce的文件分发" href="http://www.it165.net/pro/html/201405/14740.html">浅谈hadoop中mapreduce的文件分发</a></li>
+										<li><a target="_blank" title="Autolayout使用详细介绍" href="http://www.it165.net/pro/html/201501/31217.html">Autolayout使用详细介绍</a></li>
+										<li><a target="_blank" title="myeclipse断点调试" href="http://www.it165.net/pro/html/201503/36179.html">myeclipse断点调试</a></li>
+										<li><a target="_blank" title="VS2013 新建MVC5项目" href="http://www.it165.net/pro/html/201404/12822.html">VS2013 新建MVC5项目</a></li>
+										<li><a target="_blank" title="dubbo学习过程 使用经验分享及实现理简单介绍" href="http://www.it165.net/pro/html/201502/33683.html">dubbo学习过程 使用经验分享及实现理简...</a></li>
+										<li><a target="_blank" title="AIDL接口写法小记" href="http://www.it165.net/pro/html/201503/36529.html">AIDL接口写法小记</a></li>
+														</ul>
+
+			</div>
+						<div class="Newsbox">
+				<ul class="RstabTitle">
+					<li class="checked"><h3>最新文章</h3></li>
+				</ul>
+				<ul class="TList">
+															<li><a target="_blank" title="C#多线程之旅(1)介绍和基本概念" href="http://www.it165.net/pro/html/201601/59341.html">C#多线程之旅(1)介绍和基本概念</a></li>
+										<li><a target="_blank" title="Middleware的艺术" href="http://www.it165.net/pro/html/201601/59340.html">Middleware的艺术</a></li>
+										<li><a target="_blank" title="程序猿的技术博客Android客户端自己挖的坑 还得自己填" href="http://www.it165.net/pro/html/201601/59339.html">程序猿的技术博客Android客户端自己挖的...</a></li>
+										<li><a target="_blank" title="JavaScript中的函数：闭包 this 高阶函数" href="http://www.it165.net/pro/html/201601/59338.html">JavaScript中的函数：闭包 this 高阶函数</a></li>
+										<li><a target="_blank" title="数据结构记录 排序" href="http://www.it165.net/pro/html/201601/59337.html">数据结构记录 排序</a></li>
+										<li><a target="_blank" title="java使用Executor（执行器）管理线程" href="http://www.it165.net/pro/html/201601/59336.html">java使用Executor（执行器）管理线程</a></li>
+										<li><a target="_blank" title="自定义轮播图 自定义集合控件的实现" href="http://www.it165.net/pro/html/201601/59335.html">自定义轮播图 自定义集合控件的实现</a></li>
+										<li><a target="_blank" title="深入分析JavaWebItem41 邮件的发送与接收理" href="http://www.it165.net/pro/html/201601/59334.html">深入分析JavaWebItem41 邮件的发送与接收理</a></li>
+										<li><a target="_blank" title="深入分析JavaWebItem42 JavaMail建邮件和发送邮件" href="http://www.it165.net/pro/html/201601/59333.html">深入分析JavaWebItem42 JavaMail建邮件...</a></li>
+										<li><a target="_blank" title="AndroidMVP的尝试" href="http://www.it165.net/pro/html/201601/59332.html">AndroidMVP的尝试</a></li>
+														</ul>
+			</div>
+			<div class="RLine"></div>
+			<div style="width:300px;"><div class="advs300"><script type="text/javascript">BAIDU_CLB_fillSlot("1173151");</script><div id="BAIDU_SSP__wrapper_1173151_1"></div><script charset="utf-8" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/wcam(2)"></script><script type="text/javascript">
+    /*300*250*/
+    var cpro_id = "u2477961";
+</script>
+<script src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/c.js" type="text/javascript"></script><div id="BAIDU_UNION__wrapper_u2477961_1"><iframe id="iframeu2477961_1" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/ecom(4).html" width="300" height="250" align="center,center" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" style="border:0; vertical-align:bottom;margin:0;" allowtransparency="true"></iframe></div></div></div>
+						<div class="Newsbox">
+				<ul class="RstabTitle">
+					<li class="checked"><h3>编程下载</h3></li>
+				</ul>
+				<ul class="TList">
+															<li><a target="_blank" title="Android UI效果实现 滑动模糊渐变效果实现" href="http://www.it165.net/down/html/201407/1613.html">Android UI效果实现 滑动模糊渐变效果实现</a></li>
+										<li><a target="_blank" title="Android学习自定义Dialog" href="http://www.it165.net/down/html/201407/1612.html">Android学习自定义Dialog</a></li>
+										<li><a target="_blank" title="Xamarin.Android通知详解" href="http://www.it165.net/down/html/201407/1611.html">Xamarin.Android通知详解</a></li>
+										<li><a target="_blank" title="Android动态改变布局" href="http://www.it165.net/down/html/201407/1610.html">Android动态改变布局</a></li>
+										<li><a target="_blank" title="android实现emoji输入" href="http://www.it165.net/down/html/201407/1609.html">android实现emoji输入</a></li>
+										<li><a target="_blank" title="Android Spinner AutoCompleteTextView" href="http://www.it165.net/down/html/201407/1608.html">Android Spinner AutoCompleteTextView</a></li>
+										<li><a target="_blank" title="Android中Eclipse开发工具的安装和Android的SDK和ADT的安装" href="http://www.it165.net/down/html/201407/1607.html">Android中Eclipse开发工具的安装和Andr...</a></li>
+										<li><a target="_blank" title="c构造函数" href="http://www.it165.net/down/html/201406/1606.html">c构造函数</a></li>
+										<li><a target="_blank" title="Android开发学习 sharedpreference的使用" href="http://www.it165.net/down/html/201405/1605.html">Android开发学习 sharedpreference的使用</a></li>
+										<li><a target="_blank" title="Android新浪微博客户端（七）ListView中的图片异步加载、缓存" href="http://www.it165.net/down/html/201405/1604.html">Android新浪微博客户端（七）ListView中...</a></li>
+														</ul>
+			</div>
+						
+			<div class="Newsbox">
+				<ul class="RstabTitle">
+					<li class="checked"><h3>热门专题</h3></li>
+				</ul>
+				<div class="rBox">
+													<ul class="PPList">
+						<li class="APic"><a target="_blank" href="http://www.it165.net/special/iOSCocos2d/"><img alt="李华明iOS-Cocos2d游戏开发专题" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/thumb_80_80_20121214102450157.jpg" width="80" height="80"></a></li>
+						<li class="titLink"><h3><a target="_blank" href="http://www.it165.net/special/iOSCocos2d/">李华明iOS-Cocos2d游戏开发</a></h3></li>
+						<li class="Desc">本教程为 李华明 编著的iOS-Cocos2d游戏开发系列教程：教程涵盖关于i...... <a target="_blank" href="http://www.it165.net/special/iOSCocos2d/">详细</a></li>
+					</ul>
+									<ul class="PPList">
+						<li class="APic"><a target="_blank" href="http://www.it165.net/special/Directx/"><img alt="Directx11 游戏编程入门教程" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/thumb_80_80_20120411103408469.jpg" width="80" height="80"></a></li>
+						<li class="titLink"><h3><a target="_blank" href="http://www.it165.net/special/Directx/">Directx11 游戏编程入门教程</a></h3></li>
+						<li class="Desc">专题主要学习DirectX的初级编程入门学习，对Directx11的入门及初学者有...... <a target="_blank" href="http://www.it165.net/special/Directx/">详细</a></li>
+					</ul>
+									<ul class="PPList">
+						<li class="APic"><a target="_blank" href="http://www.it165.net/pro/special/javascript/"><img alt="Javascript 面向对象编程" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/thumb_80_80_20111217103814404.jpg" width="80" height="80"></a></li>
+						<li class="titLink"><h3><a target="_blank" href="http://www.it165.net/pro/special/javascript/">Javascript 面向对象编程</a></h3></li>
+						<li class="Desc">"面向对象的JavaScript"这一说法多少有些冗余，因为JavaScript 语言本...... <a target="_blank" href="http://www.it165.net/pro/special/javascript/">详细</a></li>
+					</ul>
+												</div>
+			</div>
+			<div style="width:300px"><div style="width:300px;;height:250px"><script type="text/javascript">BAIDU_CLB_fillSlot("1173151");</script><div id="BAIDU_SSP__wrapper_1173151_2"></div><script charset="utf-8" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/wcam(3)"></script><script type="text/javascript">
+    /*300*250*/
+    var cpro_id = "u2477961";
+</script>
+<script src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/c.js" type="text/javascript"></script><div id="BAIDU_UNION__wrapper_u2477961_2"></div></div></div>
+		</div>
+		<div class="LBoxV">
+			<ul class="Posion">
+				<li class="PosionLi"><a href="http://www.it165.net/">首页</a><span> &gt; </span><a href="http://www.it165.net/Pro/">编程大巴</a> &gt; <a href="http://www.it165.net/pro/proqita/">综合编程</a> &gt;  正文</li>
+				<div class="showSearch">
+					<div class="keys"><input id="q" name="q" type="text"></div>
+					<div class="button"><input id="s" name="Submit1" type="submit" value=" "></div>
+				</div>
+				<li class="CatNameLi">
+				<span><a href="http://www.it165.net/pro/">编程大巴</a></span> <em><a href="http://www.it165.net/pro">http://www.it165.net/pro</a></em></li>
+			</ul>
+			<div class="ArticleBox">
+				<div class="sTitleboxs">
+					<h1>使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形</h1>
+					<div class="sInfo">作者：&nbsp;&nbsp;发布日期：2015-08-28 22:31:23</div>
+					<div class="uinfo"><a class="Comment" href="http://www.it165.net/pro/html/201508/52777.html#comment_iframe">我来说两句(<span id="comment">0</span>)</a><a class="ts" href="http://www.it165.net/index.php?m=formguide&c=index&a=show&formid=27"><img alt="" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/tousu.jpg" width="80" height="25"></a></div>
+				</div>
+			</div>
+			<div class="tag">
+				<div class="share"><div class="bshare-custom"><a title="闁告帒妫旈棅鈺呭礆閻ф瓐缂佸本妞藉Λ锟&#65533;" class="bshare-qzone"></a><a title="闁告帒妫旈棅鈺呭礆閻楀牊鐓�婵炴惌浜滄禍鏇㈠础閿燂拷" class="bshare-sinaminiblog"></a><a title="闁告帒妫旈棅鈺呭礆妫颁焦鐪藉ù婊嗘缂嶏拷" class="bshare-renren"></a><a title="闁告帒妫旈棅鈺呭礆閹峰苯鎮╅悹渚囧灠娴滄洟宕￠敓锟&#65533;" class="bshare-qqmb"></a><a title="闁告帒妫旈棅鈺呭礆閹峰瞼婀搁柣鈽呮嫹" class="bshare-douban"></a><a title="闁哄洦娼欓ˇ鍧楃嵁閸愭彃閰&#65533;" class="bshare-more bshare-more-icon"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/buttonLite.js"></script><script type="text/javascript" charset="utf-8" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/bshareC2.js"></script></div>
+				<div class="tagbox"><strong>Tag标签：</strong><a target="_blank" href="http://s.it165.net/?t=13&q=%BE%D8%D0%CE">矩形</a>&nbsp;&nbsp;<a target="_blank" href="http://s.it165.net/?t=13&q=%CE%EF%CC%E5">物体</a>&nbsp;&nbsp;</div>
+			</div>
+			<ul class="Content">
+				<li id="ArticleBox">
+				<p>这篇博客需要用的上篇博客用的轮廓寻找的数据 链接<br>
+所使用的函数为BoundingRectangle、MinEnclosingCircle、MinAreaRect。<br>
+这三者所使用的参数并不一样，BoundingRectangle函数的参数为检测到的直接数据。<br>
+其他两个均为转化得来的PointF数组。<br>
+图片中分块的多个图形也可以检测的到。<br>
+有了上篇博客的基础，这个并不难。</p>
+<p>代码：</p>
+<div class="syntaxhighlighter " id="highlighter_389170"><div class="bar"><div class="toolbar"><a href="http://www.it165.net/pro/html/201508/52777.html#viewSource" title="view source" class="item viewSource" style="width: 16px; height: 16px;">view source</a><a href="http://www.it165.net/pro/html/201508/52777.html#printSource" title="print" class="item printSource" style="width: 16px; height: 16px;">print</a><a href="http://www.it165.net/pro/html/201508/52777.html#about" title="?" class="item about" style="width: 16px; height: 16px;">?</a></div></div><div class="lines"><div class="line alt1"><code class="number">01.</code><span class="content"><span class="block" style="margin-left: 0px;"><code class="plain">&lt;code </code><code class="keyword">class</code><code class="plain">=</code><code class="string">"hljs cs"</code><code class="plain">&gt;</code><code class="keyword">public</code> <code class="plain">partial </code><code class="keyword">class</code> <code class="plain">Form1 : Form</code></span></span></div><div class="line alt2"><code class="number">02.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 28px;"><code class="plain">{</code></span></span></div><div class="line alt1"><code class="number">03.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 56px;"><code class="keyword">public</code> <code class="plain">Form1()</code></span></span></div><div class="line alt2"><code class="number">04.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 56px;"><code class="plain">{</code></span></span></div><div class="line alt1"><code class="number">05.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 84px;"><code class="plain">InitializeComponent();</code></span></span></div><div class="line alt2"><code class="number">06.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 84px;"><code class="plain">Image&lt;Bgr, </code><code class="keyword">byte</code><code class="plain">&gt; a = </code><code class="keyword">new</code> <code class="plain">Image&lt;Bgr, </code><code class="keyword">byte</code><code class="plain">&gt;(</code><code class="string">'9660416_102608612175_2.jpg'</code><code class="plain">);</code></span></span></div><div class="line alt1"><code class="number">07.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 84px;"><code class="plain">Image &lt;Gray, </code><code class="keyword">byte</code><code class="plain">&gt; b = </code><code class="keyword">new</code> <code class="plain">Image&lt;Gray, </code><code class="keyword">byte</code><code class="plain">&gt;(a.Width, a.Height);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="comments">//边缘检测</code></span></span></div><div class="line alt2"><code class="number">08.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 84px;"><code class="plain">Image&lt;Gray, </code><code class="keyword">byte</code><code class="plain">&gt; c = </code><code class="keyword">new</code> <code class="plain">Image&lt;Gray, </code><code class="keyword">byte</code><code class="plain">&gt;(a.Width, a.Height);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="comments">//用于寻找轮廓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code></span></span></div><div class="line alt1"><code class="number">09.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 84px;"><code class="plain">Image&lt;Bgr, </code><code class="keyword">byte</code><code class="plain">&gt; d = </code><code class="keyword">new</code> <code class="plain">Image&lt;Bgr, </code><code class="keyword">byte</code><code class="plain">&gt;(a.Width, a.Height);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="comments">//用于绘制轮廓</code></span></span></div><div class="line alt2"><code class="number">10.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 84px;"><code class="plain">CvInvoke.Canny(a, b, </code><code class="value">100</code><code class="plain">, </code><code class="value">60</code><code class="plain">);</code></span></span></div><div class="line alt1"><code class="number">11.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 84px;"><code class="plain">VectorOfVectorOfPoint con = </code><code class="keyword">new</code> <code class="plain">VectorOfVectorOfPoint();</code></span></span></div><div class="line alt2"><code class="number">12.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 84px;"><code class="plain">CvInvoke.FindContours(b, con, c, RetrType.Ccomp, ChainApproxMethod.ChainApproxSimple);</code></span></span></div><div class="line alt1"><code class="number">13.</code><span class="content"><span class="block" style="margin-left: 0px;">&nbsp;</span></span></div><div class="line alt2"><code class="number">14.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 84px;"><code class="plain">Point[][] con1 = con.ToArrayOfArray();</code></span></span></div><div class="line alt1"><code class="number">15.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 84px;"><code class="plain">PointF[][] con2 = Array.ConvertAll&lt;Point[], PointF[]&gt;(con1, </code><code class="keyword">new</code> <code class="plain">Converter&lt;Point[], PointF[]&gt;(PointToPointF));</code></span></span></div><div class="line alt2"><code class="number">16.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 84px;"><code class="keyword">for</code> <code class="plain">(</code><code class="keyword">int</code> <code class="plain">i = </code><code class="value">0</code><code class="plain">; i &lt; con.Size; i++)</code></span></span></div><div class="line alt1"><code class="number">17.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 84px;"><code class="plain">{</code></span></span></div><div class="line alt2"><code class="number">18.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 112px;"><code class="plain">Rectangle rec = CvInvoke.BoundingRectangle(con[i]);&nbsp;&nbsp;&nbsp; </code><code class="comments">//红色</code></span></span></div><div class="line alt1"><code class="number">19.</code><span class="content"><span class="block" style="margin-left: 0px;">&nbsp;</span></span></div><div class="line alt2"><code class="number">20.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 112px;"><code class="plain">CircleF cir = CvInvoke.MinEnclosingCircle(con2[i]);&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="comments">//蓝色</code></span></span></div><div class="line alt1"><code class="number">21.</code><span class="content"><span class="block" style="margin-left: 0px;">&nbsp;</span></span></div><div class="line alt2"><code class="number">22.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 112px;"><code class="plain">RotatedRect rrec = CvInvoke.MinAreaRect(con2[i]);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code><code class="comments">//绿色</code></span></span></div><div class="line alt1"><code class="number">23.</code><span class="content"><span class="block" style="margin-left: 0px;">&nbsp;</span></span></div><div class="line alt2"><code class="number">24.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 112px;"><code class="plain">PointF[] pointfs = rrec.GetVertices();</code></span></span></div><div class="line alt1"><code class="number">25.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 112px;"><code class="keyword">for</code> <code class="plain">(</code><code class="keyword">int</code> <code class="plain">j = </code><code class="value">0</code><code class="plain">; j &lt; pointfs.Length; j++)</code></span></span></div><div class="line alt2"><code class="number">26.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 140px;"><code class="plain">CvInvoke.Line(a, </code><code class="keyword">new</code> <code class="plain">Point((</code><code class="keyword">int</code><code class="plain">)pointfs[j].X, (</code><code class="keyword">int</code><code class="plain">)pointfs[j].Y), </code><code class="keyword">new</code> <code class="plain">Point((</code><code class="keyword">int</code><code class="plain">)pointfs[(j + </code><code class="value">1</code><code class="plain">) % </code><code class="value">4</code><code class="plain">].X, (</code><code class="keyword">int</code><code class="plain">)pointfs[(j + </code><code class="value">1</code><code class="plain">) % </code><code class="value">4</code><code class="plain">].Y), </code><code class="keyword">new</code> <code class="plain">MCvScalar(</code><code class="value">0</code><code class="plain">, </code><code class="value">255</code><code class="plain">, </code><code class="value">0</code><code class="plain">, </code><code class="value">255</code><code class="plain">), </code><code class="value">4</code><code class="plain">);</code></span></span></div><div class="line alt1"><code class="number">27.</code><span class="content"><span class="block" style="margin-left: 0px;">&nbsp;</span></span></div><div class="line alt2"><code class="number">28.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 112px;"><code class="plain">CvInvoke.Rectangle(a, rec, </code><code class="keyword">new</code> <code class="plain">MCvScalar(</code><code class="value">0</code><code class="plain">, </code><code class="value">0</code><code class="plain">, </code><code class="value">255</code><code class="plain">, </code><code class="value">255</code><code class="plain">), </code><code class="value">4</code><code class="plain">);</code></span></span></div><div class="line alt1"><code class="number">29.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 112px;"><code class="plain">CvInvoke.Circle(a, </code><code class="keyword">new</code> <code class="plain">Point((</code><code class="keyword">int</code><code class="plain">)cir.Center.X, (</code><code class="keyword">int</code><code class="plain">)cir.Center.Y), (</code><code class="keyword">int</code><code class="plain">)cir.Radius, </code><code class="keyword">new</code> <code class="plain">MCvScalar(</code><code class="value">255</code><code class="plain">, </code><code class="value">0</code><code class="plain">, </code><code class="value">0</code><code class="plain">, </code><code class="value">255</code><code class="plain">), </code><code class="value">4</code><code class="plain">);</code></span></span></div><div class="line alt2"><code class="number">30.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 84px;"><code class="plain">}</code></span></span></div><div class="line alt1"><code class="number">31.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 84px;"><code class="keyword">for</code> <code class="plain">(</code><code class="keyword">int</code> <code class="plain">i = </code><code class="value">0</code><code class="plain">; i &lt; con.Size; i++)</code></span></span></div><div class="line alt2"><code class="number">32.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 112px;"><code class="plain">CvInvoke.DrawContours(d, con, i, </code><code class="keyword">new</code> <code class="plain">MCvScalar(</code><code class="value">255</code><code class="plain">, </code><code class="value">0</code><code class="plain">, </code><code class="value">255</code><code class="plain">, </code><code class="value">255</code><code class="plain">), </code><code class="value">2</code><code class="plain">);</code></span></span></div><div class="line alt1"><code class="number">33.</code><span class="content"><span class="block" style="margin-left: 0px;">&nbsp;</span></span></div><div class="line alt2"><code class="number">34.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 84px;"><code class="plain">imageBox1.Image = a.ConcateVertical(d);</code></span></span></div><div class="line alt1"><code class="number">35.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 56px;"><code class="plain">}</code></span></span></div><div class="line alt2"><code class="number">36.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 56px;"><code class="keyword">public</code> <code class="keyword">static</code> <code class="plain">PointF[] PointToPointF(Point[] pf)</code></span></span></div><div class="line alt1"><code class="number">37.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 56px;"><code class="plain">{</code></span></span></div><div class="line alt2"><code class="number">38.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 84px;"><code class="plain">PointF[] aaa = </code><code class="keyword">new</code> <code class="plain">PointF[pf.Length];</code></span></span></div><div class="line alt1"><code class="number">39.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 84px;"><code class="keyword">int</code> <code class="plain">num = </code><code class="value">0</code><code class="plain">;</code></span></span></div><div class="line alt2"><code class="number">40.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 84px;"><code class="plain">foreach(var point in pf)</code></span></span></div><div class="line alt1"><code class="number">41.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 84px;"><code class="plain">{</code></span></span></div><div class="line alt2"><code class="number">42.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 112px;"><code class="plain">aaa[num].X = (</code><code class="keyword">int</code><code class="plain">)point.X;</code></span></span></div><div class="line alt1"><code class="number">43.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 112px;"><code class="plain">aaa[num++].Y = (</code><code class="keyword">int</code><code class="plain">)point.Y;</code></span></span></div><div class="line alt2"><code class="number">44.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 84px;"><code class="plain">}</code></span></span></div><div class="line alt1"><code class="number">45.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 84px;"><code class="keyword">return</code> <code class="plain">aaa;</code></span></span></div><div class="line alt2"><code class="number">46.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 56px;"><code class="plain">}</code></span></span></div><div class="line alt1"><code class="number">47.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 28px;"><code class="plain">}&lt;/code&gt;</code></span></span></div></div></div>
+<p><code class="hljs cs">运行图：<br>
+<img alt="这里写图片描述" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/20150828090143500.jpg" title="" style="height: 560px; width: 346.28px;"></code></p>
+<p>&nbsp;</p>				</li>
+				<script type="text/javascript">
+					<!--
+					$(function(){
+					  $('#ArticleBox img').LoadImage(true, 560, 560,'http://www.it165.net/statics/images/s_nopic.gif');    
+					})
+					//-->
+					</script>
+			</ul>
+			<div class="aboutlbox">
+				<h3>延伸阅读：</h3>
+				<ul>
+									 					 					<li>1、<a href="http://www.it165.net/pro/html/201411/25706.html">碰撞检测算法：点和矩形碰撞 点和圆形碰撞 矩形碰撞 圆形碰撞</a></li>
+										<li>2、<a href="http://www.it165.net/pro/html/201512/57964.html">LibGDX_7.4:碰撞检测与矩形包围区域（Rectangle）</a></li>
+										<li>3、<a href="http://www.it165.net/pro/html/201407/17549.html">训练自己haar-like特征分类器并识别物体（2）</a></li>
+										<li>4、<a href="http://www.it165.net/pro/html/201407/17593.html">训练自己haar-like特征分类器并识别物体（1）</a></li>
+																		</ul>
+			</div>
+			<div class="callback pa10">
+				<div id="backindexs">
+					<h3><a href="http://www.it165.net/">返回到首页</a></h3>
+					<h3><a href="http://www.it165.net/pro/">返回到编程大巴</a></h3>
+				</div>
+			</div>	
+						<div class="Upbox pa10">
+											<ul class="WPBul">
+					<li class="pic"><a target="_blank" href="http://www.it165.net/pro/ActiveX/Win32/index.html" title="Win32"><img alt="Win32" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/20130505102215623.jpg" width="90" height="60"></a></li>
+					<li class="ptext"><a target="_blank" href="http://www.it165.net/pro/ActiveX/Win32/index.html" title="Win32">Win32</a></li>
+				</ul>
+								<ul class="WPBul">
+					<li class="pic"><a target="_blank" href="http://www.it165.net/pro/ActiveX/OpenGL/index.html" title="OpenGL"><img alt="OpenGL" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/20130505102149168.jpg" width="90" height="60"></a></li>
+					<li class="ptext"><a target="_blank" href="http://www.it165.net/pro/ActiveX/OpenGL/index.html" title="OpenGL">OpenGL</a></li>
+				</ul>
+								<ul class="WPBul">
+					<li class="pic"><a target="_blank" href="http://www.it165.net/pro/ActiveX/MVC/index.html" title="ASP.NET MVC"><img alt="ASP.NET MVC" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/20130505102124182.jpg" width="90" height="60"></a></li>
+					<li class="ptext"><a target="_blank" href="http://www.it165.net/pro/ActiveX/MVC/index.html" title="ASP.NET MVC">ASP.NET MVC</a></li>
+				</ul>
+								<ul class="WPBul">
+					<li class="pic"><a target="_blank" href="http://www.it165.net/pro/ActiveX/cocos2d-x/index.html" title="cocos2d-x"><img alt="cocos2d-x" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/20130505102055110.jpg" width="90" height="60"></a></li>
+					<li class="ptext"><a target="_blank" href="http://www.it165.net/pro/ActiveX/cocos2d-x/index.html" title="cocos2d-x">cocos2d-x</a></li>
+				</ul>
+								<ul class="WPBul">
+					<li class="pic"><a target="_blank" href="http://www.it165.net/pro/ActiveX/WCF/index.html" title="WCF"><img alt="WCF" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/20130505102027533.jpg" width="90" height="60"></a></li>
+					<li class="ptext"><a target="_blank" href="http://www.it165.net/pro/ActiveX/WCF/index.html" title="WCF">WCF</a></li>
+				</ul>
+								<ul class="WPBul">
+					<li class="pic"><a target="_blank" href="http://www.it165.net/pro/ActiveX/Linq/index.html" title="Linq"><img alt="Linq" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/20130505101959536.jpg" width="90" height="60"></a></li>
+					<li class="ptext"><a target="_blank" href="http://www.it165.net/pro/ActiveX/Linq/index.html" title="Linq">Linq</a></li>
+				</ul>
+								<ul class="WPBul">
+					<li class="pic"><a target="_blank" href="http://www.it165.net/pro/ActiveX/Android/index.html" title="Android"><img alt="Android" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/20130505101919704.jpg" width="90" height="60"></a></li>
+					<li class="ptext"><a target="_blank" href="http://www.it165.net/pro/ActiveX/Android/index.html" title="Android">Android</a></li>
+				</ul>
+								<ul class="WPBul">
+					<li class="pic"><a target="_blank" href="http://www.it165.net/pro/ActiveX/QT/index.html" title="QT"><img alt="QT" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/20130505101848333.jpg" width="90" height="60"></a></li>
+					<li class="ptext"><a target="_blank" href="http://www.it165.net/pro/ActiveX/QT/index.html" title="QT">QT</a></li>
+				</ul>
+								<ul class="WPBul">
+					<li class="pic"><a target="_blank" href="http://www.it165.net/pro/ActiveX/MFC/index.html" title="MFC"><img alt="MFC" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/20130505101817843.jpg" width="90" height="60"></a></li>
+					<li class="ptext"><a target="_blank" href="http://www.it165.net/pro/ActiveX/MFC/index.html" title="MFC">MFC</a></li>
+				</ul>
+								<ul class="WPBul">
+					<li class="pic"><a target="_blank" href="http://www.it165.net/pro/ActiveX/JQuery/index.html" title="JQuery"><img alt="JQuery" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/20130505101746875.jpg" width="90" height="60"></a></li>
+					<li class="ptext"><a target="_blank" href="http://www.it165.net/pro/ActiveX/JQuery/index.html" title="JQuery">JQuery</a></li>
+				</ul>
+										</div>
+			<div class="ArtLine"></div>
+			<div class="callback" style="padding:10px 20px 10px 20px">
+				<!--兼容版，可保证页面完全兼容-->
+<div id="SOHUCS" sid="52777"><iframe src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/innerpage.html" frameborder="no" style="width: 100%; border: 0px; height: 323px;"></iframe></div>
+<script>
+  (function(){
+    var appid = 'cyrljYvoL',
+    conf = 'prod_2c3485f27b3b0d5d138546ad112483d2';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+  })()
+</script>
+			</div>
+		</div>
+		
+</div><div class="FootBox">
+			<div class="Foot">
+					<a target="_blank" href="http://www.it165.net/about/index.html">About IT165</a> -
+					<a target="_blank" href="http://www.it165.net/about/gg.html">广告服务</a> -
+					<a target="_blank" href="http://www.it165.net/about/ys.html">隐私声明</a> -
+					<a target="_blank" href="http://www.it165.net/about/bq.html">版权申明</a> -
+					<a target="_blank" href="http://www.it165.net/about/disclaimers.html">免责条款</a> -
+					<a target="_blank" href="http://www.it165.net/about/map.html">网站地图</a> -
+					<a target="_blank" href="http://www.it165.net/about/tg.html">网友投稿</a> -
+					<a target="_blank" href="http://www.it165.net/about/lxwm.html">联系方式</a>
+					<br>
+					本站内容来自于互联网,仅供用于网络技术学习,学习中请遵循相关法律法规<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F5f4298ca86516e3d7b6ad825f8ef6905' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/h.js" type="text/javascript"></script>
+			</div>	
+		</div><table class="BodyTable">
+	
+	
+		
+
+<script language="JavaScript" src="./使用EmguCv计算包围物体的最小圆与最小可旋转矩形和不可选择矩形 - 综合编程 - 次元立方网 - 电脑知识与技术互动交流平台_files/api.php"></script>
+
+
+
+</table></div></body></html>

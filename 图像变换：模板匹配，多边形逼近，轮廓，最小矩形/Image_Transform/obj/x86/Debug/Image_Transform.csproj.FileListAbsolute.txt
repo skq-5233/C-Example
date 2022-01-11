@@ -1,0 +1,11 @@
+D:\VS-Code\Demo\Image_Transform\bin\Debug\Image_Transform.exe
+D:\VS-Code\Demo\Image_Transform\bin\Debug\Image_Transform.pdb
+D:\VS-Code\Demo\Image_Transform\bin\Debug\Emgu.CV.dll
+D:\VS-Code\Demo\Image_Transform\bin\Debug\Emgu.CV.UI.dll
+D:\VS-Code\Demo\Image_Transform\bin\Debug\Emgu.Util.dll
+D:\VS-Code\Demo\Image_Transform\obj\x86\Debug\Image_Transform.csprojResolveAssemblyReference.cache
+D:\VS-Code\Demo\Image_Transform\obj\x86\Debug\Image_Transform.Form1.resources
+D:\VS-Code\Demo\Image_Transform\obj\x86\Debug\Image_Transform.Properties.Resources.resources
+D:\VS-Code\Demo\Image_Transform\obj\x86\Debug\Image_Transform.csproj.GenerateResource.Cache
+D:\VS-Code\Demo\Image_Transform\obj\x86\Debug\Image_Transform.exe
+D:\VS-Code\Demo\Image_Transform\obj\x86\Debug\Image_Transform.pdb
